@@ -2,13 +2,17 @@
 const path = require('path');
 
 // Initialize Express
-const app = express();
 const express = require('express');
 const session = require('express-session');
+const app = express();
 
 // Initialize Sequelize
 const sequelize = require('./config/connection');
 const PORT = process.env.PORT || 3001;
+
+// Initialize Routes
+const routes = require('./controllers');
+app.use(routes);
 
 // Initialize Sessions
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -29,8 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
-
+// Start the server
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
