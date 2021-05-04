@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Item extends Model {
+class Class extends Model {
 
 };
 
-Item.init(
+Class.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -17,21 +17,33 @@ Item.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        image_url: {
-            type: DataTypes.STRING,
+        strength: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            isUrl: true,
         },
-        effect: {
-            type: DataTypes.STRING,
+        power: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        speed: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        attack_1: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        attack_2: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
     {
         sequelize,
         freezeTableName: true,
-        modelName: 'Item',
-    }
+        modelName: 'Class',
+    },
 );
 
-module.exports = Item;
+
+module.exports = Class;

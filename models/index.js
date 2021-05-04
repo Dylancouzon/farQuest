@@ -1,48 +1,28 @@
 const User = require('./User');
 const Character = require('./Character');
 const Item = require('./Item');
+const Inventory = require('./Inventory');
+const Class = require('./Class');
 
+// Who belongs to who???
+User.hasMany(Character, {
+    foreignKey: 'user_id'
+});
 
+Class.belongsTo(Character, {
+    foreignKey: 'class_id'
+});
 
-module.exports = { User, Character, Item };
+Inventory.belongsTo(Character, {
+    foreignKey: 'character_id'
+});
 
-/* Models needed : 
-User
+Inventory.belongsToMany(Item, {
+    through: 'InventoryItem'
+});
 
-Character:
-    {
-        id
-        name
-        class
-        stamina
-        strength
-        power
-        speed
-        is_npc
-        user_id
-    }
-    getName() -- Return name
-    getStats() -- return stamina, strength, power, speed
-    attack(target, value) -- Assign the new health to the target
-    changeStat(stamina, strength, power, speed) -- Add the updated values to the object
-    addIventory(id) -- Add an item to the inventory
-    removeInventory(id) -- Remove an item from the inventory
+Item.belongsToMany(Inventory, {
+    through: 'InventoryItem'
+});
 
-Item
-
-
-Intentory
-
-
-Class
-
-
-*/
-=======
-const User = require('./User');
-const Character = require('./Character');
-
-
-
-module.exports = { User, Character };
-
+module.exports = { User, Character, Item, Inventory, Class };

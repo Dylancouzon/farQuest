@@ -1,8 +1,17 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
 class Character extends Model {
+        // Create constructor for these methods below
+    // getName = () => {
+    //     return this.name;
+    // };
 
+    // getName() -- Return name
+    // getStats() -- return stamina, strength, power, speed
+    // attack(target, value) -- Assign the new health to the target
+    // changeStat(stamina, strength, power, speed) -- Add the updated values to the object
+    // addIventory(id) -- Add an item to the inventory
+    // removeInventory(id) -- Remove an item from the inventory
 };
 
 Character.init(
@@ -17,9 +26,10 @@ Character.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        class: {
+        class_id: {
             type: DataTypes.STRING,
             allowNull: false,
+            // reference in index.js (one:one)
         },
         stamina: {
             type: DataTypes.INTEGER,
@@ -45,16 +55,14 @@ Character.init(
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            //reference in index.js
+            //reference in index.js (many:one | Character => User)
         },
     },
     {
         sequelize,
-        timestamps: true,
         freezeTableName: true,
-        underscored: true,
         modelName: 'Character',
-    }
+    },
 );
 
 module.exports = Character;
