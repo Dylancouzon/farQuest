@@ -38,9 +38,10 @@ router.get('/', async (req, res) => {
 router.get('/play', async (req, res) => {
     try {
         if (req.session.logged_in) {
-            res.sendFile(path.join(appDir, 'public', 'profile.html'));
+            res.sendFile(path.join(appDir, 'public', 'game.html'));
         } else {
-            res.sendFile(path.join(appDir, 'public', 'login.html'));
+            //Needs to be changed back to login after testing done !
+            res.sendFile(path.join(appDir, 'public', 'game.html'));
         }
     } catch (err) {
         res.status(500).json(err);

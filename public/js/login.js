@@ -12,12 +12,12 @@ login = async () => {
         const res = await response.json();
         if (response.ok) {
             document.location.replace('/profile');
-
+            
         } else {
             $("#login-error").html(res.message);
 
         }
-    } else {98
+    } else {
         $("#login-error").html(res.message);
     }
 }
