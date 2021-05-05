@@ -23,7 +23,7 @@ router.get('/profile', auth, async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         if (req.session.logged_in) {
             res.sendFile(path.join(appDir, 'public', 'profile.html'));

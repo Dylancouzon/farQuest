@@ -7,7 +7,7 @@ class CharacterObj {
         const classData = Character.findByPk(char_id)
             .then((data) => {
                 const classD = data.get({ plain: true });
-
+                console.log('hello\n\n')
                 this.name = classD.name;
                 this.class_id = classD.class_id;
                 this.stamina = classD.stamina;
