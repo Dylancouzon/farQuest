@@ -20,3 +20,21 @@ character_create = async (character_class) => {
     }
 
 }
+
+generateChar = async (char_id) => {
+    const response = await fetch('/api/char/generate', {
+        method: 'POST',
+        body: JSON.stringify({ char_id }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    const res = await response.json();
+    console.log(res);
+    if (response.ok) {
+        console.log(response);
+        return res;
+    } else {
+        // alert('test');
+        $("#creation-error").html(res.message);
+
+    }
+}
