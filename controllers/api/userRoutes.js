@@ -1,6 +1,6 @@
 // Node modules
-const path = require('path');
 const router = require('express').Router();
+const path = require('path');
 
 //Defines the root directory
 var appDir = path.dirname(require.main.filename);
