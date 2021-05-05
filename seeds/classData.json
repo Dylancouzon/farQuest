@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Warrior",
+        "stamina": "10",
+        "strength": "3",
+        "power": "1",
+        "speed": "1",
+        "luck": "2",
+        "attack_1": "1",
+        "attack_2": "1.1"
+    },
+    {
+        "name": "Mage",
+        "stamina": "5",
+        "strength": "1",
+        "power": "3",
+        "speed": "2",
+        "luck": "2",
+        "attack_1": "1.1",
+        "attack_2": "1.2"
+    },
+    {
+        "name": "Rogue",
+        "stamina": "7",
+        "strength": "2",
+        "power": "2",
+        "speed": "3",
+        "luck": "2",
+        "attack_1": "1.05",
+        "attack_2": "1.15"
+    },
+    {
+        "name": "Monk",
+        "stamina": "10",
+        "strength": "1",
+        "power": "1",
+        "speed": "2",
+        "luck": "2",
+        "attack_1": "0.7",
+        "attack_2": "0.75"
+    },
+    {
+        "name": "Necromancer",
+        "stamina": "10",
+        "strength": "1",
+        "power": "1",
+        "speed": "1.5",
+        "luck": "2",
+        "attack_1": "0.6",
+        "attack_2": "0.8"
+    },
+    {
+        "name": "Witch Doctor",
+        "stamina": "10",
+        "strength": "1",
+        "power": "1",
+        "speed": "0.9",
+        "luck": "2",
+        "attack_1": "0.5",
+        "attack_2": "0.65"
+    },
+    {
+        "name": "Goblin",
+        "stamina": "1",
+        "strength": "1",
+        "power": "1",
+        "speed": "1.1",
+        "luck": "2",
+        "attack_1": ".75",
+        "attack_2": ".85"
+    }
+]
