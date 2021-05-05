@@ -36,38 +36,46 @@ class CharacterObj {
     };
 
     changeStat = (stamina, strength, power, speed, luck, attack_1, attack_2, jinn) => {
+        if (stamina) this.stamina = stamina;
+        if (strength) this.strength = strength;
+        if (power) this.power = power;
+        if (speed) this.speed = speed;
+        if (luck) this.luck = luck;
+        if (attack_1) this.attack_1 = attack_1;
+        if (attack_2) this.attack_2 = attack_2;
+        if (jinn) this.jinn = jinn;
 
-        if (stamina) {
-            this.stamina = stamina;
-        };
+        // if (stamina) {
+        //     this.stamina = stamina;
+        // };
 
-        if (strength) {
-            this.strength = strength;
-        };
+        // if (strength) {
+        //     this.strength = strength;
+        // };
 
-        if (power) {
-            this.power = power;
-        };
+        // if (power) {
+        //     this.power = power;
+        // };
 
-        if (speed) {
-            this.speed = speed;
-        };
+        // if (speed) {
+        //     this.speed = speed;
+        // };
 
-        if (luck) {
-            this.luck = luck;
-        };
+        // if (luck) {
+        //     this.luck = luck;
+        // };
 
-        if (attack_1) {
-            this.attack_1 = attack_1;
-        };
+        // if (attack_1) {
+        //     this.attack_1 = attack_1;
+        // };
         
-        if (attack_2) {
-            this.attack_2 = attack_2;
-        };
+        // if (attack_2) {
+        //     this.attack_2 = attack_2;
+        // };
         
-        if (jinn) {
-            this.jinn = jinn;
-        };
+        // if (jinn) {
+        //     this.jinn = jinn;
+        // };
     };
 
     addInventory = (item) => {
