@@ -3,24 +3,26 @@ const sequelize = require('../config/connection');
 const Character = require('./Character');
 
 class CharacterObj {
-    constructor(name, class_id) {
-        const classData = await Character.findByPk(class_id);
-        const classD = postData.get({ plain: true });
+    constructor(char_id) {
+        const classData = Character.findByPk(char_id)
+            .then((data) => {
+                const classD = data.get({ plain: true });
 
-        this.name = name;
-        this.class_id = classData.class_id;
-        this.stamina = classD.stamina;
-        this.strength = classD.strength;
-        this.power = classD.power;
-        this.speed = classD.speed;
-        this.luck = classD.luck;
-        this.attack_1 = classD.attack_1;
-        this.attack_2 = classD.attack_2;
-        this.is_NPC = classD.is_NPC;
-        this.user_id = classD.user_id;
-        this.jinn = 0;
-        this.inventory = {a: 0, b: 0, c: 0};
-    }
+                this.name = classD.name;
+                this.class_id = classD.class_id;
+                this.stamina = classD.stamina;
+                this.strength = classD.strength;
+                this.power = classD.power;
+                this.speed = classD.speed;
+                this.luck = classD.luck;
+                this.attack_1 = classD.attack_1;
+                this.attack_2 = classD.attack_2;
+                this.is_NPC = classD.is_NPC;
+                this.user_id = classD.user_id;
+                this.jinn = 0;
+                this.inventory = { a: 0, b: 0, c: 0 };
+            })
+    };
 
     getName = () => {
         return this.name;
@@ -68,11 +70,11 @@ class CharacterObj {
         // if (attack_1) {
         //     this.attack_1 = attack_1;
         // };
-        
+
         // if (attack_2) {
         //     this.attack_2 = attack_2;
         // };
-        
+
         // if (jinn) {
         //     this.jinn = jinn;
         // };
@@ -81,8 +83,8 @@ class CharacterObj {
     addInventory = (item) => {
         return !this.inventory.a ? this.inventory.a = item
             : !this.inventory.b ? this.inventory.b = item
-            : !this.inventory.c ? this.inventory.c = item
-            : false;
+                : !this.inventory.c ? this.inventory.c = item
+                    : false;
 
         // if (!this.inventory.a) {
         //     this.inventory.a = item;
@@ -98,8 +100,8 @@ class CharacterObj {
     removeInventory = (item) => {
         return this.inventory.a === item ? this.inventory.a = 0
             : this.inventory.b === item ? this.inventory.b = 0
-            : this.inventory.c === item ? this.inventory.c = 0
-            : false;
+                : this.inventory.c === item ? this.inventory.c = 0
+                    : false;
 
         // if (this.inventory.a === item) {
         //     this.inventory.a = 0;
