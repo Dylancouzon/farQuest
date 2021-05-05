@@ -1,11 +1,8 @@
 const character_id = window.location.pathname.split("/").pop();
 
-
 game = (path, button, char_id) => {
-
     switch (path) {
         case 1:
-            console.log(path);
             path1(button);
             break;
         case 2:
