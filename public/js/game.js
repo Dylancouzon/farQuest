@@ -72,19 +72,28 @@ game = (path, button, char_id) => {
 $("#game_button1").click(function (event) {
     event.preventDefault();
     let path = $("#path_id").val();
+    if(character.stamina < 1){
+        gameOver();
+    }
     game(parseInt(path), 1)
 });
 
 $("#game_button2").click(function (event) {
     event.preventDefault();
     let path = $("#path_id").val();
+    if(character.stamina < 1){
+        gameOver();
+    }
     game(parseInt(path), 2)
 });
 
 $("#game_button3").click(function (event) {
     event.preventDefault();
     let path = $("#path_id").val();
-    game(parseInt(path), 3)
+    if(character.stamina < 1){
+        gameOver();
+    }
+    game(parseInt(path), 3);
 });
 
 game(0, 0, character_id);
