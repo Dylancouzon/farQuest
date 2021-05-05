@@ -16,7 +16,7 @@ router.get('/profile', auth, async (req, res) => {
         if (charactersData) {
             res.sendFile(path.join(appDir, 'public', 'profile.html'));
         } else {
-            res.sendFile(path.join(appDir, 'public', 'creation.html'));
+            res.sendFile(path.join(appDir, 'public', 'create.html'));
         }
     } catch (err) {
         res.status(500).json(err);
@@ -35,14 +35,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/play', async (req, res) => {
+router.get('/play', auth, async (req, res) => {
     try {
-        if (req.session.logged_in) {
-            res.sendFile(path.join(appDir, 'public', 'game.html'));
-        } else {
-            //Needs to be changed back to login after testing done !
-            res.sendFile(path.join(appDir, 'public', 'game.html'));
-        }
+        res.sendFile(path.join(appDir, 'public', 'game.html'));
     } catch (err) {
         res.status(500).json(err);
     }
