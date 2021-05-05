@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Minor Health Potion",
+        "effect": "+50 health"
+    },
+    {
+        "name": "Health Potion",
+        "effect": "+100 health"
+    }
+]

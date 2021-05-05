@@ -8,7 +8,7 @@ class CharacterObj {
         const classD = postData.get({ plain: true });
 
         this.name = name;
-        this.class_id = class_id;
+        this.class_id = classData.class_id;
         this.stamina = classD.stamina;
         this.strength = classD.strength;
         this.power = classD.power;
@@ -19,6 +19,7 @@ class CharacterObj {
         this.is_NPC = classD.is_NPC;
         this.user_id = classD.user_id;
         this.jinn = 0;
+        this.inventory = {a: 0, b: 0, c: 0};
     }
 
     getName = () => {
@@ -26,15 +27,81 @@ class CharacterObj {
     };
 
     getStats = () => {
-        return this.stamina, this.strength, this, 
+        var charStats = [this.stamina, this.strength, this.power, this.speed]
+        return charStats;
     };
 
-    attack = (target, value) {
-
+    attack = (target, value) => {
+        target.stamina -= value;
     };
 
-    changeStat = (stamina, strength, power, speed) {
+    changeStat = (stamina, strength, power, speed, luck, attack_1, attack_2, jinn) => {
 
+        if (stamina) {
+            this.stamina = stamina;
+        };
+
+        if (strength) {
+            this.strength = strength;
+        };
+
+        if (power) {
+            this.power = power;
+        };
+
+        if (speed) {
+            this.speed = speed;
+        };
+
+        if (luck) {
+            this.luck = luck;
+        };
+
+        if (attack_1) {
+            this.attack_1 = attack_1;
+        };
+        
+        if (attack_2) {
+            this.attack_2 = attack_2;
+        };
+        
+        if (jinn) {
+            this.jinn = jinn;
+        };
+    };
+
+    addInventory = (item) => {
+        return !this.inventory.a ? this.inventory.a = item
+            : !this.inventory.b ? this.inventory.b = item
+            : !this.inventory.c ? this.inventory.c = item
+            : false;
+
+        // if (!this.inventory.a) {
+        //     this.inventory.a = item;
+        // } else if (!this.inventory.b) {
+        //     this.inventory.b = item;
+        // } else if (!this.inventory.c) {
+        //     this.inventory.c = item;
+        // } else {
+        //     return false;
+        // }
+    };
+
+    removeInventory = (item) => {
+        return this.inventory.a === item ? this.inventory.a = 0
+            : this.inventory.b === item ? this.inventory.b = 0
+            : this.inventory.c === item ? this.inventory.c = 0
+            : false;
+
+        // if (this.inventory.a === item) {
+        //     this.inventory.a = 0;
+        // } else if (this.inventory.b === item) {
+        //     this.inventory.b = 0;
+        // } else if (this.inventory.c === item) {
+        //     this.inventory.c = 0;
+        // } else {
+        //     return false;
+        // }
     };
 
 };
