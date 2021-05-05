@@ -17,11 +17,6 @@ Item.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        image_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            isUrl: true,
-        },
         effect: {
             type: DataTypes.STRING,
             allowNull: false,

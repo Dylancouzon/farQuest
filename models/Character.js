@@ -47,6 +47,18 @@ Character.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        luck: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        attack_1: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        attack_2: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         is_NPC: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
@@ -54,7 +66,6 @@ Character.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             //reference in index.js (many:one | Character => User)
         },
     },

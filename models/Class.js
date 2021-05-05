@@ -17,6 +17,10 @@ Class.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        stamina: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         strength: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -26,6 +30,10 @@ Class.init(
             allowNull: false,
         },
         speed: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        luck: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
