@@ -1,6 +1,7 @@
-character_create = () => {
+character_create = async (character_class) => {
+
     const character_name = $("#character_name").val();
-    const character_class = $("#character_create").data("character_class");
+
     if (character_name && character_class) {
         const response = await fetch('/api/char/create', {
             method: 'POST',
@@ -9,16 +10,13 @@ character_create = () => {
         });
         let res = await response.json();
         if (response.ok) {
-            document.location.replace('/comment/' + res.post_id);
+            //Need to figure out howt to fetch the character id 
+            console.log(res);
+            document.location.replace('/play/'+res.id);
 
         }
     } else {
-        $("#character_error").html("Please enter a name & Select a class");
+        $("#character_error").html("Please enter a name.");
     }
 
 }
-
-$("#character_create").click(function (event) {
-    event.preventDefault();
-    character_create()
-});

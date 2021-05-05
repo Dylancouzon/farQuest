@@ -12,12 +12,12 @@ const auth = require(path.join(appDir, 'public', 'js', 'auth')).authTest;
 //Profile route
 router.get('/profile', auth, async (req, res) => {
     try {
-        const charactersData = await Character.findByPk(req.session.user_id);
-        if (charactersData) {
-            res.sendFile(path.join(appDir, 'public', 'profile.html'));
-        } else {
-            res.sendFile(path.join(appDir, 'public', 'creation.html'));
-        }
+        //const charactersData = await Character.findOne({ where: { user_id: req.session.user_id } });
+        // if (charactersData) {
+        //     res.sendFile(path.join(appDir, 'public', 'profile.html'));
+        // } else {
+            res.sendFile(path.join(appDir, 'public', 'create.html'));
+       // }
     } catch (err) {
         res.status(500).json(err);
     }
@@ -35,13 +35,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/play', async (req, res) => {
+router.get('/play/:id', auth, async (req, res) => {
     try {
-        if (req.session.logged_in) {
-            res.sendFile(path.join(appDir, 'public', 'profile.html'));
-        } else {
-            res.sendFile(path.join(appDir, 'public', 'login.html'));
-        }
+        res.sendFile(path.join(appDir, 'public', 'game.html'));
     } catch (err) {
         res.status(500).json(err);
     }

@@ -3,8 +3,10 @@ const Character = require('./Character');
 const Item = require('./Item');
 const Class = require('./Class');
 
-User.hasMany(Character, {
-    foreignKey: 'id'
-});
+//  I commented this out because:
+//Needs to have a belongsTo otherwise User.create won't work
+// User.hasMany(Character, {
+//     foreignKey: 'id'
+// });
 
 module.exports = { User, Character, Item, Class };
