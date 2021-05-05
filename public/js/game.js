@@ -69,37 +69,34 @@ game = (path, button, char_id) => {
     }
 }
 
-$("#game_button1").click(function (event) {
+$("#game_button1").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(character.stamina < 1){
         gameOver();
     }
-    game(parseInt(path), 1)
+    await game(parseInt(path), 1);
+    actions();
 });
 
-$("#game_button2").click(function (event) {
+$("#game_button2").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(character.stamina < 1){
         gameOver();
     }
-    game(parseInt(path), 2)
+    await game(parseInt(path), 2)
+    actions();
 });
 
-$("#game_button3").click(function (event) {
+$("#game_button3").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(character.stamina < 1){
         gameOver();
     }
-    game(parseInt(path), 3);
+    await game(parseInt(path), 3);
+    actions();
 });
 
 game(0, 0, character_id);
-// $("#startgame").click(function (event) {
-//     event.preventDefault();
-//     const character_class = $("#startgame").data("character_class");
-//     const character_name = $("#name").val();
-//     game(0, 0, character_id, character_name);
-// });

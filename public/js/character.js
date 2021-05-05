@@ -39,16 +39,16 @@ generateChar = async (char_id) => {
     }
 }
 
-openChest = async () => {
+openChest = () => {
     let luck = (parseInt(character.luck) / 10) + 1;
     let roll = Math.round(Math.floor(Math.random() * 10) * luck);
-    if(roll > 10){
+    if (roll > 10) {
         roll = 10;
     }
     console.log(roll);
     switch (roll) {
         case 1:
-            let staminaCase1 = Math.round(parseInt(character.stamina)/2);
+            let staminaCase1 = Math.round(parseInt(character.stamina) / 2);
             character.changeStat(staminaCase1 - 20);
             return "The chest was trapped and exploded ! You lost half your health points !";
         case 2:
@@ -61,9 +61,9 @@ openChest = async () => {
             return "No luck ! The chest was empty!";
         case 5:
             let addItemCase5 = character.addInventory(1);
-            if(addItemCase5){
+            if (addItemCase5) {
                 return "You found an Health potion ! It has been added to your inventory !";
-            }else{
+            } else {
                 return "You found an Health potion ! Unfortunately, your inventory is full !";
             }
         case 6:
@@ -75,7 +75,7 @@ openChest = async () => {
         case 9:
             return "Not coded yet !";
         case 10:
-            character.strength = parseInt(character.stamina)*2;
+            character.strength = parseInt(character.stamina) * 2;
             character.attack_1 = "Master cut";
             character.attack_1 = "Final blow";
             return "You found the MasterSword ! Your attacks are now Legendary !";
@@ -91,14 +91,21 @@ genJinn = () => {
             character.jinn = 1;
             return "You Are a Class 1 The Jinn did ...";
         case 2:
-            character.jinn = 1;
+            character.jinn = 2;
             return "You Are a Class 2 The Jinn did ...";
         case 3:
-            character.jinn = 1;
+            character.jinn = 3;
             return "You Are a Class 3 The Jinn did ...";
         case 4:
-            character.jinn = 1;
+            character.jinn = 4;
             return "You Are a Class 4 The Jinn did ...";
 
     }
+}
+
+actions = async () => {
+    if (character.jinn == 1) {
+        console.log("The Jinn has casted his spell");
+    }
+
 }

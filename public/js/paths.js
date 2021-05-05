@@ -54,11 +54,10 @@ path1 = (button) => {
     };
 };
 
-path2 = (button) => {
+path2 = async (button) => {
     switch (button) {
         case 1:
-            console.log(CharacterObj.jinn);
-            var jinn = jinn();
+            var jinn = await genJinn();
             $("#game_message").html(`You wish for bla bla bla, ${jinn}`);
             $("#game_button1").html(`Action A`);
             $("#game_button2").html(`Action B`);
@@ -181,3 +180,16 @@ path20 = (button) => {
 pathCheater = () => {
     $("#game_message").html(`How did you get here ?<br> Anyway, doesn't matter.<br> You Died !`);
 };
+
+
+setTimeout(()=>{
+    console.log(character.jinn);
+    if(character.jinn == 1){
+        console.log("The Jinn has casted his spell!")
+        $('body')
+       .animate({
+          left: 280
+        }, 'slow');
+    }
+}, 200);
+
