@@ -41,10 +41,10 @@ router.post('/create', async (req, res) => {
 
 router.post('/generate', async (req, res) => {
     try {
-        //Can't get the .then to work. The timeout will do for now.
-        const characterData = new CharacterObj(req.body.char_id);
-
-
+        const characterData = await Character.findByPk(req.body.char_id);
+        const character = characterData.get({ plain: true });
+        res.status(200).json(character);
+        //Can't get the .then to work.
         // .then(characterData => {
         //      console.log(characterData);
         //      res.status(200).json(characterData);
@@ -53,11 +53,8 @@ router.post('/generate', async (req, res) => {
 
         //Works to return this as an object, but not as a constructor ??
         // Need clarification Im confused
-        setTimeout( ()=>{
-            res.status(200).json(characterData);
-        },300);
 
-        // Here characterData.getStats() = Derired result
+        // Here characterData is an instance in the console log but not in the json object
         // If I remove the await, it returns undefined ??
         // setTimeout( async()=>{
 
