@@ -1,8 +1,10 @@
 const Paths = require("./paths");
-// Ask to add <input type="hidden" id="pathId" name="pathId" value="">
+// Ask to add <input type="hidden" id="path_id" name="path_id" value="">
 // <script src="js/paths.js"></script>
+// id="startgame" data-character_id="ID" Attributes to the Choose character buttons
 
-game = (path, button) => {
+
+game = (path, button, char_id) => {
     switch (path) {
         case 1:
             Paths.path1(button);
@@ -65,7 +67,7 @@ game = (path, button) => {
             Paths.path20(button);
             break;
         default:
-            Paths.path0(button);
+            Paths.path0(button, char_id);
 
 
     }
@@ -73,19 +75,25 @@ game = (path, button) => {
 
 $("#button1").click(function (event) {
     event.preventDefault();
-    const id = $("#pathId").val();
+    const id = $("#path_id").val();
     game(id, 1)
 });
 
 $("#button2").click(function (event) {
     event.preventDefault();
-    const id = $("#pathId").val();
+    const id = $("#path_id").val();
     game(id, 2)
 });
 
 $("#button3").click(function (event) {
     event.preventDefault();
-    const id = $("#pathId").val();
+    const id = $("#path_id").val();
     game(id, 3)
 });
 
+
+$("#startgame").click(function (event) {
+    event.preventDefault();
+    const character_id = $("#startgame").data("character_id");
+    game(0, 0, character_id);
+});

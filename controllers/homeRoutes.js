@@ -35,4 +35,16 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/play', async (req, res) => {
+    try {
+        if (req.session.logged_in) {
+            res.sendFile(path.join(appDir, 'public', 'profile.html'));
+        } else {
+            res.sendFile(path.join(appDir, 'public', 'login.html'));
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
