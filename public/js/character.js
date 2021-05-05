@@ -10,13 +10,13 @@ character_create = async (character_class) => {
         });
         let res = await response.json();
         if (response.ok) {
-            //Need to figure out the character id 
+            //Need to figure out howt to fetch the character id 
             console.log(res);
-            document.location.replace('/play/1');
+            document.location.replace('/play/'+res.id);
 
         }
     } else {
-        $("#character_error").html("Please enter a name & Select a class");
+        $("#character_error").html("Please enter a name.");
     }
 
 }

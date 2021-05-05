@@ -18,18 +18,20 @@ router.post('/create', async (req, res) => {
             return;
         }
         const classData = findClass.get({ plain: true });
+        console.log(req.session.user_id);
         const characterData = await Character.create({
-            name: req.body.character_name,
-            class_id: req.body.character_class,
-            strength: classData.strength,
-            stamina: classData.stamina,
-            power: classData.stamina,
-            speed: classData.speed,
-            luck: classData.luck,
-            attack_1: classData.attack_1,
-            attack_2: classData.attack_2,
+            name: req.body.character_name || 0,
+            class_id: req.body.character_class|| 0,
+            stamina: classData.stamina|| 0,
+            strength: classData.strength|| 0,
+            power: classData.power|| 0,
+            speed: classData.speed|| 0,
+            luck: classData.luck|| 0,
+            attack_1: classData.attack_1|| 0,
+            attack_2: classData.attack_2|| 0,
             user_id: req.session.user_id,
         });
+        console.log(characterData);
         res.status(200).json(characterData);
 
     } catch (err) {

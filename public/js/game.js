@@ -1,6 +1,5 @@
 // Ask to add <input type="hidden" id="path_id" name="path_id" value="">
 // id="startgame" data-character_id="ID" Attributes to the Choose character buttons
-
 // Import the models & auth function using path
 var character;
 path0 = async (char_id) => {
