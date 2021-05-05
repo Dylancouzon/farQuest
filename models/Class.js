@@ -38,11 +38,11 @@ Class.init(
             allowNull: false,
         },
         attack_1: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         attack_2: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },
