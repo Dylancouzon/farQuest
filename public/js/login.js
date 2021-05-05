@@ -38,11 +38,11 @@ signup = async () => {
         if (response.ok) {
             document.location.replace('/profile');
         } else {
-            $("##login-error").html(res.message);
+            $("#login-error").html(res.message);
 
         }
     } else {
-        $("##login-error").html(res.message);
+        $("#login-error").html(res.message);
     }
 }
 
