@@ -4,6 +4,7 @@ const { User, Character, Class, Item } = require('../models');
 const seedUsers = require('./userData.json');
 const seedCharacters = require('./characterData.json');
 const seedClass = require('./classData.json');
+const seedItem = require('./itemData.json');
 
 const seedAll = async () => {
     await sequelize.sync({ force: true });
@@ -20,6 +21,9 @@ const seedAll = async () => {
 
     const classes = await Class.bulkCreate(seedClass);
     console.log('\n----- CLASSES SEEDED -----\n');
+
+    const items = await Item.bulkCreate(seedItem);
+    console.log('\n----- ITEMS SEEDED -----\n');
 
     process.exit(0);
 };
