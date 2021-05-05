@@ -12,7 +12,7 @@ character_create = async (character_class) => {
         if (response.ok) {
             //Need to figure out howt to fetch the character id 
             console.log(res);
-            document.location.replace('/play/'+res.id);
+            document.location.replace('/play/' + res.id);
 
         }
     } else {
@@ -35,6 +35,25 @@ generateChar = async (char_id) => {
     } else {
         // alert('test');
         $("#creation-error").html(res.message);
+
+    }
+}
+
+openChest = async () => {
+    Math.floor(Math.random() * max);
+}
+
+jinn = () => {
+    switch (character.class_id) {
+        case 1:
+            Character.jinn = 1;
+            return "You Are a Class 1";
+        case 2:
+            Character.jinn = 1;
+            return "You Are a Class 2";
+        case 3:
+            Character.jinn = 1;
+            return "You Are a Class 2";
 
     }
 }

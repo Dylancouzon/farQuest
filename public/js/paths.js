@@ -4,22 +4,23 @@ path0 = async (char_id) => {
 
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
-        console.log(character);
-        $("#game_message").html(`Welcome ${character.name} !<br>`);
+    console.log(character);
+    $("#game_message").html(`Welcome ${character.name} !<br>`);
 
-        $("#game_button1").html(`Action A`);
-        $("#game_button2").html(`Action B`);
-        //This button will take you to the Jinn
-        $("#game_button3").html(`Jinn route`);
+    $("#game_button1").html(`Action A`);
+    $("#game_button2").html(`Action B`);
+    //This button will take you to the Jinn
+    $("#game_button3").html(`Jinn route`);
 
-
-        $("#path_id").val('1');
+    // Next path ID
+    $("#path_id").val('1');
 
 };
 
 //This is the first Path. The third route will take you to
 path1 = (button) => {
     switch (button) {
+        //Button A
         case 1:
             $("#game_message").html(`This is path 1 <br> You selected Action A`);
             $("#game_button1").html(`Action A`);
@@ -28,6 +29,7 @@ path1 = (button) => {
 
             $("#path_id").val('3');
             break;
+        //Button B
         case 2:
             $("#game_message").html(`This is path 1 <br> You selected Action B`);
             $("#game_button1").html(`Lol`);
@@ -37,6 +39,7 @@ path1 = (button) => {
 
             $("#path_id").val('3');
             break;
+        //Button C
         case 3:
             $("#game_message").html(`You found a Jinn in a bottle, it will grant you one wish ! <br> What do you wish for ?`);
             $("#game_button1").html(`My Biggest dream`);
@@ -54,15 +57,18 @@ path1 = (button) => {
 path2 = (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`asdsd`);
+            console.log(CharacterObj.jinn);
+            var jinn = jinn();
+            $("#game_message").html(`You wish for bla bla bla, ${jinn}`);
             $("#game_button1").html(`Action A`);
             $("#game_button2").html(`Action B`);
 
 
-            $("#path_id").val('2');
+            $("#path_id").val('3');
             break;
         case 2:
             $("#game_button3").show();
+
             path3(1);
 
             break;
