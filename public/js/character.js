@@ -28,7 +28,6 @@ generateChar = async (char_id) => {
         headers: { 'Content-Type': 'application/json' },
     });
     const res = await response.json();
-    console.log(res);
     if (response.ok) {
         return res;
     } else {
@@ -119,27 +118,34 @@ getJinn = () => {
 }
 
 //Initiate the fighting variables and Generate the ennemy.
+//Afterfight need to reset those values + show button3
+// generateFight(10, "Bla bla bla wants to fight you", path for after the fight)
 let turn = 0;
 let afterFight = 0;
-generateFight = async (ennemy_id) => {
+var ennemy;
+generateFight = async (ennemy_id, message, afterPath) => {
     //Where to go once the fight is done
-    afterFight = $("#path_id").val();
+    afterFight = afterPath;
     $("#game_button3").hide();
     // Generate the ennemy character
-    const ennemy = await generateChar(ennemy_id);
+    ennemy = await generateChar(ennemy_id);
     // The user starts first unless the ennemy speed is greater.
     if (ennemy.speed > character.speed) {
         turn = 1;
-        fight();
+        fight(0, message);
     }
 }
 
 // Fighting function
 //Function will return true if the user won, false if they did not.
-fight = async (attack) => {
 
+fight = async (attack, message) => {
+    if(message){
+        $("#game_message").html(message);
+    }
     $("#game_message").html("");
     let thisattack = 0;
+    let rand = 0;
     //Do the attack 
     if (attack === 1) {
         ennemy.stamina -= character.strength 
@@ -154,27 +160,40 @@ fight = async (attack) => {
 
         if (turn === 0) {
             //Players turn
-            $("#game_message").html(`${ennemy.name} wants to Fight you !`);
+            
             $("#game_button1").html(character.attack_1);
             $("#game_button2").html(character.attack_2);
             $("#path_id").val("fight");
             turn = 1;
         } else {
             //ennemies turn
-
+            rand = Math.floor(Math.random() * 1);
+            if(rand === 1){
+                character.stamina -= ennemy.strength 
+                $("#game_message").append(`${ennemy.name} hit you for ${character.strength} damage<br>`);
+            }else{
+                thisattack =  (ennemy.strength)*1.2;
+                character.stamina -= thisattack;
+                $("#game_message").append(`${ennemy.name} hit you for ${thisattack} damage<br>`);
+            }
             turn = 0;
+            $("#game_button1").html(character.attack_1);
+            $("#game_button2").html(character.attack_2);
+            $("#path_id").val("fight");
         }
     } else {
         $("#game_button3").show();
-        return true;
+        setTimeout(() => {
+            game(parseInt(path), afterFight);
+        }, 2000)
     }
-
 }
 
 // Actions to be executed each time a path is generated.
 // Timeout should not be necessary anymore because of the await in the call on game.js
 actions = async () => {
-    // setTimeout(() => {
+    console.log(character.stamina);
+    //setTimeout(() => {
 
     // Jinn actions for Class 1
     if (character.jinn == 1) {
@@ -185,10 +204,11 @@ actions = async () => {
     if (character.stamina < 1) {
         gameOver();
     }
-    //WIP health bar
-    var progress = $("#health-bar");
-	RPGUI.set_value(progress, 0.1);
-    // }, 300)
+    //Health bar
+    var health = character.stamina/character.maxHealth;
+    var hp = document.getElementById("health-bar");
+	RPGUI.set_value(hp, health);
+    //}, 300)
 
 
 }

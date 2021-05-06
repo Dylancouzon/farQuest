@@ -2,6 +2,7 @@ class CharacterObj {
     constructor(classD) {
         this.name = classD.name;
         this.class_id = classD.class_id;
+        this.maxHealth = classD.stamina;
         this.stamina = classD.stamina;
         this.strength = classD.strength;
         this.power = classD.power;

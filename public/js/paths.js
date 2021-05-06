@@ -9,7 +9,7 @@ path0 = async (char_id) => {
     console.log(character);
     $("#game_message").html(`Welcome ${character.name} !<br>`);
     $("h3").html(character.name);
-    $("#game_button1").html(`Action A`);
+    $("#game_button1").html(`Fight !`);
     $("#game_button2").html(`Action B`);
     //This button will take you to the Jinn
     $("#game_button3").html(`Jinn route`);
@@ -24,16 +24,12 @@ path1 = (button) => {
     switch (button) {
         //Button A
         case 1:
-            $("#game_message").html(`This is path 1 <br> You selected Action A`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('3');
-            break;
+            generateFight(21, "That hoe wants to fight you", 5)
+                break;
         //Button B
         case 2:
-            $("#game_message").html(`This is path 1 <br> You selected Action B`);
+            character.stamina -= 2;
+            $("#game_message").html(`You fell in a pit and lost 2hp`);
             $("#game_button1").html(`Lol`);
             $("#game_button2").html(`That worked`);
             $("#game_button3").html(`Never believed in you`);
@@ -625,8 +621,8 @@ path20 = (button) => {
             $("#game_button3").hide();
             break;
         default:
-            // end of game function needs to go here
-            // endGame();
+        // end of game function needs to go here
+        // endGame();
     };
 };
 
