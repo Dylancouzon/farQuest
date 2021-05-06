@@ -11,7 +11,7 @@ login = async () => {
         });
         const res = await response.json();
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
             
         } else {
             $("#login-error").html(res.message);
@@ -36,7 +36,7 @@ signup = async () => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             $("#login-error").html(res.message);
 

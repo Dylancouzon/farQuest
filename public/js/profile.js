@@ -55,7 +55,7 @@ character_destroy = async (character_id) => {
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
 
         } $("#character_error").html("Please try again.");
     } else {
