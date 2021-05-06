@@ -185,7 +185,10 @@ actions = async () => {
     if (character.stamina < 1) {
         gameOver();
     }
-
+    //WIP health bar
+    var progress = $("#health-bar");
+	RPGUI.set_value(progress, 0.1);
     // }, 300)
+
 
 }
