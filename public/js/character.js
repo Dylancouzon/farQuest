@@ -118,6 +118,39 @@ getJinn = () => {
     }
 }
 
+// Path20 will be reserved for fights !
+// Fighting function
+//Function will return true if the user won, false if they did not.
+fight = async (ennemy_id) => {
+    $("#game_button3").hide();
+    let turn = 0;
+    // Generate the ennemy character
+    const ennemy = await generateChar(ennemy_id);
+    // The user starts first unless the ennemy speed is greater.
+    if (ennemy.speed > character.speed) {
+        turn = 1;
+    }
+
+    // Check if both characters are alive
+    if (parseInt(character.stamina) > 0 && parseInt(ennemy.stamina) > 0) {
+        if (turn === 0) {
+            //Players turn
+            $("#game_message").html(`${ennemy.name} wants to Fight you !`);
+            $("#game_button1").html(character.attack_1);
+            $("#game_button2").html(character.attack_1);
+            turn = 1;
+        } else {
+            //ennemies turn
+
+            turn = 0;
+        }
+    } else {
+        $("#game_button3").show();
+        return true;
+    }
+
+}
+
 // Actions to be executed each time a path is generated.
 // Timeout should not be necessary anymore because of the await in the call on game.js
 actions = async () => {
