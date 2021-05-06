@@ -75,21 +75,33 @@ game = (path, button, char_id) => {
 $("#game_button1").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    await game(parseInt(path), 1);
+    if(path == "fight"){
+        await fight(parseInt(path));
+    }else{
+        await game(parseInt(path), 1);
+    }
     actions();
 });
 
 $("#game_button2").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    await game(parseInt(path), 2)
+    if(path == "fight"){
+        await fight(parseInt(path));
+    }else{
+        await game(parseInt(path), 1);
+    }
     actions();
 });
 
 $("#game_button3").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    await game(parseInt(path), 3);
+    if(path == "fight"){
+        await fight(parseInt(path));
+    }else{
+        await game(parseInt(path), 1);
+    }
     actions();
 });
 

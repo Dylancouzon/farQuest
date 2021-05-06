@@ -118,26 +118,46 @@ getJinn = () => {
     }
 }
 
-// Path20 will be reserved for fights !
-// Fighting function
-//Function will return true if the user won, false if they did not.
-fight = async (ennemy_id) => {
+//Initiate the fighting variables and Generate the ennemy.
+let turn = 0;
+let afterFight = 0;
+generateFight = async (ennemy_id) => {
+    //Where to go once the fight is done
+    afterFight = $("#path_id").val();
     $("#game_button3").hide();
-    let turn = 0;
     // Generate the ennemy character
     const ennemy = await generateChar(ennemy_id);
     // The user starts first unless the ennemy speed is greater.
     if (ennemy.speed > character.speed) {
         turn = 1;
+        fight();
     }
+}
 
+// Fighting function
+//Function will return true if the user won, false if they did not.
+fight = async (attack) => {
+
+    $("#game_message").html("");
+    let thisattack = 0;
+    //Do the attack 
+    if (attack === 1) {
+        ennemy.stamina -= character.strength 
+        $("#game_message").append(`You hit ${ennemy.name} for ${character.strength} damage<br>`);
+    } else if (attack === 2) {
+        thisattack =  (character.strength)*1.2;
+        ennemy.stamina -= thisattack;
+        $("#game_message").append(`You hit ${ennemy.name} for ${thisattack} damage<br>`);
+    }
     // Check if both characters are alive
     if (parseInt(character.stamina) > 0 && parseInt(ennemy.stamina) > 0) {
+
         if (turn === 0) {
             //Players turn
             $("#game_message").html(`${ennemy.name} wants to Fight you !`);
             $("#game_button1").html(character.attack_1);
-            $("#game_button2").html(character.attack_1);
+            $("#game_button2").html(character.attack_2);
+            $("#path_id").val("fight");
             turn = 1;
         } else {
             //ennemies turn

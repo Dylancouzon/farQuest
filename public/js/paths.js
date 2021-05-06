@@ -1,7 +1,9 @@
 var character;
 
 path0 = async (char_id) => {
-
+    $("#game_button1").show();
+    $("#game_button2").show();
+    $("#game_button3").show();
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
     console.log(character);
@@ -629,7 +631,17 @@ path20 = (button) => {
 };
 
 pathCheater = () => {
+    $("#game_message").html(`<br> You Died !`);
+    $("#game_button1").hide();
+    $("#game_button2").hide();
+    $("#game_button3").hide();
+};
+
+pathCheater = () => {
     $("#game_message").html(`How did you get here ?<br> Anyway, doesn't matter.<br> You Died !`);
+    $("#game_button1").hide();
+    $("#game_button2").hide();
+    $("#game_button3").hide();
 };
 
 endGame = () => {
