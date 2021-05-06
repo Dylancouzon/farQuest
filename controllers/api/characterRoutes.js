@@ -7,7 +7,6 @@ var appDir = path.dirname(require.main.filename);
 // Import the models & auth function using path
 const { User, Character, Class } = require(path.join(appDir, 'models'));
 const auth = require(path.join(appDir, 'public', 'js', 'auth')).authTest;
-const CharacterObj = require('../../models/CharacterObj');
 
 // Create character Route
 router.post('/create', async (req, res) => {
