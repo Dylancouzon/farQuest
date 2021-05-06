@@ -9,27 +9,26 @@ var appDir = path.dirname(require.main.filename);
 const { User, Character } = require(path.join(appDir, 'models'));
 const auth = require(path.join(appDir, 'public', 'js', 'auth')).authTest;
 
-//Profile route
-router.get('/profile', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
-        //const charactersData = await Character.findOne({ where: { user_id: req.session.user_id } });
-        // if (charactersData) {
-        //     res.sendFile(path.join(appDir, 'public', 'profile.html'));
-        // } else {
-            res.sendFile(path.join(appDir, 'public', 'create.html'));
-       // }
+        if (req.session.logged_in) {
+            const charactersData = await Character.findOne({ where: { user_id: req.session.user_id } });
+            if (charactersData) {
+                res.sendFile(path.join(appDir, 'public', 'profile.html'));
+            } else {
+                res.sendFile(path.join(appDir, 'public', 'create.html'));
+            }
+        } else {
+            res.sendFile(path.join(appDir, 'public', 'login.html'));
+        }
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/', auth, async (req, res) => {
+router.get('/create', auth, async (req, res) => {
     try {
-        if (req.session.logged_in) {
-            res.sendFile(path.join(appDir, 'public', 'profile.html'));
-        } else {
-            res.sendFile(path.join(appDir, 'public', 'login.html'));
-        }
+        res.sendFile(path.join(appDir, 'public', 'create.html'));
     } catch (err) {
         res.status(500).json(err);
     }
