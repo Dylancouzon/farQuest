@@ -1,16 +1,21 @@
 var character;
-
-path0 = async (char_id) => {
+let chest;
+//Show all buttons
+show = ()=> {
     $("#game_button1").show();
     $("#game_button2").show();
     $("#game_button3").show();
+};
+
+path0 = async (char_id) => {
+    show();
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
     console.log(character);
     $("#game_message").html(`Welcome ${character.name} !<br>`);
     $("h3").html(character.name);
     $("#game_button1").html(`Fight !`);
-    $("#game_button2").html(`Action B`);
+    $("#game_button2").html(`Chest route`);
     //This button will take you to the Jinn
     $("#game_button3").html(`Jinn route`);
 
@@ -21,18 +26,24 @@ path0 = async (char_id) => {
 
 //This is the first Path. The third route will take you to
 path1 = (button) => {
+    
     switch (button) {
         //Button A
         case 1:
-            generateFight(21, "That hoe wants to fight you", 5)
+            generateFight(21, "Get ready for a Fight!", 5)
                 break;
         //Button B
         case 2:
-            character.stamina -= 2;
-            $("#game_message").html(`You fell in a pit and lost 2hp`);
-            $("#game_button1").html(`Lol`);
-            $("#game_button2").html(`That worked`);
-            $("#game_button3").html(`Never believed in you`);
+            character.stamina -= 20;
+            $("#game_message").html(`
+            You stumble on something, fell on a rock and lose 20hp.<br><br>
+            You look more closely to the object and it is a Chest ! <br>
+            Should you open it ?
+            `);
+            
+            $("#game_button1").html(`Yes`);
+            $("#game_button2").html(`No`);
+            $("#game_button3").hide();
 
             $("#path_id").val('3');
             break;
@@ -53,50 +64,40 @@ path1 = (button) => {
 path2 = async (button) => {
     switch (button) {
         case 1:
-            var jinn = await genJinn();
-            $("#game_message").html(`You wish for bla bla bla, ${jinn}`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
+            var jinn = await getJinn();
+            $("#game_message").html(`You wished for Eternal glory<br><br> ${jinn}`);
+            $("#game_button1").html(`Ohh nooo`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
 
-            $("#path_id").val('3');
+            $("#path_id").val('4');
             break;
+
         case 2:
-            $("#game_button3").show();
-
-            path3(1);
-
+            path4(1);
             break;
+
         default:
             pathCheater();
     };
 };
 
-path3 = (button) => {
+path3 = async (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 3 <br> You selected Action A`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+            chest = await openChest();
+            $("#game_message").html(chest);
+            $("#game_button1").html(`Continue`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
 
             $("#path_id").val('4');
             break;
+
         case 2:
-            $("#game_message").html(`This is path 3 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('4');
+            path4(1);
             break;
-        case 3:
-            $("#game_message").html(`This is path 3 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('4');
-            break;
+       
         default:
             pathCheater();
     };
@@ -134,34 +135,11 @@ path4 = (button) => {
 };
 
 path5 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 5 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('6');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 5 <br> You selected Action B`);
+    
+            $("#game_message").html(`You won the fight !`);
             $("#game_button1").html(`Action A`);
             $("#game_button2").html(`Action B`);
             $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('6');
-
-        case 3:
-            $("#game_message").html(`This is path 5 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('6');
-            break;
-        default:
-            pathCheater();
-    };
 };
 
 path6 = (button) => {
@@ -626,9 +604,9 @@ path20 = (button) => {
     };
 };
 
-pathCheater = () => {
-    $("#game_message").html(`<br> You Died !`);
-    $("#game_button1").hide();
+gameOver = (message) => {
+    $("#game_message").html(message);
+    $("#game_button1").html(`Play again`);
     $("#game_button2").hide();
     $("#game_button3").hide();
 };

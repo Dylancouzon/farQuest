@@ -3,6 +3,7 @@ const character_id = window.location.pathname.split("/").pop();
 
 //Game paths
 game = (path, button, char_id) => {
+    show();
     switch (path) {
         case 1:
             path1(button);
@@ -76,7 +77,7 @@ $("#game_button1").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(path == "fight"){
-        await fight(parseInt(path));
+        await fight(1);
     }else{
         await game(parseInt(path), 1);
     }
@@ -87,7 +88,7 @@ $("#game_button2").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(path == "fight"){
-        await fight(parseInt(path));
+        await fight(2);
     }else{
         await game(parseInt(path), 2);
     }
@@ -98,7 +99,7 @@ $("#game_button3").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
     if(path == "fight"){
-        await fight(parseInt(path));
+        await fight(3);
     }else{
         await game(parseInt(path), 3);
     }
