@@ -4,19 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link href="./css/rpgui.css" rel="stylesheet" type="text/css">
+    <link href="./css/game.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/objects/characterObj.js"></script>
+    <title>Game</title>
+
+    
+
 </head>
 <body>
-    asdasd
-    <p id="game_message"></p>
-    <button id="game_button1"></button>
-    <button id="game_button2"></button>
-    <button id="game_button3"></button>
-    <input type="hidden" id="path_id" name="path_id" value="">
+    <div class="rpgui-content" id="char-box">
+        <div class="rpgui-container framed">
+                <h3>PLAYER NAME</h3>
+                <p>Health:</p>
+                <div class="rpgui-progress red"></div>
+                <hr>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+        </div>
+    </div>
+
+    <div class="rpgui-content" >
+        <div class="rpgui-container framed" id="main-box">
+            <p id="game_message"></p>
+                <button class="rpgui-button" id="game_button1" type="button"><p>Choice 1</p></button>
+                <button class="rpgui-button" id="game_button2" type="button"><p>Choice 2</p></button>
+                <button class="rpgui-button" id="game_button3" type="button"><p>Choice 3</p></button>
+        </div>
+    </div>
 </body>
 </html>
+
 <script src="../js/character.js"></script>
 <script src="../js/paths.js"></script>
 <script src="../js/game.js"></script>
