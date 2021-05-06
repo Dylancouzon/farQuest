@@ -89,7 +89,7 @@ $("#game_button2").click(async (event) => {
     if(path == "fight"){
         await fight(parseInt(path));
     }else{
-        await game(parseInt(path), 1);
+        await game(parseInt(path), 2);
     }
     actions();
 });
@@ -100,7 +100,7 @@ $("#game_button3").click(async (event) => {
     if(path == "fight"){
         await fight(parseInt(path));
     }else{
-        await game(parseInt(path), 1);
+        await game(parseInt(path), 3);
     }
     actions();
 });
