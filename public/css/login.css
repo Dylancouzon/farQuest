@@ -1,13 +1,13 @@
 html, body {
 	width:100%;
 	height:100%;
-	cursor: url(https://cur.cursors-4u.net/games/gam-14/gam1394.cur), auto !important;
+	cursor: url("../img/cursor/default.png"), auto !important;
 }
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-image: url("../images/testgif.gif"); 
+    background-image: url("../images/campfire.gif"); 
     background-size: cover;
     background-color: #cccccc;
     background-position: center;
@@ -46,7 +46,7 @@ body {
 	border-bottom: 1px solid #FFF;
 	outline: none;
 	background: transparent;
-	cursor: url(https://cur.cursors-4u.net/games/gam-14/gam1394.cur), auto !important;
+	cursor: url("../img/cursor/default.png"), auto !important;
 }
 .box .inputBox label {
 	position: absolute;
@@ -81,12 +81,14 @@ body {
 	border: none;
 	outline: none;
 	color: #FFF;
-	background: ;
+	background: transparent;
     border-style: solid;
 	padding: 10px 20px;
-	cursor: url(https://cur.cursors-4u.net/games/gam-14/gam1394.cur), auto !important;
+	cursor: url("../img/cursor/point.png"), auto !important;
 	border-radius: 5px;
 	font-size: 14px;
+	max-width: 95px;
+	min-width: 95px;
 }
 .box input[type='submit']:hover {
 	background-color: rgba(0,0,0,.5);
@@ -98,7 +100,7 @@ body {
 }
 #signup-button
 {
-    margin-left: 35%;
+    margin-left: 39%;
 }
 #login-error {
     color: red;
