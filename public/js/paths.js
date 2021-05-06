@@ -52,11 +52,10 @@ path1 = (button) => {
     };
 };
 
-path2 = (button) => {
+path2 = async (button) => {
     switch (button) {
         case 1:
-            console.log(CharacterObj.jinn);
-            var jinn = jinn();
+            var jinn = await genJinn();
             $("#game_message").html(`You wish for bla bla bla, ${jinn}`);
             $("#game_button1").html(`Action A`);
             $("#game_button2").html(`Action B`);
@@ -636,3 +635,4 @@ pathCheater = () => {
 endGame = () => {
 
 };
+

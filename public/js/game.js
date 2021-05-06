@@ -1,5 +1,7 @@
+// Get the character id from the header.
 const character_id = window.location.pathname.split("/").pop();
 
+//Game paths
 game = (path, button, char_id) => {
     switch (path) {
         case 1:
@@ -68,29 +70,28 @@ game = (path, button, char_id) => {
 
     }
 }
-
-$("#game_button1").click(function (event) {
+//Eventlistener on each button.
+//Calls the right path with the button id as a parameter
+$("#game_button1").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    game(parseInt(path), 1)
+    await game(parseInt(path), 1);
+    actions();
 });
 
-$("#game_button2").click(function (event) {
+$("#game_button2").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    game(parseInt(path), 2)
+    await game(parseInt(path), 2)
+    actions();
 });
 
-$("#game_button3").click(function (event) {
+$("#game_button3").click(async (event) => {
     event.preventDefault();
     let path = $("#path_id").val();
-    game(parseInt(path), 3)
+    await game(parseInt(path), 3);
+    actions();
 });
 
+// Launch the game when loading the page (path0)
 game(0, 0, character_id);
-// $("#startgame").click(function (event) {
-//     event.preventDefault();
-//     const character_class = $("#startgame").data("character_class");
-//     const character_name = $("#name").val();
-//     game(0, 0, character_id, character_name);
-// });
