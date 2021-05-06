@@ -1,5 +1,5 @@
 body {
-    background: url("../img/tester.gif");
+    background: url("");
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -15,4 +15,24 @@ body {
 }
 #char-box {
     opacity: 0.9;
+}
+
+#char-sprite-box {
+    position: absolute;
+    left: 20%;
+    right: 40%;
+    top: 10%;
+}
+#char-sprite {
+    height: 500px;
+}
+
+#enemy-sprite-box {
+    position: absolute;
+    right:25%;
+    left:45%;
+    top: 10%;
+}
+#enemy-sprite {
+    height: 500px;
 }
