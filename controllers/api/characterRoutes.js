@@ -65,4 +65,38 @@ router.post('/generate', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+router.post('/profile', async (req, res) => {
+    try {
+        const characterData = await Character.findAll(
+            {
+              where: {
+                user_id: req.session.user_id
+              },
+            }
+          );
+        const characters = characterData.map((char) => char.get({ plain: true }));
+        res.status(200).json(characters);
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.delete('/destroy',auth , async (req, res) => {
+    try {
+        // console.log()
+        const deleteChar = await Character.destroy({
+          where: {
+            id: req.body.character_id,
+          },
+        });
+    
+        res.status(200);
+    
+      } catch (err) {
+        res.status(500).json(err);
+      }
+});
+
 module.exports = router;
