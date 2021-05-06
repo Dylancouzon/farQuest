@@ -43,7 +43,7 @@ openChest = () => {
     If the number becomes bigger than 10, round it back down to 10.
     How to use :
     Make the path async !
-    let chest(enteryourpathnumber) = await openChest();
+     chest = await openChest();
     chestx will return the chest response, the effects are applied automatically.
     It is very important to make a unique variable id !
     */
@@ -87,7 +87,7 @@ openChest = () => {
             character.attack_1 = "Final blow";
             return "You found the MasterSword ! Your attacks are now Legendary !";
         default:
-            return gameover();
+            return gameOver("A Ghoul came out of the chest and ate you alive, You died !");
     }
 }
 
@@ -96,14 +96,14 @@ Jinn
 How to use :
 Make the path jinn !
 let jinn = await getJinn();
-jin will return the chest response, the effects will take place starting from next path.
+jin will return the response, the effects will take place starting from next path.
 */
 getJinn = () => {
 
     switch (parseInt(character.class_id)) {
         case 1:
             character.jinn = 1;
-            return "You Are a Class 1 The Jinn did ...";
+            return "You Are a Class 1 The Jinn casted a spell on you";
         case 2:
             character.jinn = 2;
             return "You Are a Class 2 The Jinn did ...";
@@ -119,8 +119,8 @@ getJinn = () => {
 
 //Initiate the fighting variables and Generate the ennemy.
 //Afterfight need to reset those values + show button3
-// generateFight(10, "Bla bla bla wants to fight you", path for after the fight)
-let turn = 0;
+// generateFight(10, "Bla bla bla wants to fight you", winning path)
+let first = 0;
 let afterFight = 0;
 var ennemy;
 generateFight = async (ennemy_id, message, afterPath) => {
@@ -130,85 +130,90 @@ generateFight = async (ennemy_id, message, afterPath) => {
     // Generate the ennemy character
     ennemy = await generateChar(ennemy_id);
     // The user starts first unless the ennemy speed is greater.
-    if (ennemy.speed > character.speed) {
-        turn = 1;
-        fight(0, message);
+    if (character.speed >= ennemy.speed) {
+        first = 1;
+
     }
+    //Start the fight
+    fight(0, message);
 }
 
 // Fighting function
 //Function will return true if the user won, false if they did not.
 
 fight = async (attack, message) => {
-    if(message){
-        $("#game_message").html(message);
-    }
     $("#game_message").html("");
+    if (message) {
+        $("#game_message").html(message + "<br>");
+    }
+
     let thisattack = 0;
     let rand = 0;
+
     //Do the attack 
     if (attack === 1) {
-        ennemy.stamina -= character.strength 
-        $("#game_message").append(`You hit ${ennemy.name} for ${character.strength} damage<br>`);
+        ennemy.stamina -= character.strength
+        $("#game_message").append(`You hit ${ennemy.name} for ${character.strength} damage<br><br>`);
     } else if (attack === 2) {
-        thisattack =  (character.strength)*1.2;
+        thisattack = (character.strength) * 1.2;
         ennemy.stamina -= thisattack;
-        $("#game_message").append(`You hit ${ennemy.name} for ${thisattack} damage<br>`);
+        $("#game_message").append(`You hit ${ennemy.name} for ${thisattack} damage<br><br>`);
     }
     // Check if both characters are alive
     if (parseInt(character.stamina) > 0 && parseInt(ennemy.stamina) > 0) {
 
-        if (turn === 0) {
-            //Players turn
-            
-            $("#game_button1").html(character.attack_1);
-            $("#game_button2").html(character.attack_2);
-            $("#path_id").val("fight");
-            turn = 1;
-        } else {
-            //ennemies turn
+        //ennemies turn, skip it once if the user go first
+        if (first === 0) {
             rand = Math.floor(Math.random() * 1);
-            if(rand === 1){
-                character.stamina -= ennemy.strength 
-                $("#game_message").append(`${ennemy.name} hit you for ${character.strength} damage<br>`);
-            }else{
-                thisattack =  (ennemy.strength)*1.2;
+            if (rand === 1) {
+                character.stamina -= ennemy.strength
+                $("#game_message").append(`${ennemy.name} did ${character.attack_1} for ${character.strength} damage<br><br>`);
+            } else {
+                thisattack = (ennemy.strength) * 1.2;
                 character.stamina -= thisattack;
-                $("#game_message").append(`${ennemy.name} hit you for ${thisattack} damage<br>`);
+                $("#game_message").append(`${ennemy.name} did ${character.attack_2} for ${thisattack} damage<br><br>`);
             }
-            turn = 0;
-            $("#game_button1").html(character.attack_1);
-            $("#game_button2").html(character.attack_2);
-            $("#path_id").val("fight");
         }
+        first = 0;
+
+        //Attack buttons
+        $("#game_message").append(`<br>Choose your action<br>`);
+        $("#game_button1").html(character.attack_1);
+        $("#game_button2").html(character.attack_2);
+        $("#path_id").val("fight");
+
+
+        $("#game_message").append(`${ennemy.name} has ${ennemy.stamina}hp left<br><br>`);
     } else {
+        //Winning path
         $("#game_button3").show();
-        setTimeout(() => {
-            game(parseInt(path), afterFight);
-        }, 2000)
+            game(afterFight);
     }
 }
 
 // Actions to be executed each time a path is generated.
-// Timeout should not be necessary anymore because of the await in the call on game.js
+// Actions is supposed to be async but we still need the Timeout for some reason
 actions = async () => {
     console.log(character.stamina);
-    //setTimeout(() => {
+    setTimeout(() => {
 
-    // Jinn actions for Class 1
-    if (character.jinn == 1) {
-        console.log("The Jinn has casted his spell");
-    }
+        // Jinn actions for Class 1
+        if (character.jinn == 1) {
+            console.log("The Jinn has casted his spell");
+        }
 
-    //Check if the character is still alive
-    if (character.stamina < 1) {
-        gameOver();
-    }
-    //Health bar
-    var health = character.stamina/character.maxHealth;
-    var hp = document.getElementById("health-bar");
-	RPGUI.set_value(hp, health);
-    //}, 300)
+        //Check if the character is still alive
+        if (character.stamina < 1) {
+            gameOver("You died!");
+        }
+        //Health bar
+        var health = character.stamina / character.maxHealth;
+        if(health < 0){
+            health = 0;
+        }
+        var hp = document.getElementById("health-bar");
+        RPGUI.set_value(hp, health);
+    }, 100)
 
 
 }
