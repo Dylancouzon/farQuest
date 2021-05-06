@@ -61,10 +61,16 @@ router.post('/signup', async (req, res) => {
 });
 
 // Logout Route
-router.post('/logout', async (req, res) => {
+router.post('/logout', auth, (req, res) => {
+    
     if (req.session.logged_in) {
-        req.session.destroy();
-    }
-    res.sendFile(path.join(appDir, 'public', 'login.html'));
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+        res.sendFile(path.join(appDir, 'public', 'login.html'));
+    };
 });
+
 module.exports = router;
