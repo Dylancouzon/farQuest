@@ -8,7 +8,7 @@ path0 = async (char_id) => {
     character = new CharacterObj(getStats);
     console.log(character);
     $("#game_message").html(`Welcome ${character.name} !<br>`);
-
+    $("h3").html(character.name);
     $("#game_button1").html(`Action A`);
     $("#game_button2").html(`Action B`);
     //This button will take you to the Jinn
