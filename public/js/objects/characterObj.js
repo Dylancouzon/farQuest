@@ -13,7 +13,7 @@ class CharacterObj {
         this.is_NPC = classD.is_NPC;
         this.user_id = classD.user_id;
         this.jinn = 0;
-        this.inventory = { a: 0, b: 0, c: 0 };
+        this.inventory = { a: 0, b: 0, c: 0, c: 0};
     };
 
     getName = () => {

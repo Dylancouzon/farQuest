@@ -43,24 +43,6 @@ router.post('/generate', async (req, res) => {
         const characterData = await Character.findByPk(req.body.char_id);
         const character = characterData.get({ plain: true });
         res.status(200).json(character);
-        //Can't get the .then to work.
-        // .then(characterData => {
-        //      console.log(characterData);
-        //      res.status(200).json(characterData);
-        //  })
-        //  .catch(err => { console.log("\n\nHELLO\n"+err) });
-
-        //Works to return this as an object, but not as a constructor ??
-        // Need clarification Im confused
-
-        // Here characterData is an instance in the console log but not in the json object
-        // If I remove the await, it returns undefined ??
-        // setTimeout( async()=>{
-
-        //     console.log(`\n\nHELLO\n ${await characterData.getStats()}\n`);
-        //     res.status(200).json(characterData);
-        // },300);
-
     } catch (err) {
         res.status(400).json(err);
     }
@@ -83,7 +65,7 @@ router.post('/profile', async (req, res) => {
     }
 });
 
-router.delete('/destroy',auth , async (req, res) => {
+router.post('/destroy',auth , async (req, res) => {
     try {
         // console.log()
         const deleteChar = await Character.destroy({
@@ -92,7 +74,7 @@ router.delete('/destroy',auth , async (req, res) => {
           },
         });
     
-        res.status(200);
+        res.status(200).json(deleteChar);
     
       } catch (err) {
         res.status(500).json(err);

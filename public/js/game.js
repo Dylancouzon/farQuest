@@ -91,15 +91,17 @@ $("#game_button3").click(async (event) => {
 
 //Generate the next path
 nextPath = async (button) =>{
-    show();
+    // Need to move that timer thing
     $('#death-timer').hide();
     clearInterval(deathTimer);
     let path = $("#path_id").val();
     if(path == "fight"){
-        await fight(3);
+        await fight(button);
     }else if(path == 0){
+        show();
         game(0, 0, character_id);
     }else{
+        show();
         await game(parseInt(path), button);
     }
     actions();
