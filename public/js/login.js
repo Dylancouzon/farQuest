@@ -46,6 +46,7 @@ signup = async () => {
     }
 }
 
+
 $("#login-button").click(function (event) {
     event.preventDefault();
     login()
