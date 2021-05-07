@@ -11,12 +11,20 @@ body {
     right: 25%;
     top: 60%;
     max-width: 600px;
+    min-width: 600px;
     opacity: 0.9;
 }
 #char-box {
     opacity: 0.9;
 }
-
+#enemy-char-box {
+    opacity: 0.9;
+    position: absolute;
+    top:0;
+    right:0;
+    left: 85%;
+    
+}
 #char-sprite-box {
     position: absolute;
     left: 20%;
@@ -26,7 +34,6 @@ body {
 #char-sprite {
     height: 500px;
 }
-
 #enemy-sprite-box {
     position: absolute;
     right:25%;
