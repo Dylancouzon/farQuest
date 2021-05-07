@@ -29,7 +29,7 @@ body {
     position: absolute;
     top:0;
     right:0;
-    left: 85%;
+    left: 81%;
     
 }
 #char-sprite-box {
@@ -44,12 +44,15 @@ body {
 }
 #enemy-sprite-box {
     position: absolute;
-    right:25%;
-    left:0;
+    right:0;
+    left:65%;
     top: 10%;
 }
 #enemy-sprite {
     height: 500px;
+}
+#enemy-health-bar {
+    width: 294.44px;
 }
 /* #game_button1 {
     min-width: 170px;
