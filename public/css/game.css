@@ -38,8 +38,8 @@ body {
 }
 #enemy-sprite-box {
     position: absolute;
-    right:25%;
-    left:0;
+    right:0;
+    left:65%;
     top: 10%;
 }
 #enemy-sprite {
