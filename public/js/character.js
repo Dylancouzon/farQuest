@@ -70,6 +70,7 @@ openChest = () => {
             return "No luck ! The chest was empty!";
         case 5:
             let addItemCase5 = character.addInventory(1);
+            updateInventory();
             if (addItemCase5) {
                 return "You found an Health potion ! It has been added to your inventory !";
             } else {
@@ -337,6 +338,58 @@ updateHealthEnnemy = () => {
     RPGUI.set_value(hp, health);
 }
 
+//Update the inventory.
+updateInventory = async () => {
+    $("#inventory").html(``);
+    if(character.inventory.a == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+    }
+    if(character.inventory.b == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+    }
+    if(character.inventory.c == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+    }
+    if(character.inventory.d == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+    }
+
+
+}
+$( document ).on( "keydown", function( event ) {
+    
+    if(event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52){
+        if (character.inventory.a == 1 || character.inventory.b == 1 || character.inventory.c == 1 || character.inventory.d == 1){
+            useItem();
+        }
+    }
+    
+})
+$("1").keypress(() => {
+    
+    let inventory = character.inventory;
+    //check if the character has at least one item.
+
+    
+});
+
+useItem = async () => {
+    character.stamina += 30;
+    if(character.stamina > character.maxHealth){
+        character.maxHealth = character.stamina;
+    }
+    character.removeInventory(1);
+    updateInventory();
+    updateHealth();
+}
 
 // Actions to be executed each time a path is generated.
 // Actions is supposed to be async but we still need the Timeout for some reason

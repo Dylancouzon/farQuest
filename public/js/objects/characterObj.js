@@ -13,7 +13,7 @@ class CharacterObj {
         this.is_NPC = classD.is_NPC;
         this.user_id = classD.user_id;
         this.jinn = 0;
-        this.inventory = { a: 0, b: 0, c: 0, c: 0};
+        this.inventory = { a: 0, b: 0, c: 0, c: 0 };
     };
 
     getName = () => {
@@ -44,13 +44,15 @@ class CharacterObj {
         return !this.inventory.a ? this.inventory.a = item
             : !this.inventory.b ? this.inventory.b = item
                 : !this.inventory.c ? this.inventory.c = item
-                    : false;
+                    : !this.inventory.d ? this.inventory.d = item
+                        : false;
     };
 
     removeInventory = (item) => {
         return this.inventory.a === item ? this.inventory.a = 0
             : this.inventory.b === item ? this.inventory.b = 0
                 : this.inventory.c === item ? this.inventory.c = 0
-                    : false;
+                    : this.inventory.d === item ? this.inventory.d = 0
+                        : false;
     };
 };
