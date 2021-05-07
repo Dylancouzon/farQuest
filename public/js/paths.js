@@ -315,9 +315,12 @@ path14 = async (button) => {
     };
 };
 
+// Now can follow the forest path
 path15 = (button) => {
     switch (button) {
         case 1:
+        case 2:
+        case 3:
             explored[15].a = true;
             $("#game_message").html(`<p>
             You are back at the begging of the forest.<br>
@@ -333,34 +336,22 @@ path15 = (button) => {
     };
 };
 
+
 path16 = (button) => {
     switch (button) {
         case 1:
-            explored[16].a = true;
+        case 3:
+            explored[16].b = true;
             $("#game_message").html(`<p>
-            You are back at the begging of the forest.<br>
-            The mystical presence seems to have dissipated.<br>
+            There is nothing here<br>
             </p>`);
-            $("#game_button1").html(`Go back to the lake`);
-            $("#game_button2").html(`Keep going into the forest.`);
+            $("#game_button1").html(`Go back!`);
+            $("#game_button2").hide();
             $("#game_button3").hide();
-            $("#path_id").val('16');
+            $("#path_id").val('15');
             break;
         case 2:
-            $("#game_message").html(`This is path 16 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('17');
-
-        case 3:
-            $("#game_message").html(`This is path 16 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('17');
+            game(17, 1);
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
@@ -370,26 +361,15 @@ path16 = (button) => {
 path17 = (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 17 <br> You selected Action A`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('18');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 17 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('18');
-
-        case 3:
-            $("#game_message").html(`This is path 17 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+            explored[17].a = true;
+            $("#game_message").html(`<p>
+            You are a a Fork in the road<br><br>
+            On the left you can see animal Footprints<br>
+            On the right, you can see wagon prints.<br>
+            </p>`);
+            $("#game_button1").html(`Go Left`);
+            $("#game_button2").html(`Go right`);
+            $("#game_button3").hide();
 
             $("#path_id").val('18');
             break;
@@ -399,59 +379,39 @@ path17 = (button) => {
 };
 
 path18 = (button) => {
+
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 18 <br> You selected Action A`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('19');
+            explored[17].a = true;
+            $("#game_message").html(``);
+            generateFight(5, "<p>This is not Farley!<br><br> It's a monster!</p>", 19)
             break;
         case 2:
-            $("#game_message").html(`This is path 18 <br> You selected Action B`);
+            explored[18].a = true;
+            $("#game_message").html(`Follow the Wagon`);
             $("#game_button1").html(`Action A`);
             $("#game_button2").html(`Action B`);
             $("#game_button3").html(`Action C`);
 
-            $("#path_id").val('19');
-
-        case 3:
-            $("#game_message").html(`This is path 18 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('19');
+            $("#path_id").val('20');
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
-path19 = (button) => {
+path19 = async (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 19 <br> You selected Action A`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('20');
-            break;
         case 2:
-            $("#game_message").html(`This is path 19 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('20');
-
         case 3:
-            $("#game_message").html(`This is path 19 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+            $("#game_message").html(`<p>
+            You defeated the monster and found a chest ! Yay<br>
+            </p>`);
+            chest = await openChest();
+            $("#game_button1").html(`Follow the other path`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
 
             $("#path_id").val('20');
             break;
@@ -464,7 +424,7 @@ path20 = (button) => {
 
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 20 <br> This is the end of the game!!!`);
+            $("#game_message").html(`Wagon path`);
             $("#game_button1").html(`Return to profile`);
             $("#game_button2").html(`Play, again!`);
             $("#game_button3").hide();

@@ -46,7 +46,7 @@ openChest = () => {
     How to use :
     Make the path async !
      chest = await openChest();
-    chestx will return the chest response, the effects are applied automatically.
+    chest will return the chest response, the effects are applied automatically.
     It is very important to make a unique variable id !
     */
     let luck = (parseInt(character.luck) / 10) + 1;
