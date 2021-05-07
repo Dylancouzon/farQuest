@@ -318,7 +318,7 @@ getMaster = () => {
 }
 //Health bar
 updateHealth = () => {
-    let health = Math.round(character.stamina / character.maxHealth);
+    let health = character.stamina / character.maxHealth;
     if (health < 0) {
         health = 0;
     }
@@ -328,10 +328,10 @@ updateHealth = () => {
 }
 
 updateHealthEnnemy = () => {
-    let health = Math.round(ennemy.stamina / ennemy.maxHealth);
+    let health = ennemy.stamina / ennemy.maxHealth;
     if (health < 0) {
     }
-    var hp = document.getElementById("enemy-char-health");
+    var hp = document.getElementById("enemy-health-bar");
     $("#enemy-char-health").html(`Health: ${Math.round(ennemy.stamina)}/${ennemy.maxHealth}`);
     RPGUI.set_value(hp, health);
 }

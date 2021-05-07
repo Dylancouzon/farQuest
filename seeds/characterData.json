@@ -9,7 +9,7 @@
         "luck": "2",
         "attack_1": "1",
         "attack_2": "2",
-        "is_NPC": "false",
+        "is_NPC": "true",
         "user_id": "1"
     },
     {
@@ -38,6 +38,19 @@
         "is_NPC": "true",
         "user_id": "0"
     },
+    {
+        "name": "Asheara",
+        "class_id": "6",
+        "stamina": "10",
+        "strength": "1",
+        "power": "1",
+        "speed": "1",
+        "luck": "2",
+        "attack_1": "1",
+        "attack_2": "2",
+        "is_NPC": "true",
+        "user_id": "0"
+    }
     {
         "name": "Asheara",
         "class_id": "6",
