@@ -114,13 +114,15 @@ getJinn = () => {
             character.strength += 10;
             return "<p>Jinn: You, knight, wished to have super strength and your wish has been granted.<br>You are now so strong that your attacks will cause you to hurt yourself.<br><br> The Jinn dissapears laughing maniacally.<br></p>";
         case 2:
-            //Give  to the wizard.
+            //Age the wizard
             character.jinn = 2;
             setTimeout(() => {
                 setInterval(function () {
                     let parkinson = 1;
                     $("#main-box").effect("shake", { times: 8, distance: parkinson });
                     parkinson++;
+                    $('body').animate({ opacity: gettingOlder });
+                    gettingOlder -= 0.005;
                 }, 1600)
             }, 5000);
             return "<p> Jinn: You, wizard, wished for immortality and your wish has been granted.<br> You will have to endure the effects of aging for all the eternity!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
@@ -349,7 +351,7 @@ getMaster = () => {
 updateHealth = () => {
     let health = character.stamina / character.maxHealth;
     if (health < 0 || character.stamina < 0) {
-        character.stamina =0;
+        character.stamina = 0;
         health = 0;
     }
     var hp = document.getElementById("health-bar");
@@ -454,12 +456,6 @@ actions = async () => {
 let gettingOlder = 1;
 let gettingBlind = 0.1;
 executeJinn = async () => {
-
-    if (character.jinn == 2) {
-        $('body').animate({ opacity: gettingOlder });
-        gettingOlder -= 0.08;
-
-    }
 
     if (character.jinn == 3) {
 
