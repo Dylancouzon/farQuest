@@ -374,6 +374,7 @@ updateHealthEnnemy = () => {
 //Update the inventory.
 updateInventory = async () => {
     $("#inventory").html(``);
+
     if (character.inventory.a == 1) {
         $("#inventory").append(`<div class="rpgui-icon potion-red">1</div>`);
     } else {
@@ -393,10 +394,12 @@ updateInventory = async () => {
         $("#inventory").append(`<div class="rpgui-icon potion-red">4</div>`);
     } else {
         $("#inventory").append(`<div class="rpgui-icon empty-slot">4</div>`);
+
     }
 
 
 }
+
 $(document).on("keydown", function (event) {
 
     if (event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52) {
@@ -412,11 +415,14 @@ $("1").keypress(() => {
     //check if the character has at least one item.
 
 
+
 });
 
 useItem = async () => {
     character.stamina += 30;
+
     if (character.stamina > character.maxHealth) {
+
         character.maxHealth = character.stamina;
     }
     character.removeInventory(1);
