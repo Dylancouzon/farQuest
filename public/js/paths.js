@@ -43,19 +43,17 @@ path1 = (button) => {
 
         case 1:
             explored[1].a = true;
-            // $("#game_message").html(`<p>
-            //     YOU RECIEVE A LETTER FROM A KING IN A LAND FAR AWAY.<br>
-            //     HE IS ASKING FOR YOUR HELP TO RETRIEVE HIS BELOVED CAT FARLEY WHO WAS TAKEN AWAY BY AN EVIL LORD NAMED THOMAS !<br>
-            //     HE WILL OFFER GREAT RECOMPENSE TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
-            // </p>`);
+            $("#game_message").html(`<p>
+                YOU RECIEVE A LETTER FROM A KING IN A LAND FAR AWAY.<br>
+                HE IS ASKING FOR YOUR HELP TO RETRIEVE HIS BELOVED CAT FARLEY WHO WAS TAKEN AWAY BY AN EVIL LORD NAMED THOMAS !<br>
+                HE WILL OFFER GREAT RECOMPENSE TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
+            </p>`);
 
-            // $("#game_button1").html(`LET'S GO!`);
-            // $("#game_button2").html(`No.`);
-            // $("#game_button3").hide();
+            $("#game_button1").html(`LET'S GO!`);
+            $("#game_button2").html(`No.`);
+            $("#game_button3").hide();
 
-            // $("#path_id").val('2');
-            $("#game_message").html(``);
-            generateFight(6, "<p>This is not Farley!<br><br> It's a monster!</p>", 19)
+            $("#path_id").val('2');
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
