@@ -88,5 +88,15 @@
         "luck": "3",
         "attack_1": "Confusion",
         "attack_2": "Disrupt"
+    },
+    {
+        "name": "Farley",
+        "stamina": "200",
+        "strength": "20",
+        "power": "8",
+        "speed": "8",
+        "luck": "5",
+        "attack_1": "Hiss",
+        "attack_2": "Scratch"
     }
 ]

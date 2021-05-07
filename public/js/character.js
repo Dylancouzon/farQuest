@@ -4,7 +4,10 @@ var timeLeft = 20;
 character_create = async (character_class) => {
 
     const character_name = $("#character_name").val();
-
+    //Farley Easter Egg :D.
+        if(character_name == "Farley"){
+            character_class = 10;
+        }
     if (character_name && character_class) {
         const response = await fetch('/api/char/create', {
             method: 'POST',
