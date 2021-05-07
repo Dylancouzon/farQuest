@@ -31,13 +31,15 @@ body {
     
 }
 #char-sprite-box {
-    position: absolute;
-    left: 20%;
-    right: 40%;
-    top: 10%;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 50%;
 }
 #char-sprite {
     height: 500px;
+
 }
 #enemy-sprite-box {
     position: absolute;
