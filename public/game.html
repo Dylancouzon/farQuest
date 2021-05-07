@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../css/rpgui.css" rel="stylesheet" type="text/css">
     <link href="../css/game.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,21 +18,25 @@
 
 
 </head>
+
 <body>
-<!--Box at top left with inventory and character health-->
-        <div class="rpgui-content" id="char-box">
-            <div class="rpgui-container framed" id="rpgui-frame">
-                    <h3 id="char-name"></h3>
-                    <p id="char-health">Health:</p>
-                    <div class="rpgui-progress red" id="health-bar"></div>
-                    <hr>
-                    <div class="rpgui-icon empty-slot"></div>
-                    <div class="rpgui-icon empty-slot"></div>
-                    <div class="rpgui-icon empty-slot"></div>
-                    <div class="rpgui-icon empty-slot"></div>
+    <!--Box at top left with inventory and character health-->
+    <div class="rpgui-content" id="char-box">
+        <div class="rpgui-container framed" id="rpgui-frame">
+            <h3 id="char-name"></h3>
+            <p id="char-health">Health:</p>
+            <div class="rpgui-progress red" id="health-bar"></div>
+            <hr>
+            <div id="inventory">
+                <div class="rpgui-icon empty-slot"></div>
+                <div class="rpgui-icon empty-slot"></div>
+                <div class="rpgui-icon empty-slot"></div>
+                <div class="rpgui-icon empty-slot"></div>
             </div>
         </div>
-<!--Box at top right that displays enemy health in combat.-->
+    </div>
+    
+    <!--Box at top right that displays enemy health in combat.-->
     <div class="rpgui-content" id="enemy-char-box">
         <div class="rpgui-container framed">
             <h3 id="enemy-char-name">THOMAS</h3>
@@ -40,30 +46,39 @@
         </div>
     </div>
 
-<!--Box where character sprite will be rendered-->
+    <!--Box where character sprite will be rendered-->
     <div class="container" id="char-sprite-box">
         <img src="" id="char-sprite">
+        <div onclick="alert('hi')"></div>
     </div>
-<!--Box where enemy sprite will be rendered-->
+    
+    <!--Box where enemy sprite will be rendered-->
     <div class="container" id="enemy-sprite-box">
         <img src="" id="enemy-sprite">
     </div>
-    
-    
-<!--Main box where text will be, along with buttons to choose paths-->
-    <div class="rpgui-content" >
+
+
+    <!--Main box where text will be, along with buttons to choose paths-->
+    <div class="rpgui-content">
         <div class="rpgui-container framed" id="main-box">
             <p id="game_message"></p>
             <br>
-                <button class="rpgui-button" id="game_button1" type="button"><p></p></button>
-                <button class="rpgui-button" id="game_button2" type="button"><p></p></button>
-                <button class="rpgui-button" id="game_button3" type="button"><p></p></button>
-                <input type="hidden" id="path_id" name="path_id" value="">
-                <h4 id="death-timer" style='color:red'></h4>
+            <button class="rpgui-button" id="game_button1" type="button">
+                <p></p>
+            </button>
+            <button class="rpgui-button" id="game_button2" type="button">
+                <p></p>
+            </button>
+            <button class="rpgui-button" id="game_button3" type="button">
+                <p></p>
+            </button>
+            <input type="hidden" id="path_id" name="path_id" value="">
+            <h4 id="death-timer" style='color:red'></h4>
         </div>
 
     </div>
 </body>
+
 </html>
 <script src="../js/rpgui.js"></script>
 <script src="../js/character.js"></script>
