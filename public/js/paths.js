@@ -11,6 +11,7 @@ show = () => {
     $("#game_button1").show();
     $("#game_button2").show();
     $("#game_button3").show();
+    $("#enemy-char-box").hide();
 };
 
 path0 = async (char_id) => {
@@ -384,7 +385,7 @@ path18 = (button) => {
         case 1:
             explored[17].a = true;
             $("#game_message").html(``);
-            generateFight(5, "<p>This is not Farley!<br><br> It's a monster!</p>", 19)
+            generateFight(6, "<p>This is not Farley!<br><br> It's a monster!</p>", 19)
             break;
         case 2:
             explored[18].a = true;

@@ -17,7 +17,6 @@ generateCharAPI = async () => {
 
 generateChar = (res) => {
     res.forEach((character) => {
-        console.log("test");
         const content = `
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <a href="#" onclick="startGame(${character.id});">
@@ -39,7 +38,9 @@ generateChar = (res) => {
     `
         $("#profileContent").append(content);
     })
-
+ if(res.length > 3){
+    $("#new-char-button").hide();
+ }
 }
 
 //Says event is depricated but works anyway so ¯\_(ツ)_/¯.
@@ -53,13 +54,14 @@ character_destroy = async (character_id) => {
     event.stopPropagation();
     if (character_id) {
         const response = await fetch('/api/char/destroy', {
-            method: 'DELETE',
+            // Delete works but stop the execution of the script after it for some reason...
+            method: 'POST',
             body: JSON.stringify({ character_id }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
             document.location.replace('/');
-
+            
         } $("#character_error").html("Please try again.");
     } else {
         $("#error").html("Wtf ?");
