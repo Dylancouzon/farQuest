@@ -1,3 +1,68 @@
+/*/////////////////////////////////
+////////////Path Example//////////
+//////////////////////////////////
+Create a path with an unique ID (Need to add the corresponding call on game.js
+    Make the function async if using Jinn or chest
+    Switch case 1, 2, 3 For Corresponding buttons. Delete if not needed
+    Default path is Game over. (The user should never reach this)
+    Buttons appears automatically back on each path if they have been hidden
+    
+    explored[pathid].path Is to keep track and changes the outcome if a certain route has already been visited
+    Ex : if(explored[13].a){
+        $("#game_message").html("You explored route 13");
+        $("#game_button2").hide();
+    }else{
+        $("#game_message").html("You did not explore route 13 yet");
+        $("#game_message").html("Go there");
+    }
+
+    character.score += 10; == Add the score for the endgame
+    Convention: +10 for uncommon path, +50 to win a fight + 100 almost impossible paths
+
+    Fights :
+        Make the path async !
+        $("#game_message").html(``);
+        generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+        generateFight(ennemyID, "Text ", Path to follow if winning)
+        The winning path has to be a path with no switch case inside
+
+    Chests:
+    Make the path async !
+    chest = await openChest();
+    $("#game_message").html(chest);
+    chest will return the chest response, the effects are applied automatically.
+
+    Redirect :
+    Just write game(pathId, button);
+    ex : game(14, 1);
+
+Ex :
+path14 = (button) => {
+    switch (button) {
+        case 1:
+            character.score += 10;
+            explored[14].a = true;
+            let jinn = await getJinn();
+            $("#game_message").html(jinn);
+            $("#game_button1").html(`Oh no!`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+
+            $("#path_id").val('15');
+            break;
+        case 2:
+            explored[14].b = true;
+            game(15, 1);
+            break;
+        case 3:
+            $("#game_message").html(``);
+            generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+*/
 var character;
 let chest;
 
@@ -21,7 +86,7 @@ path0 = async (char_id) => {
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
-    if(character.is_NPC === 1){
+    if (character.is_NPC === 1) {
         return gameOver("What do you think you're doing ?");
     }
     //Message
@@ -116,6 +181,8 @@ path3 = (button) => {
                 $("#game_message").html("You arrive in the Castle, where should you start searching ?");
                 if (!explored[4].a) {
                     $("#game_button1").html(`Courtyard`);
+                } else {
+                    $("#game_button1").hide();
                 }
                 $("#game_button2").html(`Dungeon`);
                 $("#game_button3").html(`Kings Quarters`);
@@ -153,7 +220,7 @@ path4 = (button) => {
 
         case 2:
             explored[4].b = true;
-            character.score +=10;
+            character.score += 10;
             $("#game_message").html(`<p>
             You enter the dungeon.<br>
             It is so dark in here, not a single spot of light can escape.<br><br>
@@ -166,10 +233,10 @@ path4 = (button) => {
 
         case 3:
             explored[4].c = true;
-            character.score +=10;
+            character.score += 10;
             let master = getMaster();
             if (master === true) {
-                character.score +=30;
+                character.score += 30;
                 $("#game_message").html(`<p>
                         This is the Kings Quarters. <br><br>
                         Farley is not Here but you found the Master Sword!<br>
@@ -417,16 +484,16 @@ path18 = (button) => {
 };
 
 path19 = async (button) => {
-            $("#game_message").html(`<p>
+    $("#game_message").html(`<p>
             You defeated the monster and found a chest ! Yay<br>
             </p>`);
-            chest = await openChest();
-            $("#game_message").append(chest);
-            $("#game_button1").html(`Follow the other path`);
-            $("#game_button2").hide();
-            $("#game_button3").hide();
+    chest = await openChest();
+    $("#game_message").append(chest);
+    $("#game_button1").html(`Follow the other path`);
+    $("#game_button2").hide();
+    $("#game_button3").hide();
 
-            $("#path_id").val('20');
+    $("#path_id").val('20');
 };
 
 path20 = (button) => {
@@ -459,7 +526,7 @@ path20 = (button) => {
 
 gameOver = (message) => {
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
-    setTimeout(()=>{$("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png");},1500)
+    setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 1500)
     $("#game_message").html(message);
     $("#game_button1").html(`Play again`);
     $("#game_button2").hide();

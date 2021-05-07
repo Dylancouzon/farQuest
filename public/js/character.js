@@ -47,7 +47,6 @@ openChest = () => {
     Make the path async !
      chest = await openChest();
     chest will return the chest response, the effects are applied automatically.
-    It is very important to make a unique variable id !
     */
     let luck = (parseInt(character.luck) / 10) + 1;
     let roll = Math.round(Math.floor(Math.random() * 10) * luck);
@@ -222,10 +221,10 @@ fight = async (attack, message) => {
                 }
                 console.log(`charDmg: ${charDmg}\n`);
 
-                if (character.attack_2 == "Fury") {
+                if (character.attack_2 == "Fury" && attack === 2) {
                     character.strength = character.strength * 1.1;
                     $("#game_message").append(`You gain 10% Strength!<br><br>`);
-                } else if (character.attack_2 == "Chant") {
+                } else if (character.attack_2 == "Chant" && attack === 2) {
                     charDmg = charDmg * 0.8
                     $("#game_message").append(`You Self heal for 10hp<br><br>`);
                     character.stamina += 10;
@@ -234,6 +233,7 @@ fight = async (attack, message) => {
                     }
                     updateHealth();
                 }
+                charDmg = Math.round(charDmg * 100) / 100;
                 ennemy.stamina -= charDmg;
                 $("#game_message").append(`${ennemy.name} takes ${charDmg} damage<br><br>`);
                 updateHealthEnnemy();
@@ -301,16 +301,16 @@ fight = async (attack, message) => {
                     ennemyDmg = ennemyDmg * 1.5
                     $("#game_message").append(`Critical Shot!<br><br>`);
                 }
-                if (ennemy.attack_2 == "Berserk") {
+                if (ennemy.attack_2 == "Berserk" && ennemyAttack < 0.5) {
                     ennemy.strength = ennemy.strength * 1.1;
                     $("#game_message").append(`The ennemy enrage and get stronger!<br><br>`);
-                } else if (ennemy.attack_1 == "Confusion") {
+                } else if (ennemy.attack_1 == "Confusion" && ennemyAttack >= 0.5) {
                     ennemy.stamina -= 30;
                     $("#game_message").append(`${ennemy.name} hurts himself in his confusion<br><br>`);
                     updateHealthEnnemy();
                 }
 
-
+                ennemyDmg = Math.round(ennemyDmg * 100) / 100;
                 console.log(`ennemyDmg: ${ennemyDmg}\n`);
                 character.stamina -= ennemyDmg;
                 $("#game_message").append(`You take ${ennemyDmg} dmg.<br>`);
@@ -348,7 +348,8 @@ getMaster = () => {
 //Health bar
 updateHealth = () => {
     let health = character.stamina / character.maxHealth;
-    if (health < 0) {
+    if (health < 0 || character.stamina < 0) {
+        character.stamina =0;
         health = 0;
     }
     var hp = document.getElementById("health-bar");
@@ -358,7 +359,9 @@ updateHealth = () => {
 
 updateHealthEnnemy = () => {
     let health = ennemy.stamina / ennemy.maxHealth;
-    if (health < 0) {
+    if (health < 0 || ennemy.stamina < 0) {
+        ennemy.stamina = 0;
+        health = 0;
     }
     var hp = document.getElementById("enemy-health-bar");
     $("#enemy-char-health").html(`Health: ${Math.round(ennemy.stamina)}/${ennemy.maxHealth}`);
