@@ -9,7 +9,7 @@
         "luck": "2",
         "attack_1": "1",
         "attack_2": "2",
-        "is_NPC": "false",
+        "is_NPC": "true",
         "user_id": "1"
     },
     {
@@ -48,6 +48,71 @@
         "luck": "2",
         "attack_1": "1",
         "attack_2": "2",
+        "is_NPC": "true",
+        "user_id": "0"
+    }, 
+    {
+        "name": "Dungeon monster",
+        "class_id": "5",
+        "stamina": "200",
+        "strength": "20",
+        "power": "8",
+        "speed": "8",
+        "luck": "5",
+        "attack_1": "Fearless Thunder Impact",
+        "attack_2": "Mountain Punch",
+        "is_NPC": "true",
+        "user_id": "0"
+    }, 
+    {
+        "name": "Forest Monster",
+        "class_id": "6",
+        "stamina": "80",
+        "strength": "8",
+        "power": "8",
+        "speed": "3",
+        "luck": "1",
+        "attack_1": "Death Smash",
+        "attack_2": "Berserk",
+        "is_NPC": "true",
+        "user_id": "0"
+    },    
+    {
+        "name": "Bridge Troll",
+        "class_id": "7",
+        "stamina": "80",
+        "strength": "6",
+        "power": "2",
+        "speed": "1",
+        "luck": "0",
+        "attack_1": "Darkness Fists",
+        "attack_2": "Scatter",
+        "is_NPC": "true",
+        "user_id": "0"
+    },
+    {
+        "name": "Kingdom Guards",
+        "class_id": "8",
+        "stamina": "100",
+        "strength": "10",
+        "power": "6",
+        "speed": "5",
+        "luck": "2",
+        "attack_1": "Cosmos Whip",
+        "attack_2": "Backstab",
+        "is_NPC": "true",
+        "user_id": "0"
+    },
+    {
+        "name": "Thomas",
+        "class_id": "9",
+        "stamina": "150",
+        "strength": "12",
+        "power": "7",
+        "speed": "8",
+        "luck": "3",
+        "attack_1": "Confusion",
+        "attack_2": "Disrupt",
         "is_NPC": "true",
         "user_id": "0"
     }

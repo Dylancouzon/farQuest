@@ -188,6 +188,7 @@ path5 = (button) => {
         case 2:
             $("#game_message").html(``);
             generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+            break;
         default:
             game(3, 1);
     };
@@ -195,7 +196,7 @@ path5 = (button) => {
     // Wining path (just in case). Returns to the castle.
     path6 = (button) => {
         explored[6].a = true;
-        $("#game_message").html(`<p>How ??</p>`);
+        $("#game_message").html(`<p>How ??<br> You were not supposed to survive.</p>`);
         $("#game_button1").html(`I'm the boss!`);
         $("#game_button2").hide();
         $("#game_button3").hide();
