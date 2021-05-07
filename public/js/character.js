@@ -15,7 +15,7 @@ character_create = async (character_class) => {
         if (response.ok) {
             document.location.replace('/play/' + res.id);
 
-        } $("#character_error").html("Please try again.");
+        }
     } else {
         $("#character_error").html("Please enter a name.");
     }
@@ -342,24 +342,24 @@ updateHealthEnnemy = () => {
 updateInventory = async () => {
     $("#inventory").html(``);
     if(character.inventory.a == 1){
-        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon potion-red">1</div>`);
     }else{
-        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+        $("#inventory").append(`<div class="rpgui-icon empty-slot" >1</div>`);
     }
     if(character.inventory.b == 1){
-        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon potion-red">2</div>`);
     }else{
-        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+        $("#inventory").append(`<div class="rpgui-icon empty-slot">2</div>`);
     }
     if(character.inventory.c == 1){
-        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon potion-red">3</div>`);
     }else{
-        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon empty-slot">3</div>`);
     }
     if(character.inventory.d == 1){
-        $("#inventory").append(`<div class="rpgui-icon potion-red"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon potion-red">4</div>`);
     }else{
-        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+        $("#inventory").append(`<div class="rpgui-icon empty-slot">4</div>`);
     }
 
 

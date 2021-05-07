@@ -39,6 +39,7 @@ path0 = async (char_id) => {
 
 //Story. Let's go = continue story, No = Game Over.
 path1 = (button) => {
+    $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     switch (button) {
 
         case 1:
@@ -108,7 +109,9 @@ path3 = (button) => {
                 $("#path_id").val('2');
             } else {
                 $("#game_message").html("You arrive in the Castle, where should you start searching ?");
-                $("#game_button1").html(`Courtyard`);
+                if (!explored[4].a) {
+                    $("#game_button1").html(`Courtyard`);
+                }
                 $("#game_button2").html(`Dungeon`);
                 $("#game_button3").html(`Kings Quarters`);
                 $("#path_id").val('4');
@@ -452,6 +455,8 @@ path20 = (button) => {
 };
 
 gameOver = (message) => {
+    $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
+    setTimeout(()=>{$("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png");},1500)
     $("#game_message").html(message);
     $("#game_button1").html(`Play again`);
     $("#game_button2").hide();
