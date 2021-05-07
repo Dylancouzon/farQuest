@@ -91,6 +91,9 @@ $("#game_button3").click(async (event) => {
 
 //Generate the next path
 nextPath = async (button) =>{
+    show();
+    $('#death-timer').hide();
+    clearInterval(deathTimer);
     let path = $("#path_id").val();
     if(path == "fight"){
         await fight(3);

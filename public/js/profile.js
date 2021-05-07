@@ -1,3 +1,4 @@
+// Get all the characters for this user
 generateCharAPI = async () => {
     let anti_fail = "Whatever"
     const response = await fetch('/api/char/profile', {
@@ -41,11 +42,13 @@ generateChar = (res) => {
 
 }
 
+//Says event is depricated but works anyway so ¯\_(ツ)_/¯.
 startGame = (char_id) => {
     event.stopPropagation();
     document.location.replace('/play/' + char_id);
 }
 
+//Says event is depricated but works anyway so ¯\_(ツ)_/¯.
 character_destroy = async (character_id) => {
     event.stopPropagation();
     if (character_id) {
