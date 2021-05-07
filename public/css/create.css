@@ -2,10 +2,11 @@
 html, body {
 	width:100%;
 	height:100%;
+    
 }
 body {
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: sans-serif;
     background-image: url("../images/forestgif.gif"); 
     background-size: cover;
@@ -13,6 +14,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     cursor: url("../img/cursor/default.png"), auto !important;
+    overflow-x: hidden;
 }
     #cards_landscape_wrap-2{
     text-align: center;
