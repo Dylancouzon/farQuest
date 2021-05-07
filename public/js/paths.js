@@ -1,7 +1,13 @@
 var character;
 let chest;
+
+// Creates an object of object to know all the visited paths
+var explored = {};
+for (let i = 1; i < 20; i++) {
+    explored[i] = {};
+}
 //Show all buttons
-show = ()=> {
+show = () => {
     $("#game_button1").show();
     $("#game_button2").show();
     $("#game_button3").show();
@@ -11,165 +17,198 @@ path0 = async (char_id) => {
     show();
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
-    console.log(character);
-    $("#game_message").html(`Welcome ${character.name} !<br>`);
     $("h3").html(character.name);
-    $("#game_button1").html(`Fight !`);
-    $("#game_button2").html(`Chest route`);
-    //This button will take you to the Jinn
-    $("#game_button3").html(`Jinn route`);
+    $("#char-sprite").attr("src", "/sprites/"+character.class_id+".gif");
+    //Message
+    $("#game_message").html(`<p>
+    Welcome to our game ${character.name} !<br><br>
+    NAME is a turn based RPG, You will pursue an incredible adventure seeking for Farley, the lost cat! <br><br>
+     Enjoy !
+    </p>`);
+
+    //Buttons 
+    $("#game_button1").html(`Continue`);
+    $("#game_button2").hide();
+    $("#game_button3").hide();
 
     // Next path ID
     $("#path_id").val('1');
 
 };
 
-//This is the first Path. The third route will take you to
+//Story. Let's go = continue story, No = Game Over.
 path1 = (button) => {
-    
+    show();
     switch (button) {
-        //Button A
-        case 1:
-            generateFight(21, "Get ready for a Fight!", 5)
-                break;
-        //Button B
-        case 2:
-            character.stamina -= 20;
-            $("#game_message").html(`
-            You stumble on something, fell on a rock and lose 20hp.<br><br>
-            You look more closely to the object and it is a Chest ! <br>
-            Should you open it ?
-            `);
-            
-            $("#game_button1").html(`Yes`);
-            $("#game_button2").html(`No`);
-            $("#game_button3").hide();
 
-            $("#path_id").val('3');
-            break;
-        //Button C
-        case 3:
-            $("#game_message").html(`You found a Jinn in a bottle, it will grant you one wish ! <br> What do you wish for ?`);
-            $("#game_button1").html(`My Biggest dream`);
-            $("#game_button2").html(`Nothing`);
+        case 1:
+            explored[1].a = true;
+            $("#game_message").html(`<p>
+                YOU RECIEVE A LETTER FROM A KING IN A LAND FAR AWAY.<br>
+                HE IS ASKING FOR YOUR HELP TO RETRIEVE HIS BELOVED CAT FARLEY WHO WAS TAKEN AWAY BY AN EVIL LORD NAMED THOMAS !<br>
+                HE WILL OFFER GREAT RECOMPENSE TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
+            </p>`);
+
+            $("#game_button1").html(`LET'S GO!`);
+            $("#game_button2").html(`No.`);
             $("#game_button3").hide();
 
             $("#path_id").val('2');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
-path2 = async (button) => {
+// You arrive in the kindgom. You can choose to explore the castle or the forest first.
+path2 = (button) => {
+    show();
     switch (button) {
         case 1:
-            var jinn = await getJinn();
-            $("#game_message").html(`You wished for Eternal glory<br><br> ${jinn}`);
-            $("#game_button1").html(`Ohh nooo`);
-            $("#game_button2").hide();
+            explored[2].a = true;
+            if (!explored[4].a) {
+                $("#game_message").html(`<p>
+                After a long journey, you finally arrive in the Kingdom. <br> 
+                All clues point out that the thiefs used the forest to escape.<br><br>
+                What do you want to do ? <br>
+            </p>`);
+            } else {
+                $("#game_message").html(`<p>
+                    Where do you want to go next ?
+            </p>`);
+            }
+            $("#game_button1").html(`Investigate the Castle`);
+            $("#game_button2").html(`Investigate the Forest`);
             $("#game_button3").hide();
 
-            $("#path_id").val('4');
+            $("#path_id").val('3');
             break;
 
         case 2:
-            path4(1);
+            gameOver('Why did you even start the game then ?');
             break;
 
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
-path3 = async (button) => {
+//1 = Castle, 2 = Forest
+path3 = (button) => {
+    show();
     switch (button) {
         case 1:
-            chest = await openChest();
-            $("#game_message").html(chest);
-            $("#game_button1").html(`Continue`);
-            $("#game_button2").hide();
-            $("#game_button3").hide();
+            explored[3].a = true;
+            
 
-            $("#path_id").val('4');
+
+            if (explored[4].a && explored[4].c) {
+                $("#game_message").html("Farley doesn't seem to be in Castle.");
+                $("#game_button1").html(`Go back`);
+                $("#game_button2").hide();
+                $("#game_button3").hide();
+                $("#path_id").val('2');
+            } else {
+                $("#game_message").html("You arrive in the Castle, where should you start searching ?");
+                $("#game_button1").html(`Courtyard`);
+                $("#game_button2").html(`Dungeon`);
+                $("#game_button3").html(`Kings Quarters`);
+                $("#path_id").val('4');
+            }
             break;
 
         case 2:
-            path4(1);
+            explored[3].b = true;
+            $("#game_message").html("Forest path to do");
+
+            $("#game_button1").html(``);
+            $("#game_button2").html(``);
+            $("#game_button3").html(``);
+
+            $("#path_id").val('');
             break;
-       
+
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
+//1 = 10% chances finding master sword, Farley is not there. 2= Health potion, Farley is not there. 3 = fight id 5
 path4 = (button) => {
+    show();
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 4 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+            explored[4].a = true;
+            $("#game_message").html(`<p>
+            YOU GET TO THE COURTYARD<br> <br>
+            You look thoroughly the massive gardens, the only things you find are some rusty coins and a health potion. 
+            </p>`);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('3');
+            character.addInventory(1);
+            break;
 
+        case 2:
+            explored[4].b = true;
+            $("#game_message").html(`<p>
+            You enter the dungeon.<br>
+            It is so dark in here, not a single spot of light can escape.<br><br>
+                        </p>`);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").html(`Keep going.`);
+            $("#game_button3").hide();
             $("#path_id").val('5');
             break;
-        case 2:
-            $("#game_message").html(`This is path 4 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('5');
 
         case 3:
-            $("#game_message").html(`This is path 4 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+            explored[4].c = true;
+            let master = getMaster();
+            if (master === true) {
+                $("#game_message").html(`<p>
+                        This is the Kings Quarters. <br><br>
+                        Farley is not Here but you found the Master Sword!<br>
+                        Your attack is now doubled!
+                        </p>`);
+            } else {
+                $("#game_message").html(`
+                        <p>This is the Kings Quarters.
+                        <br><br> Farley is not here</p>
+                    `);
+            }
 
-            $("#path_id").val('5');
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+
+            $("#path_id").val('3');
             break;
+
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
+// If the player enters the dungeon, start the fights. If he go back, returns to the castle.
 path5 = (button) => {
-    
-            $("#game_message").html(`You won the fight !`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-};
-
-path6 = (button) => {
+    show();
+    explored[5].a
     switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 6 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('7');
-            break;
         case 2:
-            $("#game_message").html(`This is path 6 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('7');
-
-        case 3:
-            $("#game_message").html(`This is path 6 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('7');
-            break;
+            $("#game_message").html(``);
+            generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
         default:
-            pathCheater();
+            game(3, 1);
+    };
+
+    // Wining path (just in case). Returns to the castle.
+    path6 = (button) => {
+        show();
+        $("#game_message").html(`How ??`);
+        $("game_button1").html(`I'm the boss!`);
+
+        $("#path_id").val('3');
     };
 };
 
@@ -609,15 +648,8 @@ gameOver = (message) => {
     $("#game_button1").html(`Play again`);
     $("#game_button2").hide();
     $("#game_button3").hide();
+    $("#path_id").val('0');
 };
-
-pathCheater = () => {
-    $("#game_message").html(`How did you get here ?<br> Anyway, doesn't matter.<br> You Died !`);
-    $("#game_button1").hide();
-    $("#game_button2").hide();
-    $("#game_button3").hide();
-};
-
 endGame = () => {
 
 };
