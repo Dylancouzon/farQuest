@@ -70,6 +70,7 @@ openChest = () => {
             return "No luck ! The chest was empty!";
         case 5:
             let addItemCase5 = character.addInventory(1);
+            updateInventory();
             if (addItemCase5) {
                 return "You found an Health potion ! It has been added to your inventory !";
             } else {
@@ -337,6 +338,42 @@ updateHealthEnnemy = () => {
     RPGUI.set_value(hp, health);
 }
 
+//Update the inventory.
+updateInventory = async () => {
+    $("#inventory").html(``);
+    if(character.inventory.a == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red" onclick="useItem();"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+    }
+    if(character.inventory.b == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red" onclick="useItem();"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot" ></div>`);
+    }
+    if(character.inventory.c == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red" onclick="useItem();"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+    }
+    if(character.inventory.d == 1){
+        $("#inventory").append(`<div class="rpgui-icon potion-red" onclick="useItem();"></div>`);
+    }else{
+        $("#inventory").append(`<div class="rpgui-icon empty-slot"></div>`);
+    }
+
+
+}
+
+useItem = async () => {
+    alert("Item used!");
+    character.stamina += 30;
+    if(character.stamina > character.maxHealth){
+        character.maxHealth = character.stamina;
+    }
+    character.removeInventory(1);
+    updateInventory();
+}
 
 // Actions to be executed each time a path is generated.
 // Actions is supposed to be async but we still need the Timeout for some reason

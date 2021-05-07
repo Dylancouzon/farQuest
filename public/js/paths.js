@@ -139,6 +139,7 @@ path4 = (button) => {
             $("#game_button3").hide();
             $("#path_id").val('3');
             character.addInventory(1);
+            updateInventory();
             break;
 
         case 2:
