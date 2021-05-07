@@ -82,10 +82,15 @@ openChest = () => {
         case 9:
             return "Not coded yet !";
         case 10:
-            character.strength = parseInt(character.stamina) * 2;
-            character.attack_1 = "Master cut";
-            character.attack_1 = "Final blow";
-            return "You found the MasterSword ! Your attacks are now Legendary !";
+            if(character.attack_1 != "Master cut"){
+                character.strength = parseInt(character.strength) * 2;
+                character.attack_1 = "Master cut";
+                character.attack_2 = "Final blow";
+                return "You found the MasterSword ! Your attacks are now Legendary !";
+            }else{
+                return "You found another Master Sword. <br><br> Not very usefull but go buy a lottery ticket buddy !"
+            }
+
         default:
             return gameOver("A Ghoul came out of the chest and ate you alive, You died !");
     }
@@ -126,7 +131,6 @@ var ennemy;
 generateFight = async (ennemy_id, message, afterPath) => {
     //Where to go once the fight is done
     afterFight = afterPath;
-    $("#game_button3").hide();
     // Generate the ennemy character
     ennemy = await generateChar(ennemy_id);
     // The user starts first unless the ennemy speed is greater.
@@ -142,9 +146,11 @@ generateFight = async (ennemy_id, message, afterPath) => {
 //Function will return true if the user won, false if they did not.
 
 fight = async (attack, message) => {
-    $("#game_message").html("");
+    $("#game_button3").hide();
     if (message) {
-        $("#game_message").html(message + "<br>");
+        $("#game_message").append(message + "<br>");
+    }else {
+        $("#game_message").html("");
     }
 
     let thisattack = 0;
@@ -190,6 +196,21 @@ fight = async (attack, message) => {
             game(afterFight);
     }
 }
+
+//Chances to get the MasterSword in the kings Quarters
+getMaster = () =>{
+    let luck = (parseInt(character.luck) / 10) + 1;
+    let roll = Math.round(Math.floor(Math.random() * 10) * luck);
+    if(roll >=10){
+        character.strength = parseInt(character.strength) * 2;
+        character.attack_1 = "Master cut";
+        character.attack_2 = "Final blow";
+        return true;
+    }
+}
+
+
+
 
 // Actions to be executed each time a path is generated.
 // Actions is supposed to be async but we still need the Timeout for some reason

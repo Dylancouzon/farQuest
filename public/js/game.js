@@ -75,36 +75,32 @@ game = (path, button, char_id) => {
 //Calls the right path with the button id as a parameter
 $("#game_button1").click(async (event) => {
     event.preventDefault();
-    let path = $("#path_id").val();
-    if(path == "fight"){
-        await fight(1);
-    }else{
-        await game(parseInt(path), 1);
-    }
-    actions();
+    nextPath(1);
 });
 
 $("#game_button2").click(async (event) => {
     event.preventDefault();
-    let path = $("#path_id").val();
-    if(path == "fight"){
-        await fight(2);
-    }else{
-        await game(parseInt(path), 2);
-    }
-    actions();
+    nextPath(2);
 });
 
 $("#game_button3").click(async (event) => {
     event.preventDefault();
+    nextPath(3);
+
+});
+
+//Generate the next path
+nextPath = async (button) =>{
     let path = $("#path_id").val();
     if(path == "fight"){
         await fight(3);
+    }else if(path == 0){
+        game(0, 0, character_id);
     }else{
-        await game(parseInt(path), 3);
+        await game(parseInt(path), button);
     }
     actions();
-});
+}
 
 // Launch the game when loading the page (path0)
 game(0, 0, character_id);
