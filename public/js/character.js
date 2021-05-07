@@ -56,18 +56,18 @@ openChest = () => {
     console.log(roll);
     switch (roll) {
         case 1:
-            let staminaCase1 = Math.round(parseInt(character.stamina) / 2);
-            character.changeStat(staminaCase1 - 20);
+            character.stamina = Math.round(character.stamina / 2);
             return "The chest was trapped and exploded ! You lost half your health points !";
         case 2:
-            let staminaCase2 = parseInt(character.stamina);
-            character.changeStat(staminaCase2 - 20);
-            return "You ate some old cheese, you have lost 20hp";
+            character.stamina -= 20;
+            return "You found some old cheese and ate it, you have lost 20hp, Why would you do that ?";
         case 3:
-            return "You found an old carrot cake recipe. Looks delicious";
+            return "You found an old carrot cake recipe. Looks delicious.";
         case 4:
             return "No luck ! The chest was empty!";
         case 5:
+            return "You hear a faint voice that says 'Do not eat the bread' <br><br> Where coult it possibly come from ?";
+        case 6:
             let addItemCase5 = character.addInventory(1);
             updateInventory();
             if (addItemCase5) {
@@ -75,14 +75,15 @@ openChest = () => {
             } else {
                 return "You found an Health potion ! Unfortunately, your inventory is full !";
             }
-        case 6:
-            return "Not coded yet !";
         case 7:
-            return "Not coded yet !";
+            character.chance = 6;
+            return "You found a four-leaf clover, your chance increased greatly!";
         case 8:
             return "Not coded yet !";
         case 9:
-            return "Not coded yet !";
+            character.maxHealth += 40;
+            character.stamina += 40;
+            return "You found a mushroom. Your max Health has been increased by 40.";
         case 10:
             if (character.attack_1 != "Master cut") {
                 character.strength = parseInt(character.strength) * 1.5;
@@ -148,6 +149,7 @@ var ennemy;
 var afterFight;
 generateFight = async (ennemy_id, message, afterPath) => {
     $("#enemy-char-box").show();
+    $("#enemy-sprite-box").show();
     //Where to go once the fight is done
     afterFight = afterPath;
     // Generate the ennemy character
