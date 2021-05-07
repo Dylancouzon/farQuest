@@ -92,8 +92,6 @@ $("#game_button3").click(async (event) => {
 //Generate the next path
 nextPath = async (button) =>{
     // Need to move that timer thing
-    $('#death-timer').hide();
-    clearInterval(deathTimer);
     let path = $("#path_id").val();
     if(path == "fight"){
         await fight(button);
@@ -104,6 +102,22 @@ nextPath = async (button) =>{
         show();
         await game(parseInt(path), button);
     }
+    
+    // Have to put the character Jinn here because actions is causing delays.
+    if (character.jinn == 4) {
+        clearInterval(deathTimer);
+        timeLeft = 15;
+        deathTimer = setInterval(() => {
+            if (timeLeft == 0) {
+                $('#death-timer').hide();
+                return gameOver("You slowed down !");
+            }
+            $('#death-timer').html(`${timeLeft}s before death.`);
+            timeLeft--
+
+        }, 1000)
+    }
+
     actions();
 }
 
