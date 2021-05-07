@@ -23,13 +23,15 @@ body {
 }
 #char-box {
     opacity: 0.9;
+    top:5px;
+    left: 5px;
 }
 #enemy-char-box {
     opacity: 0.9;
     position: absolute;
-    top:0;
+    top:5px;
     right:0;
-    left: 81%;
+    left: 80%;
     
 }
 #char-sprite-box {
@@ -39,14 +41,14 @@ body {
     transform: translate(-50%, -50%);
     max-width: 50%;
 }
+#enemy-sprite-box {
+    position: fixed;
+    right:0;
+    left:45%;
+    top: 15%;
+}
 #char-sprite {
     height: 500px;
-}
-#enemy-sprite-box {
-    position: absolute;
-    right:0;
-    left:65%;
-    top: 10%;
 }
 #enemy-sprite {
     height: 500px;
@@ -54,15 +56,3 @@ body {
 #enemy-health-bar {
     width: 294.44px;
 }
-/* #game_button1 {
-    min-width: 170px;
-    max-width: 170px;
-}
-#game_button2 {
-    min-width: 170px;
-    max-width: 170px;
-}
-#game_button3 {
-    min-width: 170px;
-    max-width: 170px;
-} */
