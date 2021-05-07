@@ -134,6 +134,7 @@ getJinn = () => {
             character.jinn = 4;
             character.strength = character.strength * 1.2;
             character.speed = 10;
+            $('#death-timer').show();
             return "<p>Jinn: You, Assassin, wished for super speed and your wish has been Granted.<br> However, do never slow down or you will die!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
 
     }
@@ -463,17 +464,5 @@ executeJinn = async () => {
         gettingBlind -= 0.01;
     }
 
-    if (character.jinn == 4) {
-        $('#death-timer').show();
-        timeLeft = 20;
-        deathTimer = setInterval(() => {
-            if (timeLeft == 0) {
-                $('#death-timer').hide();
-                return gameOver("You slowed down !");
-            }
-            $('#death-timer').html(`${timeLeft}s before death.`);
-            timeLeft--
 
-        }, 1000)
-    }
 }
