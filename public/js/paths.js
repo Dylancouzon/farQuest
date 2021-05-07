@@ -525,6 +525,8 @@ path20 = (button) => {
 };
 
 gameOver = (message) => {
+    character.inventory = { a: 0, b: 0, c: 0, c: 0 };
+    updateInventory()
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
     setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 1500)
     $("#game_message").html(message);
