@@ -1,6 +1,11 @@
+html {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 body {
-    background: url("");
-    width: 100%;
+    background-image: url("../images/background/shadowlands_2048x2048.jpg");
+    background-color: rgb(1, 28, 59);
+    width: 100vw;
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
