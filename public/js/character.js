@@ -112,6 +112,7 @@ getJinn = () => {
     switch (parseInt(character.class_id)) {
         case 1:
             character.jinn = 1;
+            character.strength += 10;
             return "<p>Jinn: You, knight, wished to have super strength and your wish has been granted.<br>You are now so strong that your attacks will cause you to hurt yourself.<br><br> The Jinn dissapears laughing maniacally.<br></p>";
         case 2:
             //Give  to the wizard.
@@ -126,10 +127,12 @@ getJinn = () => {
             return "<p> Jinn: You, wizard, wished for immortality and your wish has been granted.<br> You will have to endure the effects of aging for all the eternity!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
         case 3:
             character.jinn = 3;
+            character.speed = 10;
             return "<p>Jinn: You, Huntress, wished for perfect aim.<br> You will never miss your target ever again but you will see no more.<br><br> The Jinn dissapears laughing maniacally.<br></p>";
         case 4:
             character.jinn = 4;
             character.strength = character.strength * 1.2;
+            character.speed = 10;
             return "<p>Jinn: You, Assassin, wished for super speed and your wish has been Granted.<br> However, do never slow down or you will die!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
 
     }
