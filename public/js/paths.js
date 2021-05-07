@@ -12,6 +12,7 @@ show = () => {
     $("#game_button2").show();
     $("#game_button3").show();
     $("#enemy-char-box").hide();
+    $("#enemy-sprite-box").hide();
 };
 
 path0 = async (char_id) => {
@@ -20,6 +21,9 @@ path0 = async (char_id) => {
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
+    if(character.is_NPC === 1){
+        return gameOver("What do you think you're doing ?");
+    }
     //Message
     $("#game_message").html(`<p>
     Welcome to our game ${character.name} !<br><br>
@@ -95,6 +99,7 @@ path2 = (button) => {
 
 //1 = Castle, 2 = Forest
 path3 = (button) => {
+    character.score += 10;
     switch (button) {
         case 1:
             explored[3].a = true;
@@ -132,6 +137,7 @@ path3 = (button) => {
 path4 = (button) => {
     switch (button) {
         case 1:
+            character.score += 10;
             explored[4].a = true;
             $("#game_message").html(`<p>
             YOU GET TO THE COURTYARD<br> <br>
@@ -147,6 +153,7 @@ path4 = (button) => {
 
         case 2:
             explored[4].b = true;
+            character.score +=10;
             $("#game_message").html(`<p>
             You enter the dungeon.<br>
             It is so dark in here, not a single spot of light can escape.<br><br>
@@ -159,8 +166,10 @@ path4 = (button) => {
 
         case 3:
             explored[4].c = true;
+            character.score +=10;
             let master = getMaster();
             if (master === true) {
+                character.score +=30;
                 $("#game_message").html(`<p>
                         This is the Kings Quarters. <br><br>
                         Farley is not Here but you found the Master Sword!<br>
@@ -200,6 +209,7 @@ path5 = (button) => {
     // Wining path (just in case). Returns to the castle.
     path6 = (button) => {
         explored[6].a = true;
+        character.score += 100;
         $("#game_message").html(`<p>How ??<br> You were not supposed to survive.</p>`);
         $("#game_button1").html(`I'm the boss!`);
         $("#game_button2").hide();
