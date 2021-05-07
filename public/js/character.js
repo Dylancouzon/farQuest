@@ -23,10 +23,10 @@ character_create = async (character_class) => {
 }
 
 // Pulling the Character Data from the DB then creating the character
-generateChar = async (char_id, npc) => {
+generateChar = async (char_id) => {
     const response = await fetch('/api/char/generate', {
         method: 'POST',
-        body: JSON.stringify({ char_id, npc }),
+        body: JSON.stringify({ char_id }),
         headers: { 'Content-Type': 'application/json' },
     });
     const res = await response.json();
@@ -145,7 +145,8 @@ generateFight = async (ennemy_id, message, afterPath) => {
     //Where to go once the fight is done
     afterFight = afterPath;
     // Generate the ennemy character
-    getEnnemyStats = await generateChar(ennemy_id, 1);
+    console.log("Ennemy id:"+ennemy_id)
+    getEnnemyStats = await generateChar(ennemy_id);
     ennemy = new CharacterObj(getEnnemyStats);
     $("#enemy-sprite").attr("src", "/sprites/" + ennemy.class_id + ".gif");
     $("#enemy-char-name").html(ennemy.name);

@@ -1,72 +1,92 @@
 [
     {
         "name": "Knight",
-        "stamina": "10",
-        "strength": "3",
-        "power": "1",
-        "speed": "1",
+        "stamina": "200",
+        "strength": "10",
+        "power": "10",
+        "speed": "2",
         "luck": "2",
-        "attack_1": "1",
-        "attack_2": "1.1"
+        "attack_1": "Impact",
+        "attack_2": "Fury"
     },
     {
         "name": "Wizard",
-        "stamina": "5",
-        "strength": "1",
-        "power": "3",
-        "speed": "2",
+        "stamina": "120",
+        "strength": "16",
+        "power": "2",
+        "speed": "4",
         "luck": "2",
-        "attack_1": "1.1",
-        "attack_2": "1.2"
+        "attack_1": "Burst",
+        "attack_2": "Chant"
     },
     {
         "name": "Huntress",
-        "stamina": "7",
-        "strength": "2",
-        "power": "2",
-        "speed": "3",
-        "luck": "2",
-        "attack_1": "1.05",
-        "attack_2": "1.15"
+        "stamina": "150",
+        "strength": "12",
+        "power": "4",
+        "speed": "5",
+        "luck": "4",
+        "attack_1": "Barrage",
+        "attack_2": "Thunderstorm"
     },
     {
         "name": "Assassin",
-        "stamina": "10",
-        "strength": "1",
-        "power": "1",
-        "speed": "2",
-        "luck": "2",
-        "attack_1": "0.7",
-        "attack_2": "0.75"
+        "stamina": "150",
+        "strength": "13",
+        "power": "3",
+        "speed": "7",
+        "luck": "3",
+        "attack_1": "Fracture",
+        "attack_2": "Bloodlust"
     },
     {
         "name": "Dungeon Monster",
-        "stamina": "10",
-        "strength": "1",
-        "power": "1",
-        "speed": "1.5",
-        "luck": "2",
-        "attack_1": "0.6",
-        "attack_2": "0.8"
+        "stamina": "200",
+        "strength": "20",
+        "power": "8",
+        "speed": "8",
+        "luck": "5",
+        "attack_1": "Fearless Thunder Impact",
+        "attack_2": "Mountain Punch"
     },
     {
-        "name": "Witch Doctor",
-        "stamina": "10",
-        "strength": "1",
-        "power": "1",
-        "speed": "0.9",
-        "luck": "2",
-        "attack_1": "0.5",
-        "attack_2": "0.65"
+        "name": "Forest Monster",
+        "stamina": "80",
+        "strength": "8",
+        "power": "8",
+        "speed": "3",
+        "luck": "1",
+        "attack_1": "Death Smash",
+        "attack_2": "Berserk"
     },
     {
-        "name": "Goblin",
-        "stamina": "1",
-        "strength": "1",
-        "power": "1",
-        "speed": "1.1",
+        "name": "Bridge Troll",
+        "stamina": "80",
+        "strength": "6",
+        "power": "2",
+        "speed": "1",
+        "luck": "0",
+        "attack_1": "Darkness Fists",
+        "attack_2": "Scatter"
+    },
+    {
+        "name": "Kingdom guards",
+        "stamina": "100",
+        "strength": "10",
+        "power": "6",
+        "speed": "5",
         "luck": "2",
-        "attack_1": ".75",
-        "attack_2": ".85"
+        "attack_1": "Cosmos Whip",
+        "attack_2": "Backstab"
+    },
+    {
+        "name": "Thomas",
+        "stamina": "150",
+        "strength": "12",
+        "power": "7",
+        "speed": "8",
+        "luck": "3",
+        "attack_1": "Confusion",
+        "attack_2": "Disrupt"
     }
 ]
