@@ -339,7 +339,9 @@ inside your html file.
 /* default cursor, not important, for all elements without any other rule. */
 .rpgui-content,
 label {
-  cursor: url("../img/cursor/default.png"), auto; }
+  cursor: url("../img/cursor/default.png"), auto; 
+  margin-top: 56px;
+}
 
 /* pointer / hand cursor important */
 /* this rule is for when you specifically request this cursor class */

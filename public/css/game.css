@@ -16,7 +16,7 @@ body {
     position: absolute;
     left: 35%;
     right: 25%;
-    top: 60%;
+    top: 55%;
     max-width: 700px;
     min-width: 700px;
     opacity: 0.9;
@@ -30,7 +30,7 @@ body {
     opacity: 0.9;
     position: absolute;
     top:5px;
-    right:0;
+    right:5px;
     left: 80%;
     
 }
@@ -58,4 +58,32 @@ body {
 }
 .rpgui-icon{
     color: white;
+}
+.navbar {
+    background: rgb(39, 39, 39);
+    opacity: 0.9;
+    cursor: url("../img/cursor/default.png"), auto !important;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar a:hover {
+    cursor: url("../img/cursor/default.png"), auto !important;
+    color: white;
+    background-color: transparent;
+}
+
+#logout-button:hover {
+    background-color: rgba(0,0,0,.5);
+    cursor: url("../img/cursor/point.png"), auto !important;
+}
+#leaderboards-button:hover {
+    background-color: rgba(0,0,0,.5);
+    cursor: url("../img/cursor/point.png"), auto !important;
+}
+#profile-button:hover {
+    background-color: rgba(0,0,0,.5);
+    cursor: url("../img/cursor/point.png"), auto !important;
 }
