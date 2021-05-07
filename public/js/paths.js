@@ -407,23 +407,16 @@ path18 = (button) => {
 };
 
 path19 = async (button) => {
-    switch (button) {
-        case 1:
-        case 2:
-        case 3:
             $("#game_message").html(`<p>
             You defeated the monster and found a chest ! Yay<br>
             </p>`);
             chest = await openChest();
+            $("#game_message").append(chest);
             $("#game_button1").html(`Follow the other path`);
             $("#game_button2").hide();
             $("#game_button3").hide();
 
             $("#path_id").val('20');
-            break;
-        default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
-    };
 };
 
 path20 = (button) => {

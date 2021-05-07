@@ -146,7 +146,7 @@ generateFight = async (ennemy_id, message, afterPath) => {
     //Where to go once the fight is done
     afterFight = afterPath;
     // Generate the ennemy character
-    console.log("Ennemy id:"+ennemy_id)
+    console.log("Ennemy id:" + ennemy_id)
     getEnnemyStats = await generateChar(ennemy_id);
     ennemy = new CharacterObj(getEnnemyStats);
     $("#enemy-sprite").attr("src", "/sprites/" + ennemy.class_id + ".gif");
@@ -188,9 +188,9 @@ fight = async (attack, message) => {
                 console.log(`charMiss: ${charMiss()}\n `);
                 console.log(`ennemyDodge: ${ennemyDodge()}\n`);
                 console.log(`charCritical: ${charCritical()}\n`);
-                $("#game_message").append(`You used ${character.attack_1} on ${ennemy.name}.`);
+                $("#game_message").append(`You used ${character.attack_1} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-light.gif");
-                setTimeout(()=>{$("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");},1500)
+                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
 
 
 
@@ -202,9 +202,9 @@ fight = async (attack, message) => {
                 console.log(`charMiss: ${charMiss()}\n `);
                 console.log(`ennemyDodge: ${ennemyDodge()}\n`);
                 console.log(`charCritical: ${charCritical()}\n`);
-                $("#game_message").append(`You used ${character.attack_2} on ${ennemy.name}.`);
+                $("#game_message").append(`You used ${character.attack_2} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-heavy.gif");
-                setTimeout(()=>{$("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");},1500)
+                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
 
             }
             if (charMiss()) {
@@ -218,6 +218,19 @@ fight = async (attack, message) => {
                     $("#game_message").append(`Critical Shot!<br><br>`);
                 }
                 console.log(`charDmg: ${charDmg}\n`);
+
+                if (character.attack_2 == "Fury") {
+                    character.strength = character.strength * 1.1;
+                    $("#game_message").append(`You gain 10% Strength!<br><br>`);
+                } else if (character.attack_2 == "Chant") {
+                    charDmg = charDmg * 0.8
+                    $("#game_message").append(`You Self heal for 10hp<br><br>`);
+                    character.stamina += 10;
+                    if (character.stamina > character.maxHealth) {
+                        character.stamina = character.maxHealth;
+                    }
+                    updateHealth();
+                }
                 ennemy.stamina -= charDmg;
                 $("#game_message").append(`${ennemy.name} takes ${charDmg} damage<br><br>`);
                 updateHealthEnnemy();
@@ -243,7 +256,7 @@ fight = async (attack, message) => {
         } else if (ennemy.stamina <= 0) {
             //Winning path
             $("#enemy-sprite-box").hide();
-            game(afterFight);
+            game(afterFight, 1);
         }
 
 
@@ -261,7 +274,7 @@ fight = async (attack, message) => {
                 console.log(`ennemyMiss: ${ennemyMiss()}\n `);
                 console.log(`charDodge: ${charDodge()}\n`);
                 console.log(`ennemyCritical: ${ennemyCritical()}\n`);
-                $("#game_message").append(`${ennemy.name} used ${ennemy.attack_1}.`);
+                $("#game_message").append(`${ennemy.name} used ${ennemy.attack_1}.<br><br>`);
 
             } else {
                 ennemyDmg = ennemyDmg * 1.2
@@ -271,7 +284,8 @@ fight = async (attack, message) => {
                 console.log(`ennemyMiss: ${ennemyMiss()}\n `);
                 console.log(`charDodge: ${charDodge()}\n`);
                 console.log(`ennemyCritical: ${ennemyCritical()}\n`);
-                $("#game_message").append(`${ennemy.name} used ${ennemy.attack_2}.`);
+                $("#game_message").append(`${ennemy.name} used ${ennemy.attack_2}.<br><br>`);
+
 
             }
             if (ennemyMiss()) {
@@ -284,6 +298,16 @@ fight = async (attack, message) => {
                     ennemyDmg = ennemyDmg * 1.5
                     $("#game_message").append(`Critical Shot!<br><br>`);
                 }
+                if (ennemy.attack_2 == "Berserk") {
+                    ennemy.strength = ennemy.strength * 1.1;
+                    $("#game_message").append(`The ennemy enrage and get stronger!<br><br>`);
+                } else if (ennemy.attack_1 == "Confusion") {
+                    ennemy.stamina -= 30;
+                    $("#game_message").append(`${ennemy.name} hurts himself in his confusion<br><br>`);
+                    updateHealthEnnemy();
+                }
+
+
                 console.log(`ennemyDmg: ${ennemyDmg}\n`);
                 character.stamina -= ennemyDmg;
                 $("#game_message").append(`You take ${ennemyDmg} dmg.<br>`);
@@ -302,7 +326,7 @@ fight = async (attack, message) => {
         } else if (ennemy.stamina <= 0) {
             //Winning path
             $("#enemy-sprite-box").hide();
-            game(afterFight);
+            game(afterFight, 1);
         }
         turn = 0;
     }
@@ -341,49 +365,49 @@ updateHealthEnnemy = () => {
 //Update the inventory.
 updateInventory = async () => {
     $("#inventory").html(``);
-    if(character.inventory.a == 1){
+    if (character.inventory.a == 1) {
         $("#inventory").append(`<div class="rpgui-icon potion-red">1</div>`);
-    }else{
+    } else {
         $("#inventory").append(`<div class="rpgui-icon empty-slot" >1</div>`);
     }
-    if(character.inventory.b == 1){
+    if (character.inventory.b == 1) {
         $("#inventory").append(`<div class="rpgui-icon potion-red">2</div>`);
-    }else{
+    } else {
         $("#inventory").append(`<div class="rpgui-icon empty-slot">2</div>`);
     }
-    if(character.inventory.c == 1){
+    if (character.inventory.c == 1) {
         $("#inventory").append(`<div class="rpgui-icon potion-red">3</div>`);
-    }else{
+    } else {
         $("#inventory").append(`<div class="rpgui-icon empty-slot">3</div>`);
     }
-    if(character.inventory.d == 1){
+    if (character.inventory.d == 1) {
         $("#inventory").append(`<div class="rpgui-icon potion-red">4</div>`);
-    }else{
+    } else {
         $("#inventory").append(`<div class="rpgui-icon empty-slot">4</div>`);
     }
 
 
 }
-$( document ).on( "keydown", function( event ) {
-    
-    if(event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52){
-        if (character.inventory.a == 1 || character.inventory.b == 1 || character.inventory.c == 1 || character.inventory.d == 1){
+$(document).on("keydown", function (event) {
+
+    if (event.keyCode === 49 || event.keyCode === 50 || event.keyCode === 51 || event.keyCode === 52) {
+        if (character.inventory.a == 1 || character.inventory.b == 1 || character.inventory.c == 1 || character.inventory.d == 1) {
             useItem();
         }
     }
-    
+
 })
 $("1").keypress(() => {
-    
+
     let inventory = character.inventory;
     //check if the character has at least one item.
 
-    
+
 });
 
 useItem = async () => {
     character.stamina += 30;
-    if(character.stamina > character.maxHealth){
+    if (character.stamina > character.maxHealth) {
         character.maxHealth = character.stamina;
     }
     character.removeInventory(1);
