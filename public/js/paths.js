@@ -17,8 +17,8 @@ path0 = async (char_id) => {
     show();
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
-    $("h3").html(character.name);
-    $("#char-sprite").attr("src", "/sprites/"+character.class_id+".gif");
+    $("#char-name").html(character.name);
+    $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     //Message
     $("#game_message").html(`<p>
     Welcome to our game ${character.name} !<br><br>
@@ -38,7 +38,6 @@ path0 = async (char_id) => {
 
 //Story. Let's go = continue story, No = Game Over.
 path1 = (button) => {
-    show();
     switch (button) {
 
         case 1:
@@ -62,7 +61,6 @@ path1 = (button) => {
 
 // You arrive in the kindgom. You can choose to explore the castle or the forest first.
 path2 = (button) => {
-    show();
     switch (button) {
         case 1:
             explored[2].a = true;
@@ -95,11 +93,10 @@ path2 = (button) => {
 
 //1 = Castle, 2 = Forest
 path3 = (button) => {
-    show();
     switch (button) {
         case 1:
             explored[3].a = true;
-            
+
 
 
             if (explored[4].a && explored[4].c) {
@@ -119,13 +116,7 @@ path3 = (button) => {
 
         case 2:
             explored[3].b = true;
-            $("#game_message").html("Forest path to do");
-
-            $("#game_button1").html(``);
-            $("#game_button2").html(``);
-            $("#game_button3").html(``);
-
-            $("#path_id").val('');
+            game(11);
             break;
 
         default:
@@ -135,7 +126,6 @@ path3 = (button) => {
 
 //1 = 10% chances finding master sword, Farley is not there. 2= Health potion, Farley is not there. 3 = fight id 5
 path4 = (button) => {
-    show();
     switch (button) {
         case 1:
             explored[4].a = true;
@@ -192,8 +182,7 @@ path4 = (button) => {
 
 // If the player enters the dungeon, start the fights. If he go back, returns to the castle.
 path5 = (button) => {
-    show();
-    explored[5].a
+    explored[5].a = true;
     switch (button) {
         case 2:
             $("#game_message").html(``);
@@ -204,302 +193,158 @@ path5 = (button) => {
 
     // Wining path (just in case). Returns to the castle.
     path6 = (button) => {
-        show();
-        $("#game_message").html(`How ??`);
-        $("game_button1").html(`I'm the boss!`);
+        explored[6].a = true;
+        $("#game_message").html(`<p>How ??</p>`);
+        $("#game_button1").html(`I'm the boss!`);
+        $("#game_button2").hide();
+        $("#game_button3").hide();
 
         $("#path_id").val('3');
     };
 };
 
 path7 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 7 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('8');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 7 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('8');
-
-        case 3:
-            $("#game_message").html(`This is path 7 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('8');
-            break;
-        default:
-            pathCheater();
-    };
+    // Empty for now
 };
 
 path8 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 8 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('9');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 8 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('9');
-
-        case 3:
-            $("#game_message").html(`This is path 8 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('9');
-            break;
-        default:
-            pathCheater();
-    };
+    // Empty for now
 };
 
 path9 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 9 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('10');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 9 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('10');
-
-        case 3:
-            $("#game_message").html(`This is path 9 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('10');
-            break;
-        default:
-            pathCheater();
-    };
+    // Empty for now
 };
 
 path10 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 10 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('11');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 10 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('11');
-
-        case 3:
-            $("#game_message").html(`This is path 10 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('11');
-            break;
-        default:
-            pathCheater();
-    };
+    // Empty for now
 };
 
+// Check the lake or keep going (Has to go to the lake).
+var intervalDmg;
 path11 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 11 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+    clearInterval(intervalDmg);
 
-            $("#path_id").val('12');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 11 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+    explored[11].a = true;
+    $("#game_message").html(`<p>
+    You enter the Forest, and a weird Magical aura can be sensed. <br><br>
+    You see a lake in the distance, do you want to check it out?<br>
+    </p>`);
 
-            $("#path_id").val('12');
+    $("#game_button1").html(`Yes!`);
+    $("#game_button2").html(`No, keep going!`);
+    $("#game_button3").hide();
 
-        case 3:
-            $("#game_message").html(`This is path 11 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('12');
-            break;
-        default:
-            pathCheater();
-    };
+    $("#path_id").val('12');
 };
 
+// 1 Jinn route, 2 No go.
 path12 = (button) => {
+
     switch (button) {
+
         case 1:
-            $("#game_message").html(`This is path 12 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
+            explored[12].a = true;
+            $("#game_message").html(`<p>
+                Once you start to get closer, you can feel your body being dragged by mystical forces towards a mysterious object<br><br>
+                You pick up the object, and it is engraved with mysterious characters.<br>
+                As you look at it, the Seal on the object dissapear and a dense fog start to materialize.<br>
+            </p>`);
+            $("#game_button1").html(`Next`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
             $("#path_id").val('13');
             break;
+
+
         case 2:
-            $("#game_message").html(`This is path 12 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
+            explored[12].b = true;
+            $("#game_message").html(`<p>
+            As you walk into the forest, a dense fog appears of nowhere. <br><br>
+            It seems to get denser and colder for each step you take!<br>
+            Go Back! You are taking Damage! <br>
+            </p>`);
+            $("#game_button1").html(`Go back!`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            intervalDmg = setInterval(function () {
+                character.stamina -= 2;
+                updateHealth();
+            }, 1000);
 
-            $("#path_id").val('13');
-
-        case 3:
-            $("#game_message").html(`This is path 12 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('13');
+            $("#path_id").val('11');
             break;
+
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
+//Jinn yes or no
 path13 = (button) => {
-    switch (button) {
-        case 1:
-            $("#game_message").html(`This is path 13 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+    explored[13].a = true;
+    $("#game_message").html(`<p>
+    A Jinn appears before your eyes!<br>
+    He thanks you for liberating him and he offers you to grant your biggest desire!<br>
+    </p>`);
+    $("#game_button1").html(`Yes!`);
+    $("#game_button2").html(`No thanks.`);
+    $("#game_button3").hide();
 
-            $("#path_id").val('14');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 13 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('14');
-
-        case 3:
-            $("#game_message").html(`This is path 13 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('14');
-            break;
-        default:
-            pathCheater();
-    };
+    $("#path_id").val('14');
 };
 
-path14 = (button) => {
+// Jinn or back to the forest
+path14 = async (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 14 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+            explored[14].a = true;
+            let jinn = await getJinn();
+            $("#game_message").html(jinn);
+            $("#game_button1").html(`Oh no!`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
 
             $("#path_id").val('15');
             break;
         case 2:
-            $("#game_message").html(`This is path 14 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('15');
-
-        case 3:
-            $("#game_message").html(`This is path 14 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('15');
+            explored[14].b = true;
+            game(15, 1);
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
 path15 = (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 15 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('16');
-            break;
-        case 2:
-            $("#game_message").html(`This is path 15 <br> You selected Action B`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('16');
-
-        case 3:
-            $("#game_message").html(`This is path 15 <br> You selected Action C`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
+            explored[15].a = true;
+            $("#game_message").html(`<p>
+            You are back at the begging of the forest.<br>
+            The mystical presence seems to have dissipated.<br>
+            </p>`);
+            $("#game_button1").html(`Go back to the lake`);
+            $("#game_button2").html(`Keep going into the forest.`);
+            $("#game_button3").hide();
             $("#path_id").val('16');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
 path16 = (button) => {
     switch (button) {
         case 1:
-            $("#game_message").html(`This is path 16 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
-
-            $("#path_id").val('17');
+            explored[16].a = true;
+            $("#game_message").html(`<p>
+            You are back at the begging of the forest.<br>
+            The mystical presence seems to have dissipated.<br>
+            </p>`);
+            $("#game_button1").html(`Go back to the lake`);
+            $("#game_button2").html(`Keep going into the forest.`);
+            $("#game_button3").hide();
+            $("#path_id").val('16');
             break;
         case 2:
             $("#game_message").html(`This is path 16 <br> You selected Action B`);
@@ -518,7 +363,7 @@ path16 = (button) => {
             $("#path_id").val('17');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
@@ -526,9 +371,9 @@ path17 = (button) => {
     switch (button) {
         case 1:
             $("#game_message").html(`This is path 17 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+            $("#game_button1").html(`Action A`);
+            $("#game_button2").html(`Action B`);
+            $("#game_button3").html(`Action C`);
 
             $("#path_id").val('18');
             break;
@@ -549,7 +394,7 @@ path17 = (button) => {
             $("#path_id").val('18');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
@@ -557,9 +402,9 @@ path18 = (button) => {
     switch (button) {
         case 1:
             $("#game_message").html(`This is path 18 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+            $("#game_button1").html(`Action A`);
+            $("#game_button2").html(`Action B`);
+            $("#game_button3").html(`Action C`);
 
             $("#path_id").val('19');
             break;
@@ -580,7 +425,7 @@ path18 = (button) => {
             $("#path_id").val('19');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
@@ -588,9 +433,9 @@ path19 = (button) => {
     switch (button) {
         case 1:
             $("#game_message").html(`This is path 19 <br> You selected Action A`);
-            $("game_button1").html(`Action A`);
-            $("game_button2").html(`Action B`);
-            $("game_button3").html(`Action C`);
+            $("#game_button1").html(`Action A`);
+            $("#game_button2").html(`Action B`);
+            $("#game_button3").html(`Action C`);
 
             $("#path_id").val('20');
             break;
@@ -611,7 +456,7 @@ path19 = (button) => {
             $("#path_id").val('20');
             break;
         default:
-            pathCheater();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
