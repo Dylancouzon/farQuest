@@ -34,6 +34,14 @@ router.get('/create', auth, async (req, res) => {
     }
 });
 
+router.get('/leaderboard', auth, async (req, res) => {
+    try {
+        res.sendFile(path.join(appDir, 'public', 'leaderboard.html'));
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/play/:id', auth, async (req, res) => {
     try {
         res.sendFile(path.join(appDir, 'public', 'game.html'));

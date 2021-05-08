@@ -1,6 +1,7 @@
 // Node modules
 const router = require('express').Router();
 const path = require('path');
+const { Op } = require("sequelize");
 
 //Defines the root directory
 var appDir = path.dirname(require.main.filename);
@@ -62,7 +63,7 @@ router.post('/signup', async (req, res) => {
 
 // Logout Route
 router.post('/logout', auth, (req, res) => {
-    
+
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
@@ -71,6 +72,29 @@ router.post('/logout', auth, (req, res) => {
         res.status(404).end();
         res.sendFile(path.join(appDir, 'public', 'login.html'));
     };
+});
+
+router.post('/leaderBoard', async (req, res) => {
+    try {
+        const leaderBoard = await User.findAll(
+            {
+                where: {
+                    highscore: {
+                        [Op.not]: null
+                    }
+                },
+                attributes: {
+                    exclude: ['password'],
+                    limit: 10
+                },
+                order: [['highscore', 'DESC']]
+            }
+        );
+        const leaders = leaderBoard.map((top) => top.get({ plain: true }));
+        res.status(200).json(leaders);
+    } catch (err) {
+        res.status(400).json(err);
+    }
 });
 
 module.exports = router;
