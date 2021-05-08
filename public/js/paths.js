@@ -731,7 +731,6 @@ path29 = async (button) => {
             break;
 
         case 2:
-            character.score += 10;
             explored[29].b = true;
             $("#game_message").html(`Guards: <br><br> Step back or you will die!`);
             $("#game_button1").html(`Go back`);
@@ -759,7 +758,6 @@ path30 = (button) => {
     switch (button) {
         case 1:
             document.addEventListener('keydown', keyHandler, false);
-            character.score += 30;
             explored[30].a = true;
             $("#game_message").html(`The wizard says: Show me that you are a member of the Konami clan.`);
             $("#game_button1").html(`Go back!`);
@@ -809,6 +807,7 @@ path32 = (button) => {
         case 1:
         case 3:
             explored[32].a = true;
+            character.score += 100;
             $("#game_message").html(``);
             generateFight(9, "You have found Farley!<br><br> The Evil Thomas wants to fight you!", 33);
             break;
