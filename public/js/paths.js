@@ -102,7 +102,7 @@ path0 = async (char_id) => {
     $("#game_button3").hide();
 
     // Next path ID
-    $("#path_id").val('1');
+    $("#path_id").val('31');
 
 };
 
@@ -815,6 +815,8 @@ path32 = (button) => {
         case 2:
             character.score += 30;
             explored[32].b = true;
+            character.addInventory(1);
+            updateInventory();
             $("#game_message").html(`You found a potion`);
             $("#game_button1").html(`Go back`);
             $("#game_button2").hide();
@@ -826,17 +828,27 @@ path32 = (button) => {
     };
 };
 
-path33 = (button) => {
+path33 = async (button) => {
     switch (button) {
         case 1:
         case 2:
         case 3:
+            const highscore = character.score;
+
+            const response = await fetch('/api/user/highscore', {
+                method: 'PUT',
+                body: JSON.stringify({ highscore }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            console.log(response);
             explored[33].a = true;
-            $("#game_message").html(`You Won !!!<br><br> Final Score: ${character.score}`);
+            $("#game_message").html(`You Won !!!<br><br> Final Score: ${highscore}`);
             $("#game_button1").hide()
             $("#game_button2").hide()
             $("#game_button3").hide()
             $("#path_id").val('34');
+
+
             break;
 
         default:

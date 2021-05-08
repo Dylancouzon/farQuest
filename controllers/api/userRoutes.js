@@ -97,4 +97,34 @@ router.post('/leaderBoard', async (req, res) => {
     }
 });
 
+router.put('/highscore', async (req, res) => {
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true });
+    
+    if (req.body.highscore > user.highscore) {
+        //Calls the update method on the Book model
+        User.update(
+            {
+                // All the fields you can update and the data attached to the request body.
+                highscore: req.body.highscore,
+            },
+            {
+                // Gets a book based on the book_id given in the request parameters
+                where: {
+                    id: req.session.user_id,
+                },
+            }
+        )
+            .then((updateScore) => {
+                console.log(updateScore);
+                res.json(updateScore);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.json(err);
+            });
+    }else{
+        res.status(200).json(user);
+    }
+});
 module.exports = router;
