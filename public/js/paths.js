@@ -22,7 +22,7 @@ Create a path with an unique ID (Need to add the corresponding call on game.js
     Fights :
         Make the path async !
         $("#game_message").html(``);
-        generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+        generateFight(5, "A giant monster attacks you from behind!<br><br>", 6)
         generateFight(ennemyID, "Text ", Path to follow if winning)
         The winning path has to be a path with no switch case inside
 
@@ -56,7 +56,7 @@ path14 = (button) => {
             break;
         case 3:
             $("#game_message").html(``);
-            generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+            generateFight(5, "A giant monster attacks you from behind!<br><br>", 6)
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
@@ -90,11 +90,11 @@ path0 = async (char_id) => {
         return gameOver("What do you think you're doing ?");
     }
     //Message
-    $("#game_message").html(`<p>
+    $("#game_message").html(`
     Welcome to our game ${character.name} !<br><br>
     NAME is a turn based RPG, You will pursue an incredible adventure seeking for Farley, the lost cat! <br><br>
      Enjoy !
-    </p>`);
+    `);
 
     //Buttons 
     $("#game_button1").html(`Continue`);
@@ -113,11 +113,11 @@ path1 = (button) => {
 
         case 1:
             explored[1].a = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
                 YOU RECIEVE A LETTER FROM A KING IN A LAND FAR AWAY.<br>
                 HE IS ASKING FOR YOUR HELP TO RETRIEVE HIS BELOVED CAT FARLEY WHO WAS TAKEN AWAY BY AN EVIL LORD NAMED THOMAS !<br>
                 HE WILL OFFER GREAT RECOMPENSE TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
-            </p>`);
+            `);
 
             $("#game_button1").html(`LET'S GO!`);
             $("#game_button2").html(`No.`);
@@ -136,15 +136,15 @@ path2 = (button) => {
         case 1:
             explored[2].a = true;
             if (!explored[4].a) {
-                $("#game_message").html(`<p>
+                $("#game_message").html(`
                 After a long journey, you finally arrive in the Kingdom. <br> 
                 All clues point out that the thiefs used the forest to escape.<br><br>
                 What do you want to do ? <br>
-            </p>`);
+            `);
             } else {
-                $("#game_message").html(`<p>
+                $("#game_message").html(`
                     Where do you want to go next ?
-            </p>`);
+            `);
             }
             $("#game_button1").html(`Investigate the Castle`);
             $("#game_button2").html(`Investigate the Forest`);
@@ -206,10 +206,10 @@ path4 = (button) => {
         case 1:
             character.score += 10;
             explored[4].a = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             YOU GET TO THE COURTYARD<br> <br>
             You look thoroughly the massive gardens, the only things you find are some rusty coins and a health potion. 
-            </p>`);
+            `);
             $("#game_button1").html(`Go back`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -221,10 +221,10 @@ path4 = (button) => {
         case 2:
             explored[4].b = true;
             character.score += 10;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             You enter the dungeon.<br>
             It is so dark in here, not a single spot of light can escape.<br><br>
-                        </p>`);
+                        `);
             $("#game_button1").html(`Go back`);
             $("#game_button2").html(`Keep going.`);
             $("#game_button3").hide();
@@ -237,15 +237,15 @@ path4 = (button) => {
             let master = getMaster();
             if (master === true) {
                 character.score += 30;
-                $("#game_message").html(`<p>
+                $("#game_message").html(`
                         This is the Kings Quarters. <br><br>
                         Farley is not Here but you found the Master Sword!<br>
                         Your attack is now doubled!
-                        </p>`);
+                        `);
             } else {
                 $("#game_message").html(`
-                        <p>This is the Kings Quarters.
-                        <br><br> Farley is not here</p>
+                        This is the Kings Quarters.
+                        <br><br> Farley is not here
                     `);
             }
 
@@ -267,7 +267,7 @@ path5 = (button) => {
     switch (button) {
         case 2:
             $("#game_message").html(``);
-            generateFight(5, "<p>A giant monster attacks you from behind!<br><br></p>", 6)
+            generateFight(5, "A giant monster attacks you from behind!<br><br>", 6)
             break;
         default:
             game(3, 1);
@@ -277,7 +277,7 @@ path5 = (button) => {
     path6 = (button) => {
         explored[6].a = true;
         character.score += 100;
-        $("#game_message").html(`<p>How ??<br> You were not supposed to survive.</p>`);
+        $("#game_message").html(`How ??<br> You were not supposed to survive.`);
         $("#game_button1").html(`I'm the boss!`);
         $("#game_button2").hide();
         $("#game_button3").hide();
@@ -308,10 +308,10 @@ path11 = (button) => {
     clearInterval(intervalDmg);
 
     explored[11].a = true;
-    $("#game_message").html(`<p>
+    $("#game_message").html(`
     You enter the Forest, and a weird Magical aura can be sensed. <br><br>
     You see a lake in the distance, do you want to check it out?<br>
-    </p>`);
+    `);
 
     $("#game_button1").html(`Yes!`);
     $("#game_button2").html(`No, keep going!`);
@@ -327,11 +327,11 @@ path12 = (button) => {
 
         case 1:
             explored[12].a = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
                 Once you start to get closer, you can feel your body being dragged by mystical forces towards a mysterious object<br><br>
                 You pick up the object, and it is engraved with mysterious characters.<br>
                 As you look at it, the Seal on the object dissapear and a dense fog start to materialize.<br>
-            </p>`);
+            `);
             $("#game_button1").html(`Next`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -340,12 +340,13 @@ path12 = (button) => {
 
 
         case 2:
+            character.score += 10;
             explored[12].b = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             As you walk into the forest, a dense fog appears of nowhere. <br><br>
             It seems to get denser and colder for each step you take!<br>
             Go Back! You are taking Damage! <br>
-            </p>`);
+            `);
             $("#game_button1").html(`Go back!`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -365,10 +366,10 @@ path12 = (button) => {
 //Jinn yes or no
 path13 = (button) => {
     explored[13].a = true;
-    $("#game_message").html(`<p>
+    $("#game_message").html(`
     A Jinn appears before your eyes!<br>
     He thanks you for liberating him and he offers you to grant your biggest desire!<br>
-    </p>`);
+    `);
     $("#game_button1").html(`Yes!`);
     $("#game_button2").html(`No thanks.`);
     $("#game_button3").hide();
@@ -380,6 +381,7 @@ path13 = (button) => {
 path14 = async (button) => {
     switch (button) {
         case 1:
+            character.score += 100;
             explored[14].a = true;
             let jinn = await getJinn();
             $("#game_message").html(jinn);
@@ -405,10 +407,10 @@ path15 = (button) => {
         case 2:
         case 3:
             explored[15].a = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             You are back at the begging of the forest.<br>
             The mystical presence seems to have dissipated.<br>
-            </p>`);
+            `);
             $("#game_button1").html(`Go back to the lake`);
             $("#game_button2").html(`Keep going into the forest.`);
             $("#game_button3").hide();
@@ -424,10 +426,11 @@ path16 = (button) => {
     switch (button) {
         case 1:
         case 3:
+            character.score += 5;
             explored[16].b = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             There is nothing here<br>
-            </p>`);
+            `);
             $("#game_button1").html(`Go back!`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -445,11 +448,11 @@ path17 = (button) => {
     switch (button) {
         case 1:
             explored[17].a = true;
-            $("#game_message").html(`<p>
+            $("#game_message").html(`
             You are a a Fork in the road<br><br>
             On the left you can see animal Footprints<br>
             On the right, you can see wagon prints.<br>
-            </p>`);
+            `);
             $("#game_button1").html(`Go Left`);
             $("#game_button2").html(`Go right`);
             $("#game_button3").hide();
@@ -467,7 +470,7 @@ path18 = (button) => {
         case 1:
             explored[17].a = true;
             $("#game_message").html(``);
-            generateFight(6, "<p>This is not Farley!<br><br> It's a monster!</p>", 19)
+            generateFight(6, "This is not Farley!<br><br> It's a monster!", 19)
             break;
         case 2:
             explored[18].a = true;
@@ -484,9 +487,11 @@ path18 = (button) => {
 };
 
 path19 = async (button) => {
-    $("#game_message").html(`<p>
+    explored[19].a = true;
+    character.score += 50;
+    $("#game_message").html(`
             You defeated the monster and found a chest ! Yay<br>
-            </p>`);
+            `);
     chest = await openChest();
     $("#game_message").append(chest);
     $("#game_button1").html(`Follow the other path`);
@@ -497,32 +502,292 @@ path19 = async (button) => {
 };
 
 path20 = (button) => {
-
     switch (button) {
         case 1:
-            $("#game_message").html(`Wagon path`);
-            $("#game_button1").html(`Return to profile`);
-            $("#game_button2").html(`Play, again!`);
+        case 2:
+        case 3:
+            explored[20].a = true;
+            $("#game_message").html(`You stumble upon a campire that has been recently put out.`);
+            if (!explored[21].a) {
+                $("#game_button1").html(`Inspect the campsite`);
+            } else {
+                $("#game_button1").hide();
+            }
+            $("#game_button2").html(`Look at shiny object on the ground`);
+            $("#game_button3").html(`Continue foward`);
+
+            $("#path_id").val('21');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path21 = (button) => {
+    switch (button) {
+        case 1:
+            character.score += 10;
+            explored[21].a = true;
+            $("#game_message").html(`
+            You did not find any clues but you found an Health potion ! 
+            `);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
             $("#game_button3").hide();
+
+            $("#path_id").val('20');
             break;
         case 2:
-            $("#game_message").html(`This is path 20 <br> This is the end of the game!!!`);
-            $("#game_button1").html(`Return to profile`);
-            $("#game_button2").html(`Play, again!`);
+            character.score += 10;
+            explored[21].b = true;
+            $("#game_message").html(`
+            This is Farley's Ruby Collar <br><br> Hurry up ! They must be close!
+            `);
+            $("#game_button1").html(`Let's go!`);
+            $("#game_button2").hide();
             $("#game_button3").hide();
+
+            $("#path_id").val('22');
             break;
 
         case 3:
-            $("#game_message").html(`This is path 20 <br> This is the end of the game!!!`);
-            $("#game_button1").html(`Return to profile`);
-            $("#game_button2").html(`Play, again!`);
-            $("#game_button3").hide();
+            explored[21].c = true;
+            game(22, 1);
             break;
         default:
-        // end of game function needs to go here
-        // endGame();
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
+
+path22 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            explored[22].a = true;
+            $("#game_message").html(`The vilain's Kingdom is close!<br><br>You arrive at a bridge.`);
+            $("#game_button1").html(`Inspect under the bridge`);
+            $("#game_button2").html(`Inspect object on the ground`);
+            $("#game_button3").html(`Continue foward`);
+            $("#path_id").val('23');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path23 = (button) => {
+    switch (button) {
+        case 1:
+            explored[23].a = true;
+            character.score += 60;
+            $("#game_message").html(``);
+            generateFight(6, "A Troll lives here!<br><br>", 24);
+            break;
+        case 2:
+            explored[23].b = true;
+            $("#game_message").html(`Ewwww, that is Poop !<br><br> What are you doing ?<br>Drop This!`);
+            $("#game_button1").html(`Ewwww`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('24');
+            break;
+
+        case 3:
+            explored[23].c = true;
+            game(25, 1);
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path24 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            explored[24].a = true;
+            $("#game_message").html(`As you walk down the bridge<br> A charming old woman approches you.`);
+            $("#game_button1").html(`Ask how old she is`);
+            $("#game_button2").html(`Ask about Farley`);
+            $("#game_button3").html(`Continue foward`);
+            $("#path_id").val('24');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path25 = (button) => {
+    switch (button) {
+        case 1:
+            character.score -= 23;
+            explored[25].a = true;
+            $("#game_message").html(`She hits you with her Bag<br><br> You lose 30hp<br><br> Was this bag full of stones ???`);
+            $("#game_button1").html(`You deserved it.`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('26');
+            break;
+        case 2:
+            explored[25].b = true;
+            character.score += 20;
+            $("#game_message").html(`She starts mumble some nonsense<br><br> The only thing you picked up is: The bread is a lie.`);
+            $("#game_button1").html(`That was weird`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('26');
+            break;
+
+        case 3:
+            explored[25].c = true;
+            game(26, 1);
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path26 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            explored[26].a = true;
+            $("#game_message").html(`You reach the ennemy's kingdom Moat`);
+            $("#game_button1").html(`Try and swim Across`);
+            $("#game_button2").html(`Yell at the guards to let you in`);
+            $("#game_button3").html(`Try to sneak in.`);
+            $("#path_id").val('27');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path27 = (button) => {
+    switch (button) {
+        case 1:
+                explored[27].a = true;
+gameOver("A Beast ate you! <br><br> You died.");
+            break;
+        case 2:
+            explored[27].b = true;
+            character.score += 50;
+            $("#game_message").html(``);
+            generateFight(7, "They Fight you!<br><br>", 28);
+            break;
+
+        case 3:
+            explored[27].c = true;
+            if (character.luck > 2) {
+                $("#game_message").html(`You stumble upon a campire that has been recently put out.`);
+                $("#game_button1").html(`Next`);
+                $("#game_button2").hide();
+                $("#game_button3").hide();
+                $("#path_id").val('28');
+            } else {
+                character.score += 40;
+                $("#game_message").html(``);
+                generateFight(6, "A guard caught you!<br><br>", 28);
+            }
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path28 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            
+                explored[28].a = true;
+            $("#game_message").html(`You have entered the ennemy Kingdom<br><br> Where do you want to go?`);
+            $("#game_button1").html(`Tavern`);
+            $("#game_button2").html(`Castle`);
+            if(!explored[29].c){
+                $("#game_button3").html(`Stables`);
+            }else{
+                $("#game_button3").hide();
+            }
+            $("#path_id").val('28');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path29 = (button) => {
+    switch (button) {
+        case 1:
+            explored[29].a = true;
+            $("#game_message").html(`You entered the Tavern<br><br> The only thing here is an old wizard and a piece of bread on the counter<br>`);
+            $("#game_button1").html(`Talk to the wizard`);
+            $("#game_button2").html(`Pick up the bread`);
+            $("#game_button3").html(`Go back`);
+            $("#path_id").val('30');
+            break;
+
+        case 2:
+            character.score += 10;
+            explored[29].b = true;
+            $("#game_message").html(`Guards: <br><br> Step back or you will die!`);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('28');
+            break;
+
+        case 3:
+            explored[29].c = true;
+            character.score += 10;
+            chest = await openChest();
+            $("#game_message").html(`You found a chest!<br><br> ${chest}`);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
+            $("#game_button3").hide();
+            $("#path_id").val('28');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path30 = (button) => {
+    switch (button) {
+        case 1:
+            character.score +=
+            explored[30].a = true;
+            $("#game_message").html(`Elvish gibberish`);
+            $("#game_button1").html(`Go back!`);
+            $("#game_button2").hide();
+            $("#game_button3").hide()
+            $("#path_id").val('29');
+            break;
+        case 2:
+            explored[30].b = true;
+            gameOver("The bread was Poisonned.<br><br> You died !")
+            break;
+        case 3:
+            explored[30].c = true;
+            game(28, 1);
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+
+
+
+
+
+
+
+
 
 gameOver = (message) => {
     character.inventory = { a: 0, b: 0, c: 0, c: 0 };

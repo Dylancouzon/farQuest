@@ -69,8 +69,10 @@ openChest = () => {
         case 4:
             return "No luck ! The chest was empty!";
         case 5:
+            character.score += 5;
             return "You hear a faint voice that says 'Do not eat the bread' <br><br> Where coult it possibly come from ?";
         case 6:
+            character.score += 10;
             let addItemCase5 = character.addInventory(1);
             updateInventory();
             if (addItemCase5) {
@@ -79,15 +81,21 @@ openChest = () => {
                 return "You found an Health potion ! Unfortunately, your inventory is full !";
             }
         case 7:
-            character.chance = 6;
+            character.score += 15;
+            character.chance = 5;
             return "You found a four-leaf clover, your chance increased greatly!";
         case 8:
-            return "Not coded yet !";
+            character.score += 20;
+            let addItemCase8 = character.addInventory(1);
+            let addItemCase8 = character.addInventory(1);
+            return "You found 2 health potions!";
         case 9:
+            character.score += 25;
             character.maxHealth += 40;
             character.stamina += 40;
             return "You found a mushroom. Your max Health has been increased by 40.";
         case 10:
+            character.score += 30;
             if (character.attack_1 != "Master cut") {
                 character.strength = parseInt(character.strength) * 1.5;
                 character.attack_1 = "Master cut";
