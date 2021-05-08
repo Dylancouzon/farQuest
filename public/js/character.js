@@ -56,7 +56,6 @@ openChest = () => {
     if (roll > 10) {
         roll = 10;
     }
-    console.log(roll);
     switch (roll) {
         case 1:
             character.stamina = Math.round(character.stamina / 2);
@@ -88,6 +87,7 @@ openChest = () => {
             character.score += 20;
             character.addInventory(1);
             character.addInventory(1);
+            updateInventory();
             return "You found 2 health potions!";
         case 9:
             character.score += 25;
@@ -164,13 +164,11 @@ generateFight = async (ennemy_id, message, afterPath) => {
     //Where to go once the fight is done
     afterFight = afterPath;
     // Generate the ennemy character
-    console.log("Ennemy id:" + ennemy_id)
     getEnnemyStats = await generateChar(ennemy_id);
     ennemy = new CharacterObj(getEnnemyStats);
     $("#enemy-sprite").attr("src", "/sprites/" + ennemy.class_id + ".gif");
     $("#enemy-char-name").html(ennemy.name);
     updateHealthEnnemy();
-    console.log(ennemy);
     // The user starts first unless the ennemy speed is greater.
     // if (character.speed >= ennemy.speed) {
     //     turn = 1;
@@ -203,9 +201,6 @@ fight = async (attack, message) => {
                 charMiss = () => { return (Math.random() * 100 < missArr1[character.speed]); }
                 ennemyDodge = () => { return (Math.random() * 100 < dodgeArr1[ennemy.speed]); }
                 charCritical = () => { return (Math.random() * 100 < criticallArr[character.luck]); }
-                console.log(`charMiss: ${charMiss()}\n `);
-                console.log(`ennemyDodge: ${ennemyDodge()}\n`);
-                console.log(`charCritical: ${charCritical()}\n`);
                 $("#game_message").append(`You used ${character.attack_1} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-light.gif");
                 setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
@@ -217,9 +212,6 @@ fight = async (attack, message) => {
                 charMiss = () => { return (Math.random() * 100 < missArr2[character.speed]); }
                 ennemyDodge = () => { return (Math.random() * 100 < dodgeArr2[ennemy.speed]); }
                 charCritical = () => { return (Math.random() * 100 < criticallArr[character.luck]); }
-                console.log(`charMiss: ${charMiss()}\n `);
-                console.log(`ennemyDodge: ${ennemyDodge()}\n`);
-                console.log(`charCritical: ${charCritical()}\n`);
                 $("#game_message").append(`You used ${character.attack_2} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-heavy.gif");
                 setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
@@ -235,7 +227,6 @@ fight = async (attack, message) => {
                     charDmg = charDmg * 1.5
                     $("#game_message").append(`Critical Shot!<br><br>`);
                 }
-                console.log(`charDmg: ${charDmg}\n`);
 
                 if (character.attack_2 == "Fury" && attack === 2) {
                     character.strength = character.strength * 1.1;
@@ -290,9 +281,6 @@ fight = async (attack, message) => {
                 ennemyMiss = () => { return (Math.random() * 100 < missArr1[ennemy.speed]); }
                 charDodge = () => { return (Math.random() * 100 < dodgeArr1[character.speed]); }
                 ennemyCritical = () => { return (Math.random() * 100 < criticallArr[ennemy.luck]); }
-                console.log(`ennemyMiss: ${ennemyMiss()}\n `);
-                console.log(`charDodge: ${charDodge()}\n`);
-                console.log(`ennemyCritical: ${ennemyCritical()}\n`);
                 $("#game_message").append(`${ennemy.name} used ${ennemy.attack_1}.<br><br>`);
 
             } else {
@@ -300,9 +288,6 @@ fight = async (attack, message) => {
                 ennemyMiss = () => { return (Math.random() * 100 < missArr2[ennemy.speed]); }
                 charDodge = () => { return (Math.random() * 100 < dodgeArr2[character.speed]); }
                 ennemyCritical = () => { return (Math.random() * 100 < criticallArr[ennemy.luck]); }
-                console.log(`ennemyMiss: ${ennemyMiss()}\n `);
-                console.log(`charDodge: ${charDodge()}\n`);
-                console.log(`ennemyCritical: ${ennemyCritical()}\n`);
                 $("#game_message").append(`${ennemy.name} used ${ennemy.attack_2}.<br><br>`);
 
 
@@ -327,7 +312,6 @@ fight = async (attack, message) => {
                 }
 
                 ennemyDmg = Math.round(ennemyDmg * 100) / 100;
-                console.log(`ennemyDmg: ${ennemyDmg}\n`);
                 character.stamina -= ennemyDmg;
                 $("#game_message").append(`You take ${ennemyDmg} dmg.<br>`);
                 updateHealth();
@@ -446,7 +430,6 @@ useItem = async () => {
 // Actions to be executed each time a path is generated.
 // Actions is supposed to be async but we still need the Timeout for some reason
 actions = async () => {
-    console.log(character.stamina);
     setTimeout(() => {
 
         //Check if the character is still alive
@@ -466,7 +449,6 @@ actions = async () => {
         updateHealth();
 
     }, 100)
-    console.log(character);
 }
 
 // Jinn spells.
