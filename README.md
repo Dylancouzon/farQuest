@@ -6,20 +6,21 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 <br>
 <br>
 
-Welcome to FarQuest. 
+**Welcome to FarQuest**
 
 A role-playing game of medieval fantasy. Select from a hero class of Knights, Wizards, Huntresses, or be an Assassin. Explore a rich world of story-telling, battles, and surprises as you journey to see the King. He's asked for your help and you fear you're running out of time.
 
 
 [Click here to play FarQuest!](https://farquest.herokuapp.com/)
+<br>
 
 ## Table of Contents
 
 1. [Technology](#technology)
-2. [Usage & Features](#usage-&-features)
-4. [License](#license)
-5. [Contributing](#contributing)
-6. [Questions](#questions)
+2. [Usage & Features](https://github.com/cheng21tang/Project-2/tree/models#usage--features)
+3. [License](#license)
+4. [Contributing](#contributing)
+5. [Questions](#questions)
 
 <hr>
 
