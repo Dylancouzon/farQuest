@@ -2,14 +2,12 @@
 
 # FarQuest
 
+**Welcome to FarQuest**
+A role-playing game of medieval fantasy. Select from a hero class of Knights, Wizards, Huntresses, or be an Assassin. Explore a rich world of story-telling, battles, and surprises as you journey to see the King. He's asked for your help and you fear you're running out of time.
+
 A letter arrived, it's from the King... he's asking for your help. You set off to the castle to speak with the King but you discover your journey there is frought with obstacles. Indeed, something is stirring in the kingdom and your haste quickens. When you arrive at the castle, you discover that there is nary a soul nor sound in the streets and you begin to investigate.
 <br>
 <br>
-
-**Welcome to FarQuest**
-
-A role-playing game of medieval fantasy. Select from a hero class of Knights, Wizards, Huntresses, or be an Assassin. Explore a rich world of story-telling, battles, and surprises as you journey to see the King. He's asked for your help and you fear you're running out of time.
-
 
 [Click here to play FarQuest!](https://farquest.herokuapp.com/)
 <br>
