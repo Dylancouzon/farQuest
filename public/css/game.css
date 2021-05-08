@@ -1,6 +1,7 @@
 html {
     max-width: 100vw;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 body {
     background-image: url("../images/background/shadowlands_2048x2048.jpg");
@@ -13,10 +14,10 @@ body {
     background-repeat: no-repeat;
 }
 #main-box {
-    position: absolute;
+    position: fixed;
     left: 35%;
     right: 25%;
-    top: 55%;
+    top: 60%;
     max-width: 700px;
     min-width: 700px;
     opacity: 0.9;
@@ -64,17 +65,14 @@ body {
     opacity: 0.9;
     cursor: url("../img/cursor/default.png"), auto !important;
 }
-
 .navbar a {
     color: white;
 }
-
 .navbar a:hover {
     cursor: url("../img/cursor/default.png"), auto !important;
     color: white;
     background-color: transparent;
 }
-
 #logout-button:hover {
     background-color: rgba(0,0,0,.5);
     cursor: url("../img/cursor/point.png"), auto !important;
