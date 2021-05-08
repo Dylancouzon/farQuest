@@ -184,8 +184,13 @@ path3 = (button) => {
                 } else {
                     $("#game_button1").hide();
                 }
+                if (!explored[4].a) {
+                    $("#game_button3").html(`Kings Quarters`);
+                } else {
+                    $("#game_button1").hide();
+                }
                 $("#game_button2").html(`Dungeon`);
-                $("#game_button3").html(`Kings Quarters`);
+                $("#game_button1").hide();
                 $("#path_id").val('4');
             }
             break;
