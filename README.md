@@ -13,6 +13,8 @@ Welcome to FarQuest.
 A role-playing game of medieval fantasy. Select from a hero class of Knights, Wizards, Huntresses, or be an Assassin. Explore a rich world of story-telling, battles, and surprises as you journey to see the King. He's asked for your help and you fear you're running out of time.
 
 
+[Click here to play FarQuest!](https://farquest.herokuapp.com/)
+
 ## Table of Contents
 
 1. [Technology](#technology)
@@ -41,3 +43,134 @@ A role-playing game of medieval fantasy. Select from a hero class of Knights, Wi
 <img align="left" alt="express" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/npm/npm.png"/> &nbsp;
+<br><br>
+
+Here is a shortlist of technologies and tools used to build this game.
+
+- HTML
+- CSS
+- JavaScript
+- [Bootstrap](https://getbootstrap.com/)
+- [jQuery](https://jquery.com/)
+- [jQueryUI](https://jqueryui.com/)
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/) packages
+    - [express](https://www.npmjs.com/package/express)
+    - [express-session](https://www.npmjs.com/package/express-session)
+    - [bcrypt](https://www.npmjs.com/package/bcrypt)
+    - [mysql2](https://www.npmjs.com/package/mysql2)
+    - [sequelize](https://www.npmjs.com/package/sequelize)
+    - [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+    - [dotenv](https://www.npmjs.com/package/dotenv)
+    - [RPGUI](https://github.com/RonenNess/RPGUI)
+- [MySQL](https://www.mysql.com/)
+- [HEROKU](https://www.heroku.com/)
+
+Please visit the links above to learn more.
+
+
+## Usage
+
+**HomePage**<br>
+Create an account or sign-up to begin. You'll be taken to the character creation page if it is your first time.
+![homepage](./public/assets/homepage.gif)<br>
+
+**Character creation**<br>
+You have a choice between 4 characters.
+
+- Knight
+- Wizard
+- Huntress
+- Assassin
+
+Each character class has their own unique set of attributes that effect the stamina, strength, power, speed, luck, and their own set of attacks.
+
+![character-selection](./public/assets/characterpage-demo.gif)<br>
+
+**Profile**
+On your profile page, you can see all the characters on your account. You can create new characters, delete old ones, or start a game by clicking on your character.
+
+![profile](./public/assets/user-profile-demo.gif)<br>
+
+**Adventure Mode**
+When you start a game you'll be taken into adventure mode where the story begins. Your character is given choices and will effect the events in the storyline.
+
+![adventure-mode](./public/assets/adventure-mode-1.gif)<br>
+
+**Battle**
+You will encounter enemies in a turn-based fight. Your attacks and defense are calculated from your characters attributes. Keep an eye on your health bar and you trade attacks with the enemy.
+
+![battle](./public/assets/path-dungeon.gif)<br>
+
+**Chest & Items**
+You may find treasures in your journey, what surprises lie inside.
+
+
+
+## License
+
+MIT License
+
+Copyright (c) 2021 Cheng Tang, Liam Stewart, and Dylan Couzon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+## Contributing
+
+Future development opportunites:
+- Story path model to be stored in database. Adds flexiblility and reduces lines of code.
+- Additional classes, secondary character attribute like mana, rage, etc.
+- Provide starter points during character creation for user to distribute
+- Leveling system
+- More inventory items!
+- Equippable items; armor, swords, shields, etc.
+
+We are gamers at heart and this is our first game built together and it was such a great learning experience of all the inner workings of a game of this scope. Then we started to think of the magnitude of our favorite games of the past and the effort and planning it takes to build those. Wow!
+
+If you'd like to contribute, please fork this repository and submit pull request for the features above or other features you'd like to see in the game. We will review it for acceptance.
+
+
+## Contact Us
+
+Please feel free to reach out to us to talk about the game or check out our other individual works.
+
+
+<img align="left" width="200" height="200" src="./public/sprites/1.gif">
+
+Liam Stewart
+- [liamchristopher.media@gmail.com](mailto:liamchristopher.media@gmail.com)
+- [GitHub](https://github.com/LiamStewart8)
+- [LinkedIn](https://www.linkedin.com/in/liamsctewart/)
+
+
+<img align="left" width="200" height="200" src="./public/sprites/2.gif">
+
+Dylan Couzon
+- [dylancouzon@gmail.com](mailto:dylancouzon@gmail.com)
+- [GitHub](https://github.com/Dylancouzon)
+- [LinkedIn](https://www.linkedin.com/in/dcouzon/)
+
+
+<img align="left" width="200" height="200" src="./public/sprites/3.gif">
+
+Cheng Tang
+- [cheng21tang@gmail.com](mailto:cheng21tang@gmail.com)
+- [GitHub](https://github.com/cheng21tang)
+- [LinkedIn](https://www.linkedin.com/in/cheng21tang/)
