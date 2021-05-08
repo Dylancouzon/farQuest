@@ -68,7 +68,7 @@ let chest;
 
 // Creates an object of object to know all the visited paths
 var explored = {};
-for (let i = 1; i < 20; i++) {
+for (let i = 1; i < 35; i++) {
     explored[i] = {};
 }
 //Show all buttons
@@ -468,18 +468,13 @@ path18 = (button) => {
 
     switch (button) {
         case 1:
-            explored[17].a = true;
+            explored[18].a = true;
             $("#game_message").html(``);
             generateFight(6, "This is not Farley!<br><br> It's a monster!", 19)
             break;
         case 2:
             explored[18].a = true;
-            $("#game_message").html(`Follow the Wagon`);
-            $("#game_button1").html(`Action A`);
-            $("#game_button2").html(`Action B`);
-            $("#game_button3").html(`Action C`);
-
-            $("#path_id").val('20');
+            game(20, 1);
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
@@ -528,6 +523,8 @@ path21 = (button) => {
         case 1:
             character.score += 10;
             explored[21].a = true;
+            character.addInventory(1);
+            updateInventory();
             $("#game_message").html(`
             You did not find any clues but you found an Health potion ! 
             `);
@@ -582,7 +579,7 @@ path23 = (button) => {
             explored[23].a = true;
             character.score += 60;
             $("#game_message").html(``);
-            generateFight(6, "A Troll lives here!<br><br>", 24);
+            generateFight(7, "A Troll lives here!<br><br>", 24);
             break;
         case 2:
             explored[23].b = true;
@@ -595,7 +592,7 @@ path23 = (button) => {
 
         case 3:
             explored[23].c = true;
-            game(25, 1);
+            game(24, 1);
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
@@ -612,7 +609,7 @@ path24 = (button) => {
             $("#game_button1").html(`Ask how old she is`);
             $("#game_button2").html(`Ask about Farley`);
             $("#game_button3").html(`Continue foward`);
-            $("#path_id").val('24');
+            $("#path_id").val('25');
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
@@ -623,6 +620,8 @@ path25 = (button) => {
     switch (button) {
         case 1:
             character.score -= 23;
+            character.stamina -= 30;
+            updateHealth();
             explored[25].a = true;
             $("#game_message").html(`She hits you with her Bag<br><br> You lose 30hp<br><br> Was this bag full of stones ???`);
             $("#game_button1").html(`You deserved it.`);
@@ -669,20 +668,20 @@ path26 = (button) => {
 path27 = (button) => {
     switch (button) {
         case 1:
-                explored[27].a = true;
-gameOver("A Beast ate you! <br><br> You died.");
+            explored[27].a = true;
+            gameOver("A Beast ate you! <br><br> You died.");
             break;
         case 2:
             explored[27].b = true;
             character.score += 50;
             $("#game_message").html(``);
-            generateFight(7, "They Fight you!<br><br>", 28);
+            generateFight(8, "They Fight you!<br><br>", 28);
             break;
 
         case 3:
             explored[27].c = true;
             if (character.luck > 2) {
-                $("#game_message").html(`You stumble upon a campire that has been recently put out.`);
+                $("#game_message").html(`You Sucessfully sneaked in!`);
                 $("#game_button1").html(`Next`);
                 $("#game_button2").hide();
                 $("#game_button3").hide();
@@ -690,7 +689,7 @@ gameOver("A Beast ate you! <br><br> You died.");
             } else {
                 character.score += 40;
                 $("#game_message").html(``);
-                generateFight(6, "A guard caught you!<br><br>", 28);
+                generateFight(8, "A guard caught you!<br><br>", 28);
             }
             break;
         default:
@@ -703,24 +702,24 @@ path28 = (button) => {
         case 1:
         case 2:
         case 3:
-            
-                explored[28].a = true;
+
+            explored[28].a = true;
             $("#game_message").html(`You have entered the ennemy Kingdom<br><br> Where do you want to go?`);
             $("#game_button1").html(`Tavern`);
             $("#game_button2").html(`Castle`);
-            if(!explored[29].c){
+            if (!explored[29].c) {
                 $("#game_button3").html(`Stables`);
-            }else{
+            } else {
                 $("#game_button3").hide();
             }
-            $("#path_id").val('28');
+            $("#path_id").val('29');
             break;
         default:
             gameOver("How did you get here ? Well, it Doesn't matter, You died!");
     };
 };
 
-path29 = (button) => {
+path29 = async (button) => {
     switch (button) {
         case 1:
             explored[29].a = true;
@@ -759,13 +758,14 @@ path29 = (button) => {
 path30 = (button) => {
     switch (button) {
         case 1:
-            character.score +=
+            document.addEventListener('keydown', keyHandler, false);
+            character.score += 30;
             explored[30].a = true;
-            $("#game_message").html(`Elvish gibberish`);
+            $("#game_message").html(`The wizard says: Show me that you are a member of the Konami clan.`);
             $("#game_button1").html(`Go back!`);
             $("#game_button2").hide();
             $("#game_button3").hide()
-            $("#path_id").val('29');
+            $("#path_id").val('31');
             break;
         case 2:
             explored[30].b = true;
@@ -780,9 +780,70 @@ path30 = (button) => {
     };
 };
 
+path31 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            character.score += 30;
+            explored[31].a = true;
+            $("#game_message").html(`The wizard helped you sneak into the castle. <br><br> You arrive at a stairway. Which direction do you want to go?`);
+            $("#game_button1").html(`Up`);
+            if (!explored[32].b) {
+                $("#game_button2").html(`Down`);
+            } else {
+                $("#game_button2").hide();
+            }
+            $("#game_button3").hide()
+            $("#path_id").val('32');
+            break;
+
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
 
 
+path32 = (button) => {
+    switch (button) {
+        case 1:
+        case 3:
+            explored[32].a = true;
+            $("#game_message").html(``);
+            generateFight(9, "You have found Farley!<br><br> The Evil Thomas wants to fight you!", 33);
+            break;
 
+        case 2:
+            character.score += 30;
+            explored[32].b = true;
+            $("#game_message").html(`You found a potion`);
+            $("#game_button1").html(`Go back`);
+            $("#game_button2").hide();
+            $("#game_button3").hide()
+            $("#path_id").val('31');
+            break;
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
+
+path33 = (button) => {
+    switch (button) {
+        case 1:
+        case 2:
+        case 3:
+            explored[33].a = true;
+            $("#game_message").html(`You Won !!!<br><br> Final Score: ${character.score}`);
+            $("#game_button1").hide()
+            $("#game_button2").hide()
+            $("#game_button3").hide()
+            $("#path_id").val('34');
+            break;
+
+        default:
+            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+    };
+};
 
 
 
@@ -792,9 +853,13 @@ path30 = (button) => {
 gameOver = (message) => {
     character.inventory = { a: 0, b: 0, c: 0, c: 0 };
     updateInventory()
+    for (let i = 1; i < 35; i++) {
+        explored[i] = {};
+    }
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
     setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 1500)
     $("#game_message").html(message);
+    $("#game_message").append(`<br><br> Your Score: ${character.score}`);
     $("#game_button1").html(`Play again`);
     $("#game_button2").hide();
     $("#game_button3").hide();

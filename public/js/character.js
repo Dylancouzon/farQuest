@@ -27,6 +27,7 @@ character_create = async (character_class) => {
 
 // Pulling the Character Data from the DB then creating the character
 generateChar = async (char_id) => {
+    alert(char_id);
     const response = await fetch('/api/char/generate', {
         method: 'POST',
         body: JSON.stringify({ char_id }),
@@ -86,8 +87,8 @@ openChest = () => {
             return "You found a four-leaf clover, your chance increased greatly!";
         case 8:
             character.score += 20;
-            let addItemCase8 = character.addInventory(1);
-            let addItemCase8 = character.addInventory(1);
+            character.addInventory(1);
+            character.addInventory(1);
             return "You found 2 health potions!";
         case 9:
             character.score += 25;
