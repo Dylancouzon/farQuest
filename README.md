@@ -2,11 +2,9 @@
 
 # FarQuest
 
-A letter arrived, it's from the King... he's asking for your help. You set off to the castle to speak with the King but you discover your journey there is frought with obstacles. Indeed, something is stirring in the kingdom and your haste quickens. When you arrive at the castle, you discover that there is nary a soul nor sound in the streets... 
-
-...you begin to investigate.
+A letter arrived, it's from the King... he's asking for your help. You set off to the castle to speak with the King but you discover your journey there is frought with obstacles. Indeed, something is stirring in the kingdom and your haste quickens. When you arrive at the castle, you discover that there is nary a soul nor sound in the streets and you begin to investigate.
 <br>
-
+<br>
 
 Welcome to FarQuest. 
 
@@ -18,9 +16,7 @@ A role-playing game of medieval fantasy. Select from a hero class of Knights, Wi
 ## Table of Contents
 
 1. [Technology](#technology)
-2. [Installation](#installation)
-2. [Usage](#usage)
-3. [Features](#features)
+2. [Usage & Features](#usage-&-features)
 4. [License](#license)
 5. [Contributing](#contributing)
 6. [Questions](#questions)
@@ -69,7 +65,7 @@ Here is a shortlist of technologies and tools used to build this game.
 Please visit the links above to learn more.
 
 
-## Usage
+## Usage & Features
 
 **HomePage**<br>
 Create an account or sign-up to begin. You'll be taken to the character creation page if it is your first time.
