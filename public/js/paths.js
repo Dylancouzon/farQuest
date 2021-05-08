@@ -184,10 +184,10 @@ path3 = (button) => {
                 } else {
                     $("#game_button1").hide();
                 }
-                if (!explored[4].a) {
+                if (!explored[4].c) {
                     $("#game_button3").html(`Kings Quarters`);
                 } else {
-                    $("#game_button1").hide();
+                    $("#game_button3").hide();
                 }
                 $("#game_button2").html(`Dungeon`);
                 $("#game_button1").hide();
