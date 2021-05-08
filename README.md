@@ -159,6 +159,9 @@ Liam Stewart
 - [GitHub](https://github.com/LiamStewart8)
 - [LinkedIn](https://www.linkedin.com/in/liamsctewart/)
 
+<br>
+<br>
+<br>
 
 <img align="left" width="200" height="200" src="./public/sprites/2.gif">
 
@@ -167,6 +170,9 @@ Dylan Couzon
 - [GitHub](https://github.com/Dylancouzon)
 - [LinkedIn](https://www.linkedin.com/in/dcouzon/)
 
+<br>
+<br>
+<br>
 
 <img align="left" width="200" height="200" src="./public/sprites/3.gif">
 
