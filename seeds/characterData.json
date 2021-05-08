@@ -81,7 +81,7 @@
         "name": "Bridge Troll",
         "class_id": "7",
         "stamina": "80",
-        "strength": "6",
+        "strength": "8",
         "power": "2",
         "speed": "1",
         "luck": "0",
@@ -106,7 +106,7 @@
     {
         "name": "Thomas",
         "class_id": "9",
-        "stamina": "150",
+        "stamina": "250",
         "strength": "12",
         "power": "7",
         "speed": "8",

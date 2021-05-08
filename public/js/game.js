@@ -65,6 +65,51 @@ game = (path, button, char_id) => {
         case 20:
             path20(button);
             break;
+        case 21:
+            path21(button);
+            break;
+        case 22:
+            path22(button);
+            break;
+        case 23:
+            path23(button);
+            break;
+        case 24:
+            path24(button);
+            break;
+        case 25:
+            path25(button);
+            break;
+        case 26:
+            path26(button);
+            break;
+        case 27:
+            path27(button);
+            break;
+        case 28:
+            path28(button);
+            break;
+        case 29:
+            path29(button);
+            break;
+        case 30:
+            path30(button);
+            break;
+        case 31:
+            path31(button);
+            break;
+        case 32:
+            path32(button);
+            break;
+        case 33:
+            path33(button);
+            break;
+        case 34:
+            path34(button);
+            break;
+        case 35:
+            path35(button);
+            break;
         default:
             path0(char_id);
 
@@ -90,19 +135,19 @@ $("#game_button3").click(async (event) => {
 });
 
 //Generate the next path
-nextPath = async (button) =>{
+nextPath = async (button) => {
     // Need to move that timer thing
     let path = $("#path_id").val();
-    if(path == "fight"){
+    if (path == "fight") {
         await fight(button);
-    }else if(path == 0){
+    } else if (path == 0) {
         show();
         game(0, 0, character_id);
-    }else{
+    } else {
         show();
         await game(parseInt(path), button);
     }
-    
+
     // Have to put the character Jinn here because actions is causing delays.
     if (character.jinn == 4) {
         clearInterval(deathTimer);
@@ -123,3 +168,29 @@ nextPath = async (button) =>{
 
 // Launch the game when loading the page (path0)
 game(0, 0, character_id);
+
+
+var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+var current = 0;
+
+var keyHandler = function (event) {
+
+    // If the key isn't in the pattern, or isn't the current key in the pattern, reset
+    if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+        current = 0;
+        return;
+    }
+
+    // Update how much of the pattern is complete
+    current++;
+
+    // If complete, alert and reset
+    if (pattern.length === current) {
+        current = 0;
+        $("#game_message").append(`You do speak the language of the Gods !`);
+        $("#game_button1").html(`Sneak in`);
+        $("#game_button1").show();
+    }
+
+};
+

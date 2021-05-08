@@ -4,7 +4,10 @@ var timeLeft = 20;
 character_create = async (character_class) => {
 
     const character_name = $("#character_name").val();
-
+    //Farley Easter Egg :D.
+        if(character_name == "Farley"){
+            character_class = 10;
+        }
     if (character_name && character_class) {
         const response = await fetch('/api/char/create', {
             method: 'POST',
@@ -24,6 +27,7 @@ character_create = async (character_class) => {
 
 // Pulling the Character Data from the DB then creating the character
 generateChar = async (char_id) => {
+    alert(char_id);
     const response = await fetch('/api/char/generate', {
         method: 'POST',
         body: JSON.stringify({ char_id }),
@@ -66,8 +70,10 @@ openChest = () => {
         case 4:
             return "No luck ! The chest was empty!";
         case 5:
+            character.score += 5;
             return "You hear a faint voice that says 'Do not eat the bread' <br><br> Where coult it possibly come from ?";
         case 6:
+            character.score += 10;
             let addItemCase5 = character.addInventory(1);
             updateInventory();
             if (addItemCase5) {
@@ -76,15 +82,21 @@ openChest = () => {
                 return "You found an Health potion ! Unfortunately, your inventory is full !";
             }
         case 7:
-            character.chance = 6;
+            character.score += 15;
+            character.chance = 5;
             return "You found a four-leaf clover, your chance increased greatly!";
         case 8:
-            return "Not coded yet !";
+            character.score += 20;
+            character.addInventory(1);
+            character.addInventory(1);
+            return "You found 2 health potions!";
         case 9:
+            character.score += 25;
             character.maxHealth += 40;
             character.stamina += 40;
             return "You found a mushroom. Your max Health has been increased by 40.";
         case 10:
+            character.score += 30;
             if (character.attack_1 != "Master cut") {
                 character.strength = parseInt(character.strength) * 1.5;
                 character.attack_1 = "Master cut";
