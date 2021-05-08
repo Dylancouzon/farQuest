@@ -22,8 +22,9 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 5. [Contributing](#contributing)
 6. [Questions](#questions)
 
+<br>
 <hr>
-
+<br>
 
 ## Technology
 
@@ -65,12 +66,13 @@ Here is a shortlist of technologies and tools used to build this game.
 
 Please visit the links above to learn more.
 
+<br>
 
 ## Usage & Features
 
 **HomePage**<br>
 Create an account or sign-up to begin. You'll be taken to the character creation page if it is your first time.
-![homepage](./public/assets/homepage.gif)<br>
+![homepage](./public/assets/homepage.gif)<br><br>
 
 **Character creation**<br>
 You have a choice between 4 characters.
@@ -82,48 +84,51 @@ You have a choice between 4 characters.
 
 Each character class has their own unique set of attributes that effect the stamina, strength, power, speed, luck, and their own set of attacks.
 
-![character-selection](./public/assets/characterpage-demo.gif)<br>
+![character-selection](./public/assets/characterpage-demo.gif)<br><br>
 
-**Profile**
+**Profile**<br>
 On your profile page, you can see all the characters on your account. You can create new characters, delete old ones, or start a game by clicking on your character.
 
-![profile](./public/assets/user-profile-demo.gif)<br>
+![profile](./public/assets/user-profile-demo.gif)<br><br>
 
-**Adventure Mode**
+**Adventure Mode**<br>
 When you start a game you'll be taken into adventure mode where the story begins. Your character is given choices and will effect the events in the storyline.
 
-![adventure-mode](./public/assets/adventure-mode-1.gif)<br>
+![adventure-mode](./public/assets/adventure-mode-1.gif)<br><br>
 
-**Battle**
+**Battle**<br>
 You will encounter enemies in a turn-based fight. Your attacks and defense are calculated from your characters attributes. Keep an eye on your health bar and you trade attacks with the enemy.
 
-![battle](./public/assets/path-dungeon.gif)<br>
+![battle](./public/assets/path-dungeon.gif)<br><br>
 
-**Chest & Items**
+**Chest & Items**<br>
 You may find treasures in your journey, what surprises lie inside.
 
+GIF OF CHEST HERE
+
+<br>
 
 ## Game Mechanics
-
-Explain game mechanics here.
 
 **Storyline paths**<br>
 Diverging paths for the storyline created complexity in the client-side JavaScript.
 ![path-letsgo](./public/docs/RESTful-routes/path-letsgo.PNG)
-<br>
+<br><br>
 
 **Battle - instances**<br>
 Generating a battle instance during the story line, we fetch the enemy.id and render them to the HTML page.
-![generate-fight](./public/docs/RESTful-routes/generate-fight.PNG)
+![generate-fight](./public/docs/RESTful-routes/generate-fight.PNG)<br>
 *(Please see **/public/js/character.js** to review the code in more detail: **generateFight(); on line 162**)*
-<br>
+<br><br>
 
 **Battle - fight mechanics**<br>
 Here you can see the some of the factors we're taking in during each turn and action. We calculated the turn-based fight taking in the characters attributes and mixing in RNG. This effects the damange output, defense, chance to miss, etc.
 
 ![fight-rng](./public/docs/RESTful-routes/fight-rng.PNG)
-![fight-mechanics](./public/docs/fight-mechanics.gif)
+![fight-mechanics](./public/docs/fight-mechanics.gif)<br>
 *(Please see **/public/js/character.js** to review the code in more detail: **fight(); on line 190**)*
+<br><br>
+
 <br>
 
 ## License
@@ -150,6 +155,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+<br>
 
 ## Contributing
 
@@ -165,6 +171,7 @@ We are gamers at heart and this is our first game built together and it was such
 
 If you'd like to contribute, please fork this repository and submit pull request for the features above or other features you'd like to see in the game. We will review it for acceptance.
 
+<br>
 
 ## Contact Us
 
