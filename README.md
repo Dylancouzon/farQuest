@@ -2,7 +2,7 @@
 
 # FarQuest
 
-**Welcome to FarQuest**
+**Welcome to FarQuest**<br>
 A role-playing game of medieval fantasy. Select from a hero class of Knights, Wizards, Huntresses, or be an Assassin. Explore a rich world of story-telling, battles, and surprises as you journey to see the King. He's asked for your help and you fear you're running out of time.
 
 A letter arrived, it's from the King... he's asking for your help. You set off to the castle to speak with the King but you discover your journey there is frought with obstacles. Indeed, something is stirring in the kingdom and your haste quickens. When you arrive at the castle, you discover that there is nary a soul nor sound in the streets and you begin to investigate.
@@ -11,14 +11,16 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 
 [Click here to play FarQuest!](https://farquest.herokuapp.com/)
 <br>
+<br>
 
 ## Table of Contents
 
 1. [Technology](#technology)
 2. [Usage & Features](https://github.com/cheng21tang/Project-2/tree/models#usage--features)
-3. [License](#license)
-4. [Contributing](#contributing)
-5. [Questions](#questions)
+3. [Game Mechanics]()
+4. [License](#license)
+5. [Contributing](#contributing)
+6. [Questions](#questions)
 
 <hr>
 
@@ -101,6 +103,28 @@ You will encounter enemies in a turn-based fight. Your attacks and defense are c
 You may find treasures in your journey, what surprises lie inside.
 
 
+## Game Mechanics
+
+Explain game mechanics here.
+
+**Storyline paths**<br>
+Diverging paths for the storyline created complexity in the client-side JavaScript.
+![path-letsgo](./public/docs/RESTful-routes/path-letsgo.PNG)
+<br>
+
+**Battle - instances**<br>
+Generating a battle instance during the story line, we fetch the enemy.id and render them to the HTML page.
+![generate-fight](./public/docs/RESTful-routes/generate-fight.PNG)
+*(Please see **/public/js/character.js** to review the code in more detail: **generateFight(); on line 162**)*
+<br>
+
+**Battle - fight mechanics**<br>
+Here you can see the some of the factors we're taking in during each turn and action. We calculated the turn-based fight taking in the characters attributes and mixing in RNG. This effects the damange output, defense, chance to miss, etc.
+
+![fight-rng](./public/docs/RESTful-routes/fight-rng.PNG)
+![fight-mechanics](./public/docs/fight-mechanics.gif)
+*(Please see **/public/js/character.js** to review the code in more detail: **fight(); on line 190**)*
+<br>
 
 ## License
 
