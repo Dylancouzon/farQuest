@@ -102,7 +102,7 @@ path0 = async (char_id) => {
     $("#game_button3").hide();
 
     // Next path ID
-    $("#path_id").val('31');
+    $("#path_id").val('1');
 
 };
 
