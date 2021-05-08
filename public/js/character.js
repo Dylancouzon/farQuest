@@ -27,7 +27,6 @@ character_create = async (character_class) => {
 
 // Pulling the Character Data from the DB then creating the character
 generateChar = async (char_id) => {
-    alert(char_id);
     const response = await fetch('/api/char/generate', {
         method: 'POST',
         body: JSON.stringify({ char_id }),
