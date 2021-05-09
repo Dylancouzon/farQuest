@@ -200,7 +200,7 @@ Dylan Couzon
 <br>
 <br>
 
-<img align="left" width="200" height="200" src="./public/sprites/3.gif">
+<img align="left" width="200" height="200" src="./public/sprites/4.gif">
 
 Cheng Tang
 - [cheng21tang@gmail.com](mailto:cheng21tang@gmail.com)
