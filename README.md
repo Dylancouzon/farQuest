@@ -104,7 +104,7 @@ You will encounter enemies in a turn-based fight. Your attacks and defense are c
 **Chest & Items**<br>
 You may find treasures in your journey, what surprises lie inside.
 
-GIF OF CHEST HERE
+<---GIF OF CHEST HERE--->
 
 <br>
 
