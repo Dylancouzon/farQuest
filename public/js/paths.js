@@ -64,6 +64,8 @@ path14 = (button) => {
 };
 */
 
+//Include the fight music
+$("body").append(`<audio loop id="Fight-music" src="../sounds/boss.ogg" type="audio/ogg"></audio>`);
 
 var character;
 let chest;
@@ -94,7 +96,7 @@ path0 = async (char_id) => {
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
     $("#char-box").hide();
-    $("body").append(`<audio id="soundtrack" src="../sounds/${character.class_id}-main-theme.ogg" type="audio/ogg"></audio>`);
+    $("body").append(`<audio loop id="soundtrack" src="../sounds/${character.class_id}-main-theme.ogg" type="audio/ogg"></audio>`);
     
     // $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     if (character.is_NPC === 1) {
@@ -289,6 +291,8 @@ path5 = (button) => {
     explored[5].a = true;
     switch (button) {
         case 2:
+            $('#soundtrack').get(0).pause();
+            $('#Fight-music').get(0).play();
             $("#game_message").html(``);
             generateFight(5, "A giant monster attacks you from behind!<br><br>", 6)
             break;
@@ -300,6 +304,8 @@ path5 = (button) => {
     path6 = (button) => {
         explored[6].a = true;
         character.score += 100;
+        $('#soundtrack').get(0).play();
+        $('#Fight-music').get(0).pause();
         $("#game_message").html(`How ??<br> You were not supposed to survive.`);
         $("#game_button1").html(`I'm the boss!`);
         $("#game_button2").hide();
@@ -493,6 +499,8 @@ path18 = (button) => {
         case 1:
             explored[18].a = true;
             $("#game_message").html(``);
+            $('#soundtrack').get(0).pause();
+            $('#Fight-music').get(0).play();
             generateFight(6, "This is not Farley!<br><br> It's a monster!", 19)
             break;
         case 2:
@@ -505,6 +513,8 @@ path18 = (button) => {
 };
 
 path19 = async (button) => {
+    $('#soundtrack').get(0).play();
+    $('#Fight-music').get(0).pause();
     explored[19].a = true;
     character.score += 50;
     $("#game_message").html(`
@@ -602,6 +612,8 @@ path23 = (button) => {
             explored[23].a = true;
             character.score += 60;
             $("#game_message").html(``);
+            $('#soundtrack').get(0).pause();
+            $('#Fight-music').get(0).play();
             generateFight(7, "A Troll lives here!<br><br>", 24);
             break;
         case 2:
@@ -623,6 +635,8 @@ path23 = (button) => {
 };
 
 path24 = (button) => {
+    $('#soundtrack').get(0).play();
+    $('#Fight-music').get(0).pause();
     switch (button) {
         case 1:
         case 2:
@@ -698,6 +712,8 @@ path27 = (button) => {
             explored[27].b = true;
             character.score += 50;
             $("#game_message").html(``);
+            $('#soundtrack').get(0).pause();
+            $('#Fight-music').get(0).play();
             generateFight(8, "They Fight you!<br><br>", 28);
             break;
 
@@ -711,6 +727,8 @@ path27 = (button) => {
                 $("#path_id").val('28');
             } else {
                 character.score += 40;
+                $('#soundtrack').get(0).pause();
+                $('#Fight-music').get(0).play();
                 $("#game_message").html(``);
                 generateFight(8, "A guard caught you!<br><br>", 28);
             }
@@ -725,7 +743,8 @@ path28 = (button) => {
         case 1:
         case 2:
         case 3:
-
+            $('#soundtrack').get(0).play();
+            $('#Fight-music').get(0).pause();
             explored[28].a = true;
             $("#game_message").html(`You have entered the ennemy Kingdom<br><br> Where do you want to go?`);
             $("#game_button1").html(`Tavern`);
@@ -832,6 +851,8 @@ path32 = (button) => {
             explored[32].a = true;
             character.score += 100;
             $("#game_message").html(``);
+            $('#soundtrack').get(0).pause();
+            $('#Fight-music').get(0).play();
             generateFight(9, "You have found Farley!<br><br> The Evil Thomas wants to fight you!", 33);
             break;
 
@@ -857,7 +878,8 @@ path33 = async (button) => {
         case 2:
         case 3:
             const highscore = character.score;
-
+            $('#soundtrack').get(0).play();
+            $('#Fight-music').get(0).pause();
             const response = await fetch('/api/user/highscore', {
                 method: 'PUT',
                 body: JSON.stringify({ highscore }),
