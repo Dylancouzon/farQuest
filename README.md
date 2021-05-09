@@ -178,7 +178,7 @@ If you'd like to contribute, please fork this repository and submit pull request
 Please feel free to reach out to us to talk about the game or check out our other individual works.
 
 
-<img align="left" width="200" height="200" src="./public/sprites/1.gif">
+<img align="right" width="200" height="200" src="./public/sprites/1.gif">
 
 Liam Stewart
 - [liamchristopher.media@gmail.com](mailto:liamchristopher.media@gmail.com)
@@ -189,7 +189,7 @@ Liam Stewart
 <br>
 <br>
 
-<img align="left" width="200" height="200" src="./public/sprites/2.gif">
+<img align="right" width="200" height="200" padding-right="100px" src="./public/sprites/2.gif">
 
 Dylan Couzon
 - [dylancouzon@gmail.com](mailto:dylancouzon@gmail.com)
@@ -200,7 +200,7 @@ Dylan Couzon
 <br>
 <br>
 
-<img align="left" width="200" height="200" src="./public/sprites/4.gif">
+<img align="right" width="300" height="300" src="./public/sprites/4.gif">
 
 Cheng Tang
 - [cheng21tang@gmail.com](mailto:cheng21tang@gmail.com)
