@@ -136,12 +136,20 @@ $("#game_button3").click(async (event) => {
 
 //Generate the next path
 nextPath = async (button) => {
+
+    //Play the right music.
+
     // Need to move that timer thing
     let path = $("#path_id").val();
+    
+    if (path == 1) {
+        $('#soundtrack').get(0).play();
+    }
+
     if (path == "fight") {
         await fight(button);
     } else if (path == "GO") {
-        document.location.replace('/play/'+character_id);
+        document.location.replace('/play/' + character_id);
     } else if (path == 0) {
         show();
         game(0, 0, character_id);

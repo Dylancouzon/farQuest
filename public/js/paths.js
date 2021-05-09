@@ -63,6 +63,8 @@ path14 = (button) => {
     };
 };
 */
+
+
 var character;
 let chest;
 var typeSpeed = 75;
@@ -91,7 +93,10 @@ path0 = async (char_id) => {
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
-    $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
+    $("#char-box").hide();
+    $("body").append(`<audio id="soundtrack" src="../sounds/${character.class_id}-main-theme.ogg" type="audio/ogg"></audio>`);
+    
+    // $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     if (character.is_NPC === 1) {
         return gameOver("What do you think you're doing ?");
     }
@@ -121,6 +126,7 @@ path0 = async (char_id) => {
 
 //Story. Let's go = continue story, No = Game Over.
 path1 = (button) => {
+    $("#char-box").show();
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     switch (button) {
 
