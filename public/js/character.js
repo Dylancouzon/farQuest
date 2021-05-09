@@ -5,9 +5,9 @@ character_create = async (character_class) => {
 
     const character_name = $("#character_name").val();
     //Farley Easter Egg :D.
-        if(character_name == "Farley"){
-            character_class = 10;
-        }
+    if (character_name == "Farley") {
+        character_class = 10;
+    }
     if (character_name && character_class) {
         const response = await fetch('/api/char/create', {
             method: 'POST',
@@ -62,6 +62,7 @@ openChest = () => {
             return "The chest was trapped and exploded ! You lost half your health points !";
         case 2:
             character.stamina -= 20;
+            updateHealth();
             return "You found some old cheese and ate it, you have lost 20hp, Why would you do that ?";
         case 3:
             return "You found an old carrot cake recipe. Looks delicious.";
@@ -128,6 +129,8 @@ getJinn = () => {
         case 2:
             //Age the wizard
             character.jinn = 2;
+            character.stamina = character.stamina * 2
+            character.maxHealth = character.stamina;
             setTimeout(() => {
                 setInterval(function () {
                     let parkinson = 1;
@@ -148,7 +151,9 @@ getJinn = () => {
             character.speed = 10;
             $('#death-timer').show();
             return "<p>Jinn: You, Assassin, wished for super speed and your wish has been Granted.<br> However, do never slow down or you will die!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
-
+        case 10:
+            character.score+=100;
+            return"The Jinn looked at you in the eyes, then dissapeared. <br> He looked scared!";
     }
 }
 
@@ -203,7 +208,7 @@ fight = async (attack, message) => {
                 charCritical = () => { return (Math.random() * 100 < criticallArr[character.luck]); }
                 $("#game_message").append(`You used ${character.attack_1} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-light.gif");
-                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
+                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1400)
 
 
 
@@ -214,7 +219,7 @@ fight = async (attack, message) => {
                 charCritical = () => { return (Math.random() * 100 < criticallArr[character.luck]); }
                 $("#game_message").append(`You used ${character.attack_2} on ${ennemy.name}.<br><br>`);
                 $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-attack-heavy.gif");
-                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1500)
+                setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif"); }, 1400)
 
             }
             if (charMiss()) {

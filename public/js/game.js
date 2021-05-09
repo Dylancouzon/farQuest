@@ -140,6 +140,8 @@ nextPath = async (button) => {
     let path = $("#path_id").val();
     if (path == "fight") {
         await fight(button);
+    } else if (path == "GO") {
+        document.location.replace('/play/'+character_id);
     } else if (path == 0) {
         show();
         game(0, 0, character_id);

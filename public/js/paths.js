@@ -65,7 +65,13 @@ path14 = (button) => {
 */
 var character;
 let chest;
+var typeSpeed = 75;
 
+//Typwritter plugIn
+var message = document.getElementById('game_message');
+var typewriter = new Typewriter(message, {
+    delay: typeSpeed,
+});
 // Creates an object of object to know all the visited paths
 var explored = {};
 for (let i = 1; i < 35; i++) {
@@ -90,16 +96,23 @@ path0 = async (char_id) => {
         return gameOver("What do you think you're doing ?");
     }
     //Message
-    $("#game_message").html(`
-    Welcome to our game ${character.name} !<br><br>
-    NAME is a turn based RPG, You will pursue an incredible adventure seeking for Farley, the lost cat! <br><br>
-     Enjoy !
-    `);
+    // $("#game_message").html(`
+    // Welcome to our game ${character.name} !<br><br>
+    // NAME is a turn based RPG, You will pursue an incredible adventure seeking for Farley, the lost cat! <br><br>
+    //  Enjoy !
+    // `);
+
+    typewriter
+        .typeString('Welcome to FarQuest Adventurer!<br>')
+        .pauseFor(300)
+        .typeString(`FarQuest is a turn based RPG.`)
+        .typeString(`You will pursue an incredible adventure seeking for Farley, the lost cat!`)
+        .start();
 
     //Buttons 
-    $("#game_button1").html(`Continue`);
-    $("#game_button2").hide();
-    $("#game_button3").hide();
+    $("#game_button1").html(`Continue`)
+    $("#game_button2").hide()
+    $("#game_button3").hide()
 
     // Next path ID
     $("#path_id").val('1');
@@ -184,13 +197,12 @@ path3 = (button) => {
                 } else {
                     $("#game_button1").hide();
                 }
+                $("#game_button2").html(`Dungeon`);
                 if (!explored[4].c) {
                     $("#game_button3").html(`Kings Quarters`);
                 } else {
                     $("#game_button3").hide();
                 }
-                $("#game_button2").html(`Dungeon`);
-                $("#game_button1").hide();
                 $("#path_id").val('4');
             }
             break;
@@ -873,13 +885,13 @@ gameOver = (message) => {
         explored[i] = {};
     }
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
-    setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 1500)
+    setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 2000)
     $("#game_message").html(message);
     $("#game_message").append(`<br><br> Your Score: ${character.score}`);
     $("#game_button1").html(`Play again`);
     $("#game_button2").hide();
     $("#game_button3").hide();
-    $("#path_id").val('0');
+    $("#path_id").val('GO');
 };
 endGame = () => {
 
