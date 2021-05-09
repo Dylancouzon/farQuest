@@ -885,7 +885,7 @@ gameOver = (message) => {
         explored[i] = {};
     }
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead.gif");
-    setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 2000)
+    setTimeout(() => { $("#char-sprite").attr("src", "/sprites/" + character.class_id + "-dead-static.png"); }, 1900)
     $("#game_message").html(message);
     $("#game_message").append(`<br><br> Your Score: ${character.score}`);
     $("#game_button1").html(`Play again`);

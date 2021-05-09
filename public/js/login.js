@@ -35,6 +35,7 @@ signup = async () => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        const res = await response.json();
         if (response.ok) {
             document.location.replace('/');
         } else {
@@ -42,7 +43,7 @@ signup = async () => {
 
         }
     } else {
-        $("#login-error").html(res.message);
+        $("#login-error").html("All fields required");
     }
 }
 
