@@ -43,7 +43,7 @@ router.post('/signup', async (req, res) => {
     try {
         const findUser = await User.findOne({ where: { username: req.body.username } });
         if (findUser) {
-            res.status(400).json({ message: 'Username already Existing' });
+            res.status(400).json({ message: 'Username already Taken' });
             return;
         }
         const userData = await User.create(req.body);
@@ -56,8 +56,7 @@ router.post('/signup', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        console.log(err);
-        res.status(400).json(err);
+        res.status(400).json({ message: 'Your Password must be atleast 8 characters long.' });
     }
 });
 

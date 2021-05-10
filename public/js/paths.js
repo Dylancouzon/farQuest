@@ -838,6 +838,8 @@ path30 = (button) => {
 path31 = (button) => {
     switch (button) {
         case 1:
+            game(29, 1);
+            break;
         case 2:
         case 3:
             character.score += 30;
