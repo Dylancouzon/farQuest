@@ -51,8 +51,8 @@ openChest = () => {
      chest = await openChest();
     chest will return the chest response, the effects are applied automatically.
     */
-    $("#enemy-sprite-box").show();
     $("#enemy-sprite").attr("src", "/sprites/chest.gif");
+    $("#enemy-sprite-box").show();
     let luck = (parseInt(character.luck) / 10) + 1;
     let roll = Math.round(Math.floor(Math.random() * 10) * luck);
     if (roll > 10) {
@@ -166,8 +166,7 @@ let turn = 1;
 var ennemy;
 var afterFight;
 generateFight = async (ennemy_id, message, afterPath) => {
-    $("#enemy-char-box").show();
-    $("#enemy-sprite-box").show();
+
     //Where to go once the fight is done
     afterFight = afterPath;
     // Generate the ennemy character
@@ -175,6 +174,8 @@ generateFight = async (ennemy_id, message, afterPath) => {
     ennemy = new CharacterObj(getEnnemyStats);
     $("#enemy-sprite").attr("src", "/sprites/" + ennemy.class_id + ".gif");
     $("#enemy-char-name").html(ennemy.name);
+    $("#enemy-char-box").show();
+    $("#enemy-sprite-box").show();
     updateHealthEnnemy();
     // The user starts first unless the ennemy speed is greater.
     // if (character.speed >= ennemy.speed) {
