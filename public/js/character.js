@@ -51,6 +51,8 @@ openChest = () => {
      chest = await openChest();
     chest will return the chest response, the effects are applied automatically.
     */
+    $("#enemy-sprite-box").show();
+    $("#enemy-sprite").attr("src", "/sprites/chest.gif");
     let luck = (parseInt(character.luck) / 10) + 1;
     let roll = Math.round(Math.floor(Math.random() * 10) * luck);
     if (roll > 10) {
@@ -232,7 +234,8 @@ fight = async (attack, message) => {
                     charDmg = charDmg * 1.5
                     $("#game_message").append(`Critical Shot!<br><br>`);
                 }
-
+                $("#char-sprite").addClass("animate__animated animate__shakeX");
+                setTimeout(() => { $("#char-sprite").removeClass("animate__animated animate__shakeX");}, 1000)
                 if (character.attack_2 == "Fury" && attack === 2) {
                     character.strength = character.strength * 1.1;
                     $("#game_message").append(`You gain 10% Strength!<br><br>`);
@@ -247,6 +250,7 @@ fight = async (attack, message) => {
                 }
                 charDmg = Math.round(charDmg * 100) / 100;
                 ennemy.stamina -= charDmg;
+                
                 $("#game_message").append(`${ennemy.name} takes ${charDmg} damage<br><br>`);
                 updateHealthEnnemy();
 
@@ -315,7 +319,8 @@ fight = async (attack, message) => {
                     $("#game_message").append(`${ennemy.name} hurts himself in his confusion<br><br>`);
                     updateHealthEnnemy();
                 }
-
+                $("#enemy-sprite-box").addClass("animate__animated animate__shakeX");
+                setTimeout(() => { $("#enemy-sprite-box").removeClass("animate__animated animate__shakeX");}, 1000)
                 ennemyDmg = Math.round(ennemyDmg * 100) / 100;
                 character.stamina -= ennemyDmg;
                 $("#game_message").append(`You take ${ennemyDmg} dmg.<br>`);
