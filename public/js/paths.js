@@ -66,7 +66,8 @@ path14 = (button) => {
 
 //Include the fight music
 $("body").append(`<audio loop id="Fight-music" src="../sounds/boss.ogg" type="audio/ogg"></audio>`);
-
+$("body").append(`<audio loop id="soundtrack" src="../sounds/main-theme.ogg" type="audio/ogg"></audio>`);
+$("body").append(`<audio loop id="jinn-chest" src="../sounds/jinn-chest.ogg" type="audio/ogg"></audio>`);
 var character;
 let chest;
 var typeSpeed = 75;
@@ -96,7 +97,7 @@ path0 = async (char_id) => {
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
     $("#char-box").hide();
-    $("body").append(`<audio loop id="soundtrack" src="../sounds/${character.class_id}-main-theme.ogg" type="audio/ogg"></audio>`);
+    
     
     // $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     if (character.is_NPC === 1) {
@@ -395,6 +396,8 @@ path12 = (button) => {
 //Jinn yes or no
 path13 = (button) => {
     explored[13].a = true;
+    $('#soundtrack').get(0).pause();
+    $('#jinn-chest').get(0).play();
     $("#game_message").html(`
     A Jinn appears before your eyes!<br>
     He thanks you for liberating him and he offers you to grant your biggest desire!<br>
@@ -431,6 +434,8 @@ path14 = async (button) => {
 
 // Now can follow the forest path
 path15 = (button) => {
+    $('#soundtrack').get(0).play();
+    $('#jinn-chest').get(0).pause();
     switch (button) {
         case 1:
         case 2:
@@ -513,8 +518,8 @@ path18 = (button) => {
 };
 
 path19 = async (button) => {
-    $('#soundtrack').get(0).play();
     $('#Fight-music').get(0).pause();
+    $('#jinn-chest').get(0).play();
     explored[19].a = true;
     character.score += 50;
     $("#game_message").html(`
@@ -530,6 +535,8 @@ path19 = async (button) => {
 };
 
 path20 = (button) => {
+    $('#soundtrack').get(0).play();
+    $('#jinn-chest').get(0).pause();
     switch (button) {
         case 1:
         case 2:
@@ -745,6 +752,7 @@ path28 = (button) => {
         case 3:
             $('#soundtrack').get(0).play();
             $('#Fight-music').get(0).pause();
+            $('#jinn-chest').get(0).pause();
             explored[28].a = true;
             $("#game_message").html(`You have entered the ennemy Kingdom<br><br> Where do you want to go?`);
             $("#game_button1").html(`Tavern`);
@@ -785,6 +793,8 @@ path29 = async (button) => {
             explored[29].c = true;
             character.score += 10;
             chest = await openChest();
+            $('#soundtrack').get(0).pause();
+            $('#jinn-chest').get(0).play();
             $("#game_message").html(`You found a chest!<br><br> ${chest}`);
             $("#game_button1").html(`Go back`);
             $("#game_button2").hide();
@@ -907,6 +917,10 @@ path33 = async (button) => {
 
 
 gameOver = (message) => {
+    $('#soundtrack').get(0).pause();
+    $('#Fight-music').get(0).pause();
+
+    $('#death-music').get(0).play();
     character.inventory = { a: 0, b: 0, c: 0, c: 0 };
     updateInventory()
     for (let i = 1; i < 35; i++) {
