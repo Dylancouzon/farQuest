@@ -17,8 +17,9 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 
 1. [Technology](#technology)
 2. [Usage & Features](https://github.com/cheng21tang/Project-2/tree/models#usage--features)
-3. [Game Mechanics]()
+3. [Game Mechanics](https://github.com/cheng21tang/farQuest#game-mechanics)
 4. [License](#license)
+5. [Music](#music)
 5. [Contributing](#contributing)
 6. [Questions](#questions)
 
@@ -104,7 +105,7 @@ You will encounter enemies in a turn-based fight. Your attacks and defense are c
 **Chest & Items**<br>
 You may find treasures in your journey, what surprises lie inside.
 
-<---GIF OF CHEST HERE--->
+![open-chest](./public/docs/adventure-mode/open-chest.PNG)
 
 <br>
 
@@ -157,10 +158,10 @@ SOFTWARE.
 
 <br>
 
-## Musics
+## Music
 
 All Musics are free of charge, but all copyrights vest with YouFulca.
-- [Link](https://wingless-seraph.net/en)
+- [wingless-seraph](https://wingless-seraph.net/en)
 
 <br>
 
