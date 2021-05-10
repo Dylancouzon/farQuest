@@ -68,6 +68,7 @@ path14 = (button) => {
 $("body").append(`<audio loop id="Fight-music" src="../sounds/boss.ogg" type="audio/ogg"></audio>`);
 $("body").append(`<audio loop id="soundtrack" src="../sounds/main-theme.ogg" type="audio/ogg"></audio>`);
 $("body").append(`<audio loop id="jinn-chest" src="../sounds/jinn-chest.ogg" type="audio/ogg"></audio>`);
+$("body").append(`<audio loop id="death-music" src="../sounds/game-over.ogg" type="audio/ogg"></audio>`);
 var character;
 let chest;
 var typeSpeed = 75;
@@ -93,12 +94,13 @@ show = () => {
 
 path0 = async (char_id) => {
     show();
+    $('#death-music').get(0).pause();
     let getStats = await generateChar(char_id);
     character = new CharacterObj(getStats);
     $("#char-name").html(character.name);
     $("#char-box").hide();
-    
-    
+
+
     // $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
     if (character.is_NPC === 1) {
         return gameOver("What do you think you're doing ?");
@@ -131,6 +133,7 @@ path0 = async (char_id) => {
 path1 = (button) => {
     $("#char-box").show();
     $("#char-sprite").attr("src", "/sprites/" + character.class_id + ".gif");
+    
     switch (button) {
 
         case 1:
@@ -138,9 +141,8 @@ path1 = (button) => {
             $("#game_message").html(`
                 YOU RECIEVE A LETTER FROM A KING IN A LAND FAR AWAY.<br>
                 HE IS ASKING FOR YOUR HELP TO RETRIEVE HIS BELOVED CAT FARLEY WHO WAS TAKEN AWAY BY AN EVIL LORD NAMED THOMAS !<br>
-                HE WILL OFFER GREAT RECOMPENSE TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
+                HE WILL OFFER GREAT COMPENSATION TO THE HERO THAT WILL BE ABLE TO BRING THE ROYAL ANIMAL BACK<br>
             `);
-
             $("#game_button1").html(`LET'S GO!`);
             $("#game_button2").html(`No.`);
             $("#game_button3").hide();
@@ -180,7 +182,7 @@ path2 = (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well.... It Doesn't matter, You died!");
     };
 };
 
@@ -222,7 +224,7 @@ path3 = (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -283,7 +285,7 @@ path4 = (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -360,7 +362,7 @@ path12 = (button) => {
             $("#game_message").html(`
                 Once you start to get closer, you can feel your body being dragged by mystical forces towards a mysterious object<br><br>
                 You pick up the object, and it is engraved with mysterious characters.<br>
-                As you look at it, the Seal on the object dissapear and a dense fog start to materialize.<br>
+                As you look at it, the Seal on the object vanishes and a dense fog start to materialize.<br>
             `);
             $("#game_button1").html(`Next`);
             $("#game_button2").hide();
@@ -389,7 +391,7 @@ path12 = (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -400,7 +402,7 @@ path13 = (button) => {
     $('#jinn-chest').get(0).play();
     $("#game_message").html(`
     A Jinn appears before your eyes!<br>
-    He thanks you for liberating him and he offers you to grant your biggest desire!<br>
+    He thanks you for liberating him and offers to grant you your biggest desire!<br>
     `);
     $("#game_button1").html(`Yes!`);
     $("#game_button2").html(`No thanks.`);
@@ -442,7 +444,7 @@ path15 = (button) => {
         case 3:
             explored[15].a = true;
             $("#game_message").html(`
-            You are back at the begging of the forest.<br>
+            You are back at the beginning of the forest.<br>
             The mystical presence seems to have dissipated.<br>
             `);
             $("#game_button1").html(`Go back to the lake`);
@@ -451,7 +453,7 @@ path15 = (button) => {
             $("#path_id").val('16');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -474,7 +476,7 @@ path16 = (button) => {
             game(17, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -483,8 +485,8 @@ path17 = (button) => {
         case 1:
             explored[17].a = true;
             $("#game_message").html(`
-            You are a a Fork in the road<br><br>
-            On the left you can see animal Footprints<br>
+            You are at a Fork in the road<br><br>
+            On the left you can see animal footprints<br>
             On the right, you can see wagon prints.<br>
             `);
             $("#game_button1").html(`Go Left`);
@@ -494,7 +496,7 @@ path17 = (button) => {
             $("#path_id").val('18');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -513,7 +515,7 @@ path18 = (button) => {
             game(20, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -525,6 +527,7 @@ path19 = async (button) => {
     $("#game_message").html(`
             You defeated the monster and found a chest ! Yay<br>
             `);
+
     chest = await openChest();
     $("#game_message").append(chest);
     $("#game_button1").html(`Follow the other path`);
@@ -554,7 +557,7 @@ path20 = (button) => {
             $("#path_id").val('21');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -592,7 +595,7 @@ path21 = (button) => {
             game(22, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -609,7 +612,7 @@ path22 = (button) => {
             $("#path_id").val('23');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -637,7 +640,7 @@ path23 = (button) => {
             game(24, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -656,7 +659,7 @@ path24 = (button) => {
             $("#path_id").val('25');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -676,7 +679,7 @@ path25 = (button) => {
         case 2:
             explored[25].b = true;
             character.score += 20;
-            $("#game_message").html(`She starts mumble some nonsense<br><br> The only thing you picked up is: The bread is a lie.`);
+            $("#game_message").html(`She starts to mumble some nonsense<br><br> The only thing you picked up is: The bread is a lie.`);
             $("#game_button1").html(`That was weird`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -688,7 +691,7 @@ path25 = (button) => {
             game(26, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here ? Well... It Doesn't matter, You died!");
     };
 };
 
@@ -698,14 +701,14 @@ path26 = (button) => {
         case 2:
         case 3:
             explored[26].a = true;
-            $("#game_message").html(`You reach the ennemy's kingdom Moat`);
-            $("#game_button1").html(`Try and swim Across`);
-            $("#game_button2").html(`Yell at the guards to let you in`);
-            $("#game_button3").html(`Try to sneak in.`);
+            $("#game_message").html(`You reached the moat`);
+            $("#game_button1").html(`Try and swim Across?`);
+            $("#game_button2").html(`Yell at the guards to let you in?`);
+            $("#game_button3").html(`Try to sneak in?`);
             $("#path_id").val('27');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -713,7 +716,7 @@ path27 = (button) => {
     switch (button) {
         case 1:
             explored[27].a = true;
-            gameOver("A Beast ate you! <br><br> You died.");
+            gameOver("A beast ate you! <br><br> You died.");
             break;
         case 2:
             explored[27].b = true;
@@ -721,13 +724,13 @@ path27 = (button) => {
             $("#game_message").html(``);
             $('#soundtrack').get(0).pause();
             $('#Fight-music').get(0).play();
-            generateFight(8, "They Fight you!<br><br>", 28);
+            generateFight(8, "They're attacking!<br><br>", 28);
             break;
 
         case 3:
             explored[27].c = true;
             if (character.luck > 2) {
-                $("#game_message").html(`You Sucessfully sneaked in!`);
+                $("#game_message").html(`You sneaked in!`);
                 $("#game_button1").html(`Next`);
                 $("#game_button2").hide();
                 $("#game_button3").hide();
@@ -741,7 +744,7 @@ path27 = (button) => {
             }
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -754,7 +757,7 @@ path28 = (button) => {
             $('#Fight-music').get(0).pause();
             $('#jinn-chest').get(0).pause();
             explored[28].a = true;
-            $("#game_message").html(`You have entered the ennemy Kingdom<br><br> Where do you want to go?`);
+            $("#game_message").html(`You have entered the enemy Kingdom<br><br> Where do you want to go?`);
             $("#game_button1").html(`Tavern`);
             $("#game_button2").html(`Castle`);
             if (!explored[29].c) {
@@ -765,7 +768,7 @@ path28 = (button) => {
             $("#path_id").val('29');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -782,7 +785,7 @@ path29 = async (button) => {
 
         case 2:
             explored[29].b = true;
-            $("#game_message").html(`Guards: <br><br> Step back or you will die!`);
+            $("#game_message").html(`Guards: <br><br> Step back or die!`);
             $("#game_button1").html(`Go back`);
             $("#game_button2").hide();
             $("#game_button3").hide();
@@ -792,6 +795,8 @@ path29 = async (button) => {
         case 3:
             explored[29].c = true;
             character.score += 10;
+            $("#enemy-sprite").attr("src", "/sprites/chest.gif");
+            $("#enemy-sprite").show();
             chest = await openChest();
             $('#soundtrack').get(0).pause();
             $('#jinn-chest').get(0).play();
@@ -802,7 +807,7 @@ path29 = async (button) => {
             $("#path_id").val('28');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -811,7 +816,7 @@ path30 = (button) => {
         case 1:
             document.addEventListener('keydown', keyHandler, false);
             explored[30].a = true;
-            $("#game_message").html(`The wizard says: Show me that you are a member of the Konami clan.`);
+            $("#game_message").html(`The wizard says: "Show me that you are a member of the Konami clan".`);
             $("#game_button1").html(`Go back!`);
             $("#game_button2").hide();
             $("#game_button3").hide()
@@ -819,14 +824,14 @@ path30 = (button) => {
             break;
         case 2:
             explored[30].b = true;
-            gameOver("The bread was Poisonned.<br><br> You died !")
+            gameOver("The bread was poisoned.<br><br> You died!")
             break;
         case 3:
             explored[30].c = true;
             game(28, 1);
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -849,7 +854,7 @@ path31 = (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
@@ -863,7 +868,7 @@ path32 = (button) => {
             $("#game_message").html(``);
             $('#soundtrack').get(0).pause();
             $('#Fight-music').get(0).play();
-            generateFight(9, "You have found Farley!<br><br> The Evil Thomas wants to fight you!", 33);
+            generateFight(9, "Farley, it's you!<br><br> Oh, no. The evil Thomas wants to fight you!", 33);
             break;
 
         case 2:
@@ -878,7 +883,7 @@ path32 = (button) => {
             $("#path_id").val('31');
             break;
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... Itt doesn't matter, your dead!");
     };
 };
 
@@ -907,7 +912,7 @@ path33 = async (button) => {
             break;
 
         default:
-            gameOver("How did you get here ? Well, it Doesn't matter, You died!");
+            gameOver("How did you get here? Well... It doesn't matter, your dead!");
     };
 };
 
