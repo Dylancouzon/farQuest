@@ -157,6 +157,13 @@ SOFTWARE.
 
 <br>
 
+## Musics
+
+All Musics are free of charge, but all copyrights vest with YouFulca.
+- [Link](https://wingless-seraph.net/en)
+
+<br>
+
 ## Contributing
 
 Future development opportunites:
