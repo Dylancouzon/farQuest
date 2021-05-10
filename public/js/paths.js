@@ -879,8 +879,8 @@ path32 = (button) => {
             character.addInventory(1);
             updateInventory();
             $("#game_message").html(`You found a potion`);
-            $("#game_button1").html(`Go back`);
-            $("#game_button2").hide();
+            $("#game_button2").html(`Go back`);
+            $("#game_button1").hide();
             $("#game_button3").hide()
             $("#path_id").val('31');
             break;
