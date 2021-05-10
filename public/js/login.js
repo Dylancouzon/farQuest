@@ -39,7 +39,7 @@ signup = async () => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            $("#login-error").html("Your password must be at least 8 characters.");
+            $("#login-error").html(res.message);
 
         }
     } else {

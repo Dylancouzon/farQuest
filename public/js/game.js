@@ -197,7 +197,7 @@ var keyHandler = function (event) {
     // If complete, alert and reset
     if (pattern.length === current) {
         current = 0;
-        $("#game_message").append(`You do speak the language of the Gods !`);
+        $("#game_message").append(`You speak the language of the Gods !`);
         $("#game_button1").html(`Sneak in`);
         $("#game_button1").show();
     }
