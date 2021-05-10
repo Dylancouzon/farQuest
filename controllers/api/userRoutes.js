@@ -43,7 +43,6 @@ router.post('/signup', async (req, res) => {
     try {
         const findUser = await User.findOne({ where: { username: req.body.username } });
         if (findUser) {
-            //Tag id= login-error
             res.status(400).json({ message: 'Username already Existing' });
             return;
         }
