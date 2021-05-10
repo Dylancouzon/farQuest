@@ -61,55 +61,55 @@ openChest = () => {
     switch (roll) {
         case 1:
             character.stamina = Math.round(character.stamina / 2);
-            return "The chest was trapped and exploded ! You lost half your health points !";
+            return "<br><br>The chest was trapped and exploded ! You lost half your health points !";
         case 2:
             character.stamina -= 20;
             updateHealth();
-            return "You found some old cheese and ate it, you have lost 20hp, Why would you do that ?";
+            return "<br><br>You found some old cheese and ate it, you have lost 20hp, Why would you do that ?";
         case 3:
-            return "You found an old carrot cake recipe. Looks delicious.";
+            return "<br><br>You found an old carrot cake recipe. Looks delicious.";
         case 4:
-            return "No luck ! The chest was empty!";
+            return "<br><br>No luck ! The chest was empty!";
         case 5:
             character.score += 5;
-            return "You hear a faint voice that says 'Do not eat the bread' <br><br> Where coult it possibly come from ?";
+            return "<br><br>You hear a faint voice that says 'Do not eat the bread' <br><br> Where coult it possibly come from ?";
         case 6:
             character.score += 10;
             let addItemCase5 = character.addInventory(1);
             updateInventory();
             if (addItemCase5) {
-                return "You found an Health potion ! It has been added to your inventory !";
+                return "<br><br>You found an Health potion ! It has been added to your inventory !";
             } else {
-                return "You found an Health potion ! Unfortunately, your inventory is full !";
+                return "<br><br>You found an Health potion ! Unfortunately, your inventory is full !";
             }
         case 7:
             character.score += 15;
             character.chance = 5;
-            return "You found a four-leaf clover, your chance increased greatly!";
+            return "<br><br>You found a four-leaf clover, your chance increased greatly!";
         case 8:
             character.score += 20;
             character.addInventory(1);
             character.addInventory(1);
             updateInventory();
-            return "You found 2 health potions!";
+            return "<br><br>You found 2 health potions!";
         case 9:
             character.score += 25;
             character.maxHealth += 40;
             character.stamina += 40;
-            return "You found a mushroom. Your max Health has been increased by 40.";
+            return "<br><br>You found a mushroom. Your max Health has been increased by 40.";
         case 10:
             character.score += 30;
             if (character.attack_1 != "Master cut") {
                 character.strength = parseInt(character.strength) * 1.5;
                 character.attack_1 = "Master cut";
                 character.attack_2 = "Final blow";
-                return "You found the MasterSword ! Your attacks are now Legendary !";
+                return "<br><br>You found the MasterSword ! Your attacks are now Legendary !";
             } else {
-                return "You found another Master Sword. <br><br> Not very usefull but go buy a lottery ticket buddy !"
+                return "<br><br>You found another Master Sword. <br><br> Not very usefull but go buy a lottery ticket buddy !"
             }
 
         default:
-            return gameOver("A Ghoul came out of the chest and ate you alive, You died !");
+            return gameOver("<br><br>A Ghoul came out of the chest and ate you alive, You died !");
     }
 }
 
@@ -127,7 +127,7 @@ getJinn = () => {
         case 1:
             character.jinn = 1;
             character.strength += 10;
-            return "<p>Jinn: You, knight, wished to have super strength and your wish has been granted.<br>You are now so strong that your attacks will cause you to hurt yourself.<br><br> The Jinn dissapears laughing maniacally.<br></p>";
+            return "Jinn: You, knight, wished to have super strength and your wish has been granted.<br>You are now so strong that your attacks will cause you to hurt yourself.<br><br> The Jinn dissapears laughing maniacally.<br>";
         case 2:
             //Age the wizard
             character.jinn = 2;
@@ -142,17 +142,17 @@ getJinn = () => {
                     gettingOlder -= 0.005;
                 }, 1600)
             }, 5000);
-            return "<p> Jinn: You, wizard, wished for immortality and your wish has been granted.<br> You will have to endure the effects of aging for all the eternity!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
+            return " Jinn: You, wizard, wished for immortality and your wish has been granted.<br> You will have to endure the effects of aging for all the eternity!<br><br> The Jinn dissapears laughing maniacally.<br>";
         case 3:
             character.jinn = 3;
             character.speed = 10;
-            return "<p>Jinn: You, Huntress, wished for perfect aim.<br> You will never miss your target ever again but you will see no more.<br><br> The Jinn dissapears laughing maniacally.<br></p>";
+            return "Jinn: You, Huntress, wished for perfect aim.<br> You will never miss your target ever again but you will see no more.<br><br> The Jinn dissapears laughing maniacally.<br>";
         case 4:
             character.jinn = 4;
             character.strength = character.strength * 1.2;
             character.speed = 10;
             $('#death-timer').show();
-            return "<p>Jinn: You, Assassin, wished for super speed and your wish has been Granted.<br> However, do never slow down or you will die!<br><br> The Jinn dissapears laughing maniacally.<br></p>";
+            return "Jinn: You, Assassin, wished for super speed and your wish has been Granted.<br> However, do never slow down or you will die!<br><br> The Jinn dissapears laughing maniacally.<br>";
         case 10:
             character.score+=100;
             return"The Jinn looked at you in the eyes, then dissapeared. <br> He looked scared!";
