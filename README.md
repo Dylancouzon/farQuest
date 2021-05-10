@@ -170,12 +170,17 @@ All Musics are free of charge, but all copyrights vest with YouFulca.
 ## Contributing
 
 Future development opportunites:
-- Story path model to be stored in database. Adds flexiblility and reduces lines of code.
-- Additional classes, secondary character attribute like mana, rage, etc.
-- Provide starter points during character creation for user to distribute
-- Leveling system
-- More inventory items!
-- Equippable items; armor, swords, shields, etc.
+- Additional classes
+- Starter points to distribute
+- Leveling type system
+- Addition story modes
+- Model for Storylines
+- Character armor set
+- Environmental effects
+- Sound effects for attacks
+- Dynamic backgrounds in adventure mode
+- Player-vs-Player battle
+
 
 We are gamers at heart and this is our first game built together and it was such a great learning experience of all the inner workings of a game of this scope. Then we started to think of the magnitude of our favorite games of the past and the effort and planning it takes to build those. Wow!
 
