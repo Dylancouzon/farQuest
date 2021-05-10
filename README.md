@@ -42,6 +42,7 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 <img align="left" alt="express" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/npm/npm.png"/> &nbsp;
+
 <br><br>
 
 Here is a shortlist of technologies and tools used to build this game.
@@ -62,6 +63,7 @@ Here is a shortlist of technologies and tools used to build this game.
     - [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
     - [dotenv](https://www.npmjs.com/package/dotenv)
     - [RPGUI](https://github.com/RonenNess/RPGUI)
+    - [typewriter-js](https://www.npmjs.com/package/typewriter-effect)
 - [MySQL](https://www.mysql.com/)
 - [HEROKU](https://www.heroku.com/)
 
