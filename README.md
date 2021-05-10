@@ -104,7 +104,7 @@ You will encounter enemies in a turn-based fight. Your attacks and defense are c
 **Chest & Items**<br>
 You may find treasures in your journey, what surprises lie inside.
 
-GIF OF CHEST HERE
+<---GIF OF CHEST HERE--->
 
 <br>
 
@@ -200,7 +200,7 @@ Dylan Couzon
 <br>
 <br>
 
-<img align="left" width="200" height="200" src="./public/sprites/3.gif">
+<img align="left" width="200" height="200" src="./public/sprites/4.gif">
 
 Cheng Tang
 - [cheng21tang@gmail.com](mailto:cheng21tang@gmail.com)
