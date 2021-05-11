@@ -17,8 +17,9 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 
 1. [Technology](#technology)
 2. [Usage & Features](https://github.com/cheng21tang/Project-2/tree/models#usage--features)
-3. [Game Mechanics]()
+3. [Game Mechanics](https://github.com/cheng21tang/farQuest#game-mechanics)
 4. [License](#license)
+5. [Music](#music)
 5. [Contributing](#contributing)
 6. [Questions](#questions)
 
@@ -41,6 +42,7 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 <img align="left" alt="express" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png"/> &nbsp;
 <img align="left" alt="SQL" width="25px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/npm/npm.png"/> &nbsp;
+
 <br><br>
 
 Here is a shortlist of technologies and tools used to build this game.
@@ -61,6 +63,7 @@ Here is a shortlist of technologies and tools used to build this game.
     - [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
     - [dotenv](https://www.npmjs.com/package/dotenv)
     - [RPGUI](https://github.com/RonenNess/RPGUI)
+    - [typewriter-js](https://www.npmjs.com/package/typewriter-effect)
 - [MySQL](https://www.mysql.com/)
 - [HEROKU](https://www.heroku.com/)
 
@@ -104,7 +107,7 @@ You will encounter enemies in a turn-based fight. Your attacks and defense are c
 **Chest & Items**<br>
 You may find treasures in your journey, what surprises lie inside.
 
-<---GIF OF CHEST HERE--->
+![open-chest](./public/docs/adventure-mode/open-chest.PNG)
 
 <br>
 
@@ -157,22 +160,27 @@ SOFTWARE.
 
 <br>
 
-## Musics
+## Music
 
 All Musics are free of charge, but all copyrights vest with YouFulca.
-- [Link](https://wingless-seraph.net/en)
+- [wingless-seraph](https://wingless-seraph.net/en)
 
 <br>
 
 ## Contributing
 
 Future development opportunites:
-- Story path model to be stored in database. Adds flexiblility and reduces lines of code.
-- Additional classes, secondary character attribute like mana, rage, etc.
-- Provide starter points during character creation for user to distribute
-- Leveling system
-- More inventory items!
-- Equippable items; armor, swords, shields, etc.
+- Additional classes
+- Starter points to distribute
+- Leveling type system
+- Addition story modes
+- Model for Storylines
+- Character armor set
+- Environmental effects
+- Sound effects for attacks
+- Dynamic backgrounds in adventure mode
+- Player-vs-Player battle
+
 
 We are gamers at heart and this is our first game built together and it was such a great learning experience of all the inner workings of a game of this scope. Then we started to think of the magnitude of our favorite games of the past and the effort and planning it takes to build those. Wow!
 
