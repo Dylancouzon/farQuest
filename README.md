@@ -20,8 +20,9 @@ A letter arrived, it's from the King... he's asking for your help. You set off t
 3. [Game Mechanics](https://github.com/cheng21tang/farQuest#game-mechanics)
 4. [License](#license)
 5. [Music](#music)
-5. [Contributing](#contributing)
-6. [Questions](#questions)
+6. [Installation](#Installation)
+7. [Contributing](#contributing)
+8. [Questions](#questions)
 
 <br>
 <hr>
@@ -164,6 +165,44 @@ SOFTWARE.
 
 All Musics are free of charge, but all copyrights vest with YouFulca.
 - [wingless-seraph](https://wingless-seraph.net/en)
+
+<br>
+
+
+## Installation
+
+Download the project then run the command:
+
+```
+npm install
+```
+
+**.env**
+
+You will also need to setup your .env file with the following variables:
+
+```
+DB_SECRET = { your own variables here}
+DB_NAME = {MySql db name}
+DB_USER = {MySql username}
+DB_PASSWORD = {MySql password}
+```
+
+**Database** 
+
+To seed the database with the game data, run the following command:
+
+```
+npm run seeds
+```
+
+**Start the game** 
+
+Run the follwing command:
+
+```
+npm start
+```
 
 <br>
 
