@@ -233,6 +233,7 @@ Please feel free to reach out to us to talk about the game or check out our othe
 
 
 <img align="left" width="200" height="200" src="./public/sprites/1.gif">
+
 Liam Stewart
 - [liamchristopher.media@gmail.com](mailto:liamchristopher.media@gmail.com)
 - [GitHub](https://github.com/LiamStewart8)
